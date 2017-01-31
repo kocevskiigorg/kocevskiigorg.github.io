@@ -1,0 +1,1522 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+function helpdim()
+{
+window.open('h01_08.htm','help', config='height=500,width=900,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+var chk14=true;
+var D14=0;
+var n14=0;
+D14v=new Array(0.000001, 0.001, 1, 1000, 1000000, 2200000, 0.000037, 0.037, 37, 37000);
+D14n=new Array("Ci", "mCi", "microCi", "nCi", "pCi", "cpm", "GBq", "MBq", "kBq", "Bq");
+function res14()
+{D14=0;
+n14=0;
+chk14=true;}
+function insert14()
+{
+chk14=true;
+n14 = parseFloat(document.dim14.n.value); 
+// ##17
+if(isNaN(n14)){alert("Number should be in the bottom field."); document.dim14.n.focus(); return true;};
+D14 = document.dim14.D.selectedIndex
+n14 = Math.abs(n14);
+document.dim14.na.value=n14+D14n[D14];
+chk14=false;
+}
+function insertN14()
+{
+if(chk14){return true};
+insert14()
+}
+function calc14()
+{
+if(chk14){return true};
+Da = document.dim14.D.selectedIndex;
+n_new=n14/D14v[D14]*D14v[Da];
+document.dim14.n.value =n_new; 
+}
+var chk1=true;
+var D1=0;
+var n1=0;
+D1v=new Array(1000, 1, 0.01, 0.001, 0.000001, 0.0000000001, 0.0254, 219.5, 183, 5560, 4830, 0.0021, 0.2, 0.3, 1609.34, 1852.00, 201.168, 1.82880, 0.304800, 20.1168, 30.48, 0.9144);
+// ##01
+D1n=new Array("km", "m", "cm", "mm", "microm", "A", "inch", "cable's (US)", "cable's (GB)", "league (sea.)", "league (stat.)", "line", "link (surv.)", "link (eng.)", "mile (stat.)", "mile (sea.)", "fur", "fath", "ft", "ch (surv.)", "ch (eng.)", "yd");
+function res1()
+{D1=0;
+n1=0;
+chk1=true;}
+function insert1()
+{
+chk1=true;
+n1 = parseFloat(document.dim1.n.value); 
+// ##17
+if(isNaN(n1)){alert("Number should be in the bottom field."); document.dim1.n.focus(); return true;};
+D1 = document.dim1.D.selectedIndex
+n1 = Math.abs(n1);
+document.dim1.na.value=n1+D1n[D1];
+chk1=false;
+}
+function insertN1()
+{
+if(chk1){return true};
+insert1()
+}
+function calc1()
+{
+if(chk1){return true};
+Da = document.dim1.D.selectedIndex;
+n_new=n1*D1v[D1]/D1v[Da];
+document.dim1.n.value =n_new; 
+}
+
+var chk2=true;
+var D2=0;
+var n2=0;
+D2v=new Array(1000000, 1, 0.0001, 0.000001, 10000, 100, 4046.86, 0.00064516, 2589988, 2590000, 0.09290304, 0.8361274);
+// ##02
+D2n=new Array("km2", "m2", "cm2", "mm2", "hectare [ha]", "are [are] (US)", "acre [a]", "sq. inch [in2]", "sq. mile", "sq. mile (stat.)", "sq. foot [ft2]", "sq. yard [yd2]");
+function res2()
+{D2=0;
+n2=0;
+chk2=true;}
+function insert2()
+{
+chk2=true;
+n2 = parseFloat(document.dim2.n.value); 
+// ##17
+if(isNaN(n2)){alert("Number should be in the bottom field."); document.dim2.n.focus(); return true;};
+D2 = document.dim2.D.selectedIndex
+n2 = Math.abs(n2);
+document.dim2.na.value=n2+D2n[D2];
+chk2=false;
+}
+function insertN2()
+{
+if(chk2){return true};
+insert2()
+}
+function calc2()
+{
+if(chk2){return true};
+Da = document.dim2.D.selectedIndex;
+n_new=n2*D2v[D2]/D2v[Da];
+document.dim2.n.value =n_new; 
+}
+
+var chk3=true;
+var D3=0;
+var n3=0;
+D3v=new Array(1000, 0.001, 28.3168, 0.0163871, 764.555, 1, 0.001, 0.000001, 0.000000001, 140.6, 119.240, 163.659, 158.987, 115.627, 35.2391, 36.3687, 3.78541, 4.54609, 0.946353, 1.13652, 1.10122, 0.473177, 0.568261, 0.550611, 0.0295735, 0.0284131, 0.0568, 0.0142, 0.0044, 0.0000648524);
+// ##03
+D3n=new Array("m3", "cm3", "cub. foot [fti]", "cub. inch [ini]", "cub. yard [ydi]", "L", "ml", "microl", "nl", "barrel [bbl]", "barrel (US) [liq]", "barrel (GB) [liq]", "barrel (US) [oil]", "barrel (US) [dry]", "bushel (US) [bu dry]", "bushel (GB) [bu dry]", "gallon (US) [gal liq]", "gallon (GB) [gal liq]", "guart (US) [qt liq]", "guart (GB) [qt liq]", "guart (US) [qt dry]", "pint (US) [pt liq]", "pint (GB) [pt liq]", "pint (US) [pt dry]", "ounce (US) [oz liq]", "ounce (GB.) [oz liq]", "wine-glass", "table-spoon", "tea-spoon", "drop");
+
+function res3()
+{D3=0;
+n3=0;
+chk3=true;}
+function insert3()
+{
+chk3=true;
+n3 = parseFloat(document.dim3.n.value); 
+// ##17
+if(isNaN(n3)){alert("Number should be in the bottom field."); document.dim3.n.focus(); return true;};
+D3 = document.dim3.D.selectedIndex
+n3 = Math.abs(n3);
+document.dim3.na.value=n3+D3n[D3];
+chk3=false;
+}
+function insertN3()
+{
+if(chk3){return true};
+insert3()
+}
+function calc3()
+{
+if(chk3){return true};
+Da = document.dim3.D.selectedIndex;
+n_new=n3*D3v[D3]/D3v[Da];
+document.dim3.n.value =n_new; 
+}
+
+var chk4=true;
+var D4=0;
+var n4=0;
+D4v=new Array(1, 0.9000009, 360, 57.2958, 0.01666667, 0.0002777778);
+// ##04
+D4n=new Array("degree", "grad", "rev.", "rad", "min", "sec");
+
+function res4()
+{D4=0;
+n4=0;
+chk4=true;}
+function insert4()
+{
+chk4=true;
+n4 = parseFloat(document.dim4.n.value); 
+// ##17
+if(isNaN(n4)){alert("Number should be in the bottom field."); document.dim4.n.focus(); return true;};
+D4 = document.dim4.D.selectedIndex
+n4 = Math.abs(n4);
+document.dim4.na.value=n4+D4n[D4];
+chk4=false;
+}
+function insertN4()
+{
+if(chk4){return true};
+insert4()
+}
+function calc4()
+{
+if(chk4){return true};
+Da = document.dim4.D.selectedIndex;
+n_new=n4*D4v[D4]/D4v[Da];
+document.dim4.n.value =n_new; 
+}
+
+var chk5=true;
+var D5=0;
+var n5=0;
+D5v=new Array(3153600000, 31536000, 2592000, 604800, 86400, 3600, 60, 1);
+// ##05
+D5n=new Array("cent.", "year", "month", "week", "day", "hour", "minute", "second");
+
+function res5()
+{D5=0;
+n5=0;
+chk5=true;}
+function insert5()
+{
+chk5=true;
+n5 = parseFloat(document.dim5.n.value); 
+// ##17
+if(isNaN(n5)){alert("Number should be in the bottom field."); document.dim5.n.focus(); return true;};
+D5 = document.dim5.D.selectedIndex
+n5 = Math.abs(n5);
+document.dim5.na.value=n5+D5n[D5];
+chk5=false;
+}
+function insertN5()
+{
+if(chk5){return true};
+insert5()
+}
+function calc5()
+{
+if(chk5){return true};
+Da = document.dim5.D.selectedIndex;
+n_new=n5*D5v[D5]/D5v[Da];
+document.dim5.n.value =n_new; 
+}
+var chk6=true;
+var D6=0;
+var n6=0;
+D6v=new Array(1, 0.277778, 0.447040, 0.304800, 0.0254000, 331.680, 343.610, 1404.00, 1483.00, 1449.20, 1563.50);
+// ##06
+D6n=new Array("m/s", "km/h", "mile/h", "ft/s", "in/s", "Mach [0C, 1atm]", "Mach [20C, 1atm]", "sound [H2O, 0C]", "sound [H2O, 20C]", "sound [Sea, 0C]", "sound [Sea, 20C]");
+function res6()
+{D6=0;
+n6=0;
+chk6=true;}
+function insert6()
+{
+chk6=true;
+n6 = parseFloat(document.dim6.n.value); 
+// ##17
+if(isNaN(n6)){alert("Number should be in the bottom field."); document.dim6.n.focus(); return true;};
+D6 = document.dim6.D.selectedIndex
+n6 = Math.abs(n6);
+document.dim6.na.value=n6+D6n[D6];
+chk6=false;
+}
+function insertN6()
+{
+if(chk6){return true};
+insert6()
+}
+function calc6()
+{
+if(chk6){return true};
+Da = document.dim6.D.selectedIndex;
+n_new=n6*D6v[D6]/D6v[Da];
+document.dim6.n.value =n_new; 
+}
+
+var chk7=true;
+var D7=0;
+var n7=0;
+D7v=new Array(1, 9.80665, 0.3047987, 0.0254000);
+// ##07
+D7n=new Array("m/c2", "g", "ft/c2", "in/c2");
+function res7()
+{D7=0;
+n7=0;
+chk7=true;}
+function insert7()
+{
+chk7=true;
+n7 = parseFloat(document.dim7.n.value); 
+// ##17
+if(isNaN(n7)){alert("Number should be in the bottom field."); document.dim7.n.focus(); return true;};
+D7 = document.dim7.D.selectedIndex
+n7 = Math.abs(n7);
+document.dim7.na.value=n7+D7n[D7];
+chk7=false;
+}
+function insertN7()
+{
+if(chk7){return true};
+insert7()
+}
+function calc7()
+{
+if(chk7){return true};
+Da = document.dim7.D.selectedIndex;
+n_new=n7*D7v[D7]/D7v[Da];
+document.dim7.n.value =n_new; 
+}
+
+var chk8=true;
+var D8=0;
+var n8=0;
+D8v=new Array(9.80665, 1, 4.44822, 0.00001, 0.278013851);
+// ##08
+D8n=new Array("kgf", "N", "lbf", "dyn", "ozf");
+function res8()
+{D8=0;
+n8=0;
+chk8=true;}
+function insert8()
+{
+chk8=true;
+n8 = parseFloat(document.dim8.n.value); 
+// ##17
+if(isNaN(n8)){alert("Number should be in the bottom field."); document.dim8.n.focus(); return true;};
+D8 = document.dim8.D.selectedIndex
+n8 = Math.abs(n8);
+document.dim8.na.value=n8+D8n[D8];
+chk8=false;
+}
+function insertN8()
+{
+if(chk8){return true};
+insert8()
+}
+function calc8()
+{
+if(chk8){return true};
+Da = document.dim8.D.selectedIndex;
+n_new=n8*D8v[D8]/D8v[Da];
+document.dim8.n.value =n_new; 
+}
+
+var chk9=true;
+var D9=0;
+var n9=0;
+D9v=new Array(10000, 1, 10332.27, 10197.16, 10.19716, 101971.6, 101.9716, 0.1019716, 345.3155, 135.951, 13.5951, 1.00000, 0.01019716, 4.882428, 703.0696);
+// ##09
+D9n=new Array("kg/cm2", "kg/m2", "atm", "bar", "mbar", "MP", "kP", "P", "inch Hg", "cm Hg", "mm Hg [Torr]", "mm H2O", "dyne/cm2", "pound/foot2", "pound/inch2 [psi]");
+function res9()
+{D9=0;
+n9=0;
+chk9=true;}
+function insert9()
+{
+chk9=true;
+n9 = parseFloat(document.dim9.n.value); 
+// ##17
+if(isNaN(n9)){alert("Number should be in the bottom field."); document.dim9.n.focus(); return true;};
+D9 = document.dim9.D.selectedIndex
+n9 = Math.abs(n9);
+document.dim9.na.value=n9+D9n[D9];
+chk9=false;
+}
+function insertN9()
+{
+if(chk9){return true};
+insert9()
+}
+function calc9()
+{
+if(chk9){return true};
+Da = document.dim9.D.selectedIndex;
+n_new=n9*D9v[D9]/D9v[Da];
+document.dim9.n.value =n_new; 
+}
+
+var chk10=true;
+var D10=0;
+var n10=0;
+D10v=new Array(1, 4.18605, 0.0000001, 9.80665, 1.35582, 0.112985, 3600000, 2684519.538);
+// ##10
+D10n=new Array("J", "cal", "erg", "kgf-m", "ft-lbf", "lbf-in", "kW-h", "horsepow-h");
+function res10()
+{D10=0;
+n10=0;
+chk10=true;}
+function insert10()
+{
+chk10=true;
+n10 = parseFloat(document.dim10.n.value); 
+// ##17
+if(isNaN(n10)){alert("Number should be in the bottom field."); document.dim10.n.focus(); return true;};
+D10 = document.dim10.D.selectedIndex
+n10 = Math.abs(n10);
+document.dim10.na.value=n10+D10n[D10];
+chk10=false;
+}
+function insertN10()
+{
+if(chk10){return true};
+insert10()
+}
+function calc10()
+{
+if(chk10){return true};
+Da = document.dim10.D.selectedIndex;
+n_new=n10*D10v[D10]/D10v[Da];
+document.dim10.n.value =n_new; 
+}
+
+var chk11=true;
+var D11=0;
+var n11=0;
+D11v=new Array(1, 1.16300, 9.80665, 1.35582, 745.6998716);
+// ##11
+D11n=new Array("W", "kcal/h", "kgf-m/s", "ft-lbf/s", "horsepow.");
+function res11()
+{D11=0;
+n11=0;
+chk11=true;}
+function insert11()
+{
+chk11=true;
+n11 = parseFloat(document.dim11.n.value); 
+// ##17
+if(isNaN(n11)){alert("Number should be in the bottom field."); document.dim11.n.focus(); return true;};
+D11 = document.dim11.D.selectedIndex
+n11 = Math.abs(n11);
+document.dim11.na.value=n11+D11n[D11];
+chk11=false;
+}
+function insertN11()
+{
+if(chk11){return true};
+insert11()
+}
+function calc11()
+{
+if(chk11){return true};
+Da = document.dim11.D.selectedIndex;
+n_new=n11*D11v[D11]/D11v[Da];
+document.dim11.n.value =n_new; 
+}
+
+var chk12=true;
+var D12=0;
+var n12=0;
+D12v=new Array(1, 0.001, 0.000001, 0.000000001, 0.0000647989, 0.001772, 0.0002, 1000, 907.185, 1016.05, 0.0283495, 0.0311035, 0.453592, 0.373242);
+// ##12
+D12n=new Array("kg", "g", "mg", "microg", "gr", "drachm", "car", "ton", "ton (US)", "ton (GB)", "ounce/avdp [oz]", "ounce/troy", "pound/avdp", "pound/troy");
+function res12()
+{D12=0;
+n12=0;
+chk12=true;}
+function insert12()
+{
+chk12=true;
+n12 = parseFloat(document.dim12.n.value); 
+// ##17
+if(isNaN(n12)){alert("Number should be in the bottom field."); document.dim12.n.focus(); return true;};
+D12 = document.dim12.D.selectedIndex
+n12 = Math.abs(n12);
+document.dim12.na.value=n12+D12n[D12];
+chk12=false;
+}
+function insertN12()
+{
+if(chk12){return true};
+insert12()
+}
+function calc12()
+{
+if(chk12){return true};
+Da = document.dim12.D.selectedIndex;
+n_new=n12*D12v[D12]/D12v[Da];
+document.dim12.n.value =n_new; 
+}
+var chk13=true;
+var D13=0;
+var n13=0;
+D13v=new Array(273.15, 0, 32, 0, 491.67);
+D13k=new Array(1, 1, 1.8, 0.8, 1.8);
+// ##13
+D13n=new Array("K", "C", "F", "R", "Ran");
+function res13()
+{D13=0;
+n13=0;
+chk13=true;}
+function insert13()
+{
+chk13=true;
+n13 = parseFloat(document.dim13.n.value); 
+// ##17
+if(isNaN(n13)){alert("Number should be in the bottom field."); document.dim13.n.focus(); return true;};
+D13 = document.dim13.D.selectedIndex
+document.dim13.na.value=n13+D13n[D13];
+chk13=false;
+}
+function insertN13()
+{
+if(chk13){return true};
+insert13()
+}
+function calc13()
+{
+if(chk13){return true};
+Da = document.dim13.D.selectedIndex;
+n_new=D13v[Da]+(n13-D13v[D13])*D13k[Da]/D13k[D13];
+document.dim13.n.value =n_new; 
+}
+// -->
+</script>
+<a name="start"></a>
+<div align="center">
+	<table border="5" width="745" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium" width="813">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Conversion: units of measurement.</font></b></p>
+			</td>
+		</tr>
+		<tr>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; border-right-style:none; border-right-width:medium" width="730" align="center">
+			<p align="center" style="margin-left: 8px; margin-right: 8px">
+			<font face="Tahoma">&nbsp;<br>
+			<a href="#a1">Metric prefixes. <br>
+			</a><a href="#a4">Units of measurement. <br>
+			</a>&nbsp;</font></p>
+			<div align="center">
+				<table border="1" width="60%" bordercolor="#000000" height="107">
+					<tr>
+						<td align="center" width="167"><b><a href="#a41">
+						<font size="-1" face="Tahoma">
+						<!-- ##01 -->Length</font></a></b></td>
+						<td align="center" width="167"><b><a href="#a45">
+						<font size="-1" face="Tahoma">
+						<!-- ##05 -->Time</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a49">
+						<font size="-1" face="Tahoma">
+						<!-- ##09 -->Preasure</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a413">
+						<font size="-1" face="Tahoma">
+						<!-- ##13 -->Temperature</font></a></b></td>
+					</tr>
+					<tr>
+						<td align="center" width="167"><b><a href="#a42">
+						<font size="-1" face="Tahoma">
+						<!-- ##02 -->Area</font></a></b></td>
+						<td align="center" width="167"><b><a href="#a46">
+						<font size="-1" face="Tahoma">
+						<!-- ##06 -->Velocity</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a410">
+						<font size="-1" face="Tahoma">
+						<!-- ##10 -->Energy</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a414">
+						<font size="-1" face="Tahoma">
+						<!-- ##14 -->Radioactivity</font></a></b></td>
+					</tr>
+					<tr>
+						<td align="center" width="167"><b><a href="#a43">
+						<font size="-1" face="Tahoma">
+						<!-- ##03 -->Volume</font></a></b></td>
+						<td align="center" width="167"><b><a href="#a47">
+						<font size="-1" face="Tahoma">
+						<!-- ##07 -->Acceleration</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a411">
+						<font size="-1" face="Tahoma">
+						<!-- ##11 -->Power</font></a></b></td>
+						<td align="center" width="168"><b><a href="#a44">
+						<font size="-1" face="Tahoma">
+						<!-- ##04 -->Angle</font></a></b></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><b><a href="#a48">
+						<font size="-1" face="Tahoma">
+						<!-- ##08 -->Force</font></a></b></td>
+						<td colspan="2" align="center"><b><a href="#a412">
+						<font size="-1" face="Tahoma">
+						<!-- ##12 -->Weight</font></a></b></td>
+					</tr>
+				</table>
+				<p><font face="Tahoma"></p>
+				<ul>
+					<a name="a1"></a>
+					<!-- ##18 -->Metric prefixes.</font><p></p>
+					<div align="center">
+						<table border="0" width="628" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="209" height="80%">
+								<div align="center">
+									<table width="282" border="1" cellspacing="1" cellpadding="2px" bordercolor="#000000" height="100%">
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">m</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(mili)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-3</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">micro (µ)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(micro)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-6</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">n</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(nano)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-9</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">p</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(pico)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-12</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">f</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(femto)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-15</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">a</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(atto)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-18</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">z</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">(zepto)</font></td>
+											<td width="93" align="center" valign="middle">
+											<font face="Tahoma">10<sup>-21</sup></font></td>
+										</tr>
+									</table>
+								</div>
+								</td>
+								<td width="209" height="80%">&nbsp;</td>
+								<td height="80%" width="210">
+								<div align="center">
+									<table width="275" border="1" cellspacing="1" cellpadding="2px" bordercolor="#000000" height="80%">
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">k</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(kilo)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>3</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">M</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(mega)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>6</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">G</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(giga)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>9</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">T</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(tera)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>12</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">P</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(peta)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>15</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">E</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(exa)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>18</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">Z</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(zeta)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>21</sup></font></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td align="center" width="90" valign="middle">
+											<font face="Tahoma">Y</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">(yotta)</font></td>
+											<td align="center" width="91" valign="middle">
+											<font face="Tahoma">10<sup>24</sup></font></td>
+										</tr>
+									</table>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="209" height="80%">&nbsp;</td>
+								<td width="209" height="80%">&nbsp;</td>
+								<td height="80%" width="210">&nbsp;</td>
+							</tr>
+							<tr>
+								<td height="80%" colspan="3">
+								<p align="center"><font face="Tahoma">It is worth 
+								to look on web-site of National High Magnetic Field 
+								Laboratory to imagine effect of the &quot;power of ten&quot;:
+								<a href="http://microscopy.fsu.edu/optics/tutorials/java/powersof10/index.html" target="_blank">
+								our world in different scales</a>. </p>
+								</font>
+								<p></p>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</ul>
+			</div>
+			<p align="center">&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<form name="dim1" id="dim1">
+				<a name="a4"></a>
+				<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" width="813" bgcolor="#EAF0FF">
+				<p align="center"><font face="Tahoma">&nbsp;</font><br><a name="a4"></a><!-- ##19 --><font face="Tahoma">Units 
+				of measurement. </font><br>
+				<font face="Tahoma"><br>
+				<input type="image" src="buttons/3.png" onclick="helpdim();return false;">
+				</font></p>
+				<p align="center">&nbsp;</p>
+				</td>
+			
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" width="813">
+			<a name="a41"></a>
+			<div align="center">
+				<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+					<tr>
+						<td bgcolor="#C1D0EF" width="54%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+						<p style="margin-left: 15px"><b>
+						<font color="Olive" face="Tahoma">
+						<!-- ##01 --></font><font color="#FF0000" face="Tahoma">
+						Length</font></b></p>
+						</td>
+						<td bgcolor="#C1D0EF" width="3%" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+						<p align="center"><font face="Tahoma">
+						<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+						<font face="Tahoma">
+						<input type="image" src="buttons/5.png" onclick="insert1();return false;" align="right"></font></td>
+						<td bgcolor="#C1D0EF" width="3%" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+						<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+						<font face="Tahoma">
+						<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+					</tr>
+					<tr>
+						<td bgcolor="#C1D0EF" width="54%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+						<font face="Tahoma">
+						<input size="25" value="1" name="n" onchange="insertN1()" style="float: right"></font></td>
+						<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+						<font face="Tahoma"><select name="D" onchange="calc1()">
+						<option>&nbsp; kilometer [km] </option>
+						<option selected>&nbsp; meter [m] </option>
+						<option>&nbsp; centimeter [cm] </option>
+						<option>&nbsp; millimeter [mm] </option>
+						<option>&nbsp; mikrometer [µm] </option>
+						<option>&nbsp; angstrom [A] </option>
+						<option>&nbsp; inch [inch] </option>
+						<option>&nbsp; cable&#39;s (US) </option>
+						<option>&nbsp; cable&#39;s (GB) </option>
+						<option>&nbsp; league (sea) </option>
+						<option>&nbsp; league (statute) </option>
+						<option>&nbsp; line </option>
+						<option>&nbsp; link (surveyor&#39;s) </option>
+						<option>&nbsp; link (engineer&#39;s) </option>
+						<option>&nbsp; mile (statute) </option>
+						<option>&nbsp; mile (sea) </option>
+						<option>&nbsp; furlong [fur] </option>
+						<option>&nbsp; fathom [fath] </option>
+						<option>&nbsp; foot,feet [ft] </option>
+						<option>&nbsp; chain (surveyor&#39;s) [ch] </option>
+						<option>&nbsp; chain (engineer&#39;s) [ch] </option>
+						<option>&nbsp; yard [yd] </option>
+						</select></font></td>
+					</tr>
+					<tr>
+						<td bgcolor="#C1D0EF" width="54%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+			</form>
+			<p align="center">&nbsp;</p>
+			<form name="dim2" id="dim2">
+				<a name="a42"></a>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Area</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert2();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px" bordercolor="#000000" height="119">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN2()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc2()">
+							<option>&nbsp; sq. kilometer [km2] </option>
+							<option selected>&nbsp; sq. meter [m2] </option>
+							<option>&nbsp; sq. centimeter [cm2] </option>
+							<option>&nbsp; sq. millimeter [mm2] </option>
+							<option>&nbsp; hectare [ha] </option>
+							<option>&nbsp; are [are] (US) </option>
+							<option>&nbsp; acre [a] </option>
+							<option>&nbsp; sq. inch [in2] </option>
+							<option>&nbsp; sq. mile </option>
+							<option>&nbsp; sq. mile (statute) </option>
+							<option>&nbsp; sq. foot [ft2] </option>
+							<option>&nbsp; sq. yard [yd2] </option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<p align="center">&nbsp;</p>
+			<form name="dim3" id="dim3">
+				<a name="a43"></a>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="Olive" face="Tahoma">
+							<!-- ##03 --></font>
+							<font color="#FF0000" face="Tahoma">Volume</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" width="3%" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert3();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN3()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc3()">
+							<option>&nbsp; cub. meter [m3]</option>
+							<option>&nbsp; cub. centimeter [cm3]</option>
+							<option>&nbsp; cub. foot [fti]</option>
+							<option>&nbsp; cub. inch [ini]</option>
+							<option>&nbsp; cub. yard [ydi]</option>
+							<option selected>&nbsp; liter [L]</option>
+							<option>&nbsp; milliliter [ml]</option>
+							<option>&nbsp; mikroliter [µl]</option>
+							<option>&nbsp; nanoliter [nl]</option>
+							<option>&nbsp; barrel [bbl]</option>
+							<option>&nbsp; barrel (US) [liq]</option>
+							<option>&nbsp; barrel (GB) [liq]</option>
+							<option>&nbsp; barrel (US) [oil]</option>
+							<option>&nbsp; barrel (US) [dry]</option>
+							<option>&nbsp; bushel (US) [bu dry]</option>
+							<option>&nbsp; bushel (GB) [bu dry]</option>
+							<option>&nbsp; gallon (US) [gal liq]</option>
+							<option>&nbsp; gallon (GB) [gal liq]</option>
+							<option>&nbsp; guart (US) [qt liq]</option>
+							<option>&nbsp; guart (GB) [qt liq]</option>
+							<option>&nbsp; guart (US) [qt dry]</option>
+							<option>&nbsp; pint (US) [pt liq]</option>
+							<option>&nbsp; pint (GB) [pt liq]</option>
+							<option>&nbsp; pint (US) [pt dry]</option>
+							<option>&nbsp; ounce (US) [oz liq]</option>
+							<option>&nbsp; ounce (GB) [oz liq]</option>
+							<option>&nbsp; wine-glass</option>
+							<option>&nbsp; table-spoon</option>
+							<option>&nbsp; tea-spoon</option>
+							<option>&nbsp; drop</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim4" id="dim4">
+				<a name="a44"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="Olive" face="Tahoma">
+							<!-- ##03 --></font>
+							<font face="Tahoma" color="#FF0000">Angel</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" width="3%" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert4();return false;" align="right" name="I1"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN4()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc4()">
+							<option selected>&nbsp; degree</option>
+							<option>&nbsp; grad</option>
+							<option>&nbsp; revolution</option>
+							<option>&nbsp; rad</option>
+							<option>&nbsp; minute</option>
+							<option>&nbsp; second</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<p>&nbsp;</p>
+			<form name="dim5" id="dim5">
+				<a name="a45"></a>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Time</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert5();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="115">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN5()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc5()">
+							<option>&nbsp; century</option>
+							<option>&nbsp; year</option>
+							<option>&nbsp; month (30)</option>
+							<option>&nbsp; week</option>
+							<option>&nbsp; day</option>
+							<option>&nbsp; hour</option>
+							<option>&nbsp; minute</option>
+							<option selected>&nbsp; second</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim6" id="dim6">
+				<a name="a46"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Velocity</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert6();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN6()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc6()">
+							<option selected>&nbsp; m/s</option>
+							<option>&nbsp; km/h</option>
+							<option>&nbsp; mile/h</option>
+							<option>&nbsp; ft/s</option>
+							<option>&nbsp; in/s</option>
+							<option>&nbsp; Mach [0C, 1atm]</option>
+							<option>&nbsp; Mach [20C, 1atm]</option>
+							<option>&nbsp; sound [H2O, 0C]</option>
+							<option>&nbsp; sound [H2O, 20C]</option>
+							<option>&nbsp; sound [Sea, 0C]</option>
+							<option>&nbsp; sound [Sea, 20C]</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim7" id="dim7">
+				<a name="a47"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="Olive" face="Tahoma">
+							<!-- ##07 --></font>
+							<font color="#FF0000" face="Tahoma">Acceleration</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert7();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN7()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc7()">
+							<option>&nbsp; m/s2</option>
+							<option selected>&nbsp; RCF [g]</option>
+							<option>&nbsp; ft/s2</option>
+							<option>&nbsp; in/s2</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim8" id="dim8">
+				<a name="a48"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="Olive" face="Tahoma">
+							<!-- ##08 --></font>
+							<font color="#FF0000" face="Tahoma">Force</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert8();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN8()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc8()">
+							<option>&nbsp; kg force [kgf]</option>
+							<option selected>&nbsp; Newton [N]</option>
+							<option>&nbsp; pound-force [lbf]</option>
+							<option>&nbsp; dyne [dyn]</option>
+							<option>&nbsp; ounce-force [ozf]</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim9" id="dim9">
+				<a name="a49"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Preasure</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="top" height="35">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert9();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="bottom" height="35">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN9()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="bottom" height="35">
+							<font face="Tahoma">
+							<select name="D" onchange="calc9()">
+							<option selected>&nbsp; kg/cm2</option>
+							<option>&nbsp; kg/m2</option>
+							<option>&nbsp; atmosphere [atm]</option>
+							<option>&nbsp; bar</option>
+							<option>&nbsp; millibar</option>
+							<option>&nbsp; MPascal [MP]</option>
+							<option>&nbsp; kPascal [kP]</option>
+							<option>&nbsp; Paskal [P]</option>
+							<option>&nbsp; inch Hg</option>
+							<option>&nbsp; cm Hg</option>
+							<option>&nbsp; mm Hg [Torr]</option>
+							<option>&nbsp; mm H2O</option>
+							<option>&nbsp; dyne/cm2</option>
+							<option>&nbsp; pound/foot2</option>
+							<option>&nbsp; pound/inch2 [psi]</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim10" id="dim10">
+				<a name="a410"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Energy</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert10();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN10()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc10()">
+							<option selected>&nbsp; Joule [J]</option>
+							<option>&nbsp; calorie [cal]</option>
+							<option>&nbsp; erg [erg]</option>
+							<option>&nbsp; kgf-m</option>
+							<option>&nbsp; ft-lbf</option>
+							<option>&nbsp; lbf-in</option>
+							<option>&nbsp; kW-h</option>
+							<option>&nbsp; horsepower-h</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<p align="center"></div>
+			</p>
+			<form name="dim11" id="dim11">
+				<a name="a411"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Power</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert11();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN11()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc11()">
+							<option selected>&nbsp; Watt [W]</option>
+							<option>&nbsp; kcal/h</option>
+							<option>&nbsp; kgf-m/s</option>
+							<option>&nbsp; ft-lbf/s</option>
+							<option>&nbsp; horsepower</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim12" id="dim12">
+				<a name="a412"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Weight</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert12();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN12()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc12()">
+							<option>&nbsp; kilogram [kg]</option>
+							<option selected>&nbsp; gram [g]</option>
+							<option>&nbsp; milligram [mg]</option>
+							<option>&nbsp; mikrogram [µg]</option>
+							<option>&nbsp; grain [gr]</option>
+							<option>&nbsp; drachm</option>
+							<option>&nbsp; carat [car, ct]</option>
+							<option>&nbsp; ton</option>
+							<option>&nbsp; ton (US)</option>
+							<option>&nbsp; ton (GB)</option>
+							<option>&nbsp; ounce/avdp [oz]</option>
+							<option>&nbsp; ounce/troy</option>
+							<option>&nbsp; pound/avdp [lb]</option>
+							<option>&nbsp; pound/troy</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim13" id="dim13">
+				<a name="a413"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Temperature</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert13();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="0" name="n" onchange="insertN13()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc13()">
+							<option>&nbsp; Kelvin [K]</option>
+							<option selected>&nbsp; deg Celsius [° C]</option>
+							<option>&nbsp; deg Fahrenheit [° F]</option>
+							<option>&nbsp; deg Reaumur [° R]</option>
+							<option>&nbsp; deg Rankine [° Ran]</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+			<form name="dim14" id="dim14">
+				<a name="a414"></a>
+				<p>&nbsp;</p>
+				<div align="center">
+					<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Radioactivity</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert14();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN14()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc14()">
+							<option>&nbsp; Ci</option>
+							<option>&nbsp; mCi</option>
+							<option selected>&nbsp; µCi</option>
+							<option>&nbsp; nCi</option>
+							<option>&nbsp; pCi</option>
+							<option>&nbsp; cpm</option>
+							<option>&nbsp; GBq</option>
+							<option>&nbsp; MBq</option>
+							<option>&nbsp; kBq</option>
+							<option>&nbsp; Bq</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				<p>&nbsp;</p>
+			</form>
+			</td>
+			</form>
+			<ul>
+			</ul>
+			<!-- ïðîòîêîë êîíåö--></div>
+		</tr>
+	</table>
+</div>

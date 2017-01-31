@@ -1,0 +1,317 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+			<script language="JavaScript">
+<!-- 
+var chk;
+var chk1=true;
+var chk2=true;
+var chk3=true;
+var chk4=true;
+var n1=0; 
+var n2=0; 
+var n3=0; 
+var n4=0;
+var q1=0; 
+var m2=0; 
+var c3=0; 
+var m4=0;
+function res()
+{
+n1=0; 
+n2=0; 
+n3=0; 
+n4=0;
+chk1=true;
+chk2=true;
+chk3=true;
+chk4=true;
+q1=0; 
+m2=0; 
+c3=0; 
+m4=0;
+}
+
+function Lrec()
+{
+if(chk1==0){conv1()};
+if(chk2==0){conv2()};
+if(chk3==0){conv3()};
+if(chk4==0){conv4()};
+}
+function Mi()
+{
+chk=true;
+if(document.prot.NA.options[3].selected==1)
+{M = parseFloat(document.prot.Mw.value); 
+// ##03
+if(isNaN(M)||M<=0){alert("You should insert the olig. molecular weight."); document.prot.Mw.focus(); return true;};
+document.prot.Mw.value=M+"kDa"; chk=false;}
+else
+{
+m=new Array(649, 324.5, 340.5);
+NA=m[document.prot.NA.selectedIndex];
+L = parseFloat(document.prot.L.value); 
+// ##04
+if(isNaN(L)||L==0){alert("\"Size of the nucl. acid [kb]\" should be number."); document.prot.L.focus(); return true;};
+M = Math.abs(L)*m[document.prot.NA.selectedIndex];
+document.prot.L.value=L+"kb"
+chk=false;}
+}
+function conv1()
+{
+Mi(); 
+if(chk){return true};
+m1=parseFloat(document.prot.m1.value); 
+// ##05
+if(isNaN(m1)||m1==0){alert("\"Weight\" should be number."); document.prot.m1.focus(); return true;};
+m1 =  Math.abs(m1)
+q1=m1/Math.pow(10,3*document.prot.Dm1.selectedIndex)/M/1000;
+q1sh=Math.round(q1*6.022045*Math.pow(10,23));
+n=0;
+	while(n<6&&q1<1) {n++; q1 = q1*1000};
+	n1=n;
+	r=Math.round(q1*100)/100;
+	if(r>0){q1=r};
+	document.prot.m1.value=m1;
+	document.prot.q1.value=q1;
+	document.prot.q1sh.value=q1sh;
+	document.prot.Dq1.selectedIndex=n;
+	chk1=false;
+}
+function rclc1()
+{
+// ##06
+if(chk1){alert("Only after calculation."); return true};
+document.prot.q1.value = q1*Math.pow(10,3*document.prot.Dq1.selectedIndex)/Math.pow(10,3*n1);
+}
+function conv2()
+{
+Mi(); 
+if(chk){return true};
+q2=parseFloat(document.prot.q2.value); 
+// ##07
+if(isNaN(q2)||q2==0){alert("\"mole quantity\" should be number."); document.prot.q2.focus(); return true;};
+q2 =  Math.abs(q2)
+q2sh=Math.round(q2*6.022045*Math.pow(10,23))/Math.pow(10,3*document.prot.Dq2.selectedIndex);
+m2=q2/Math.pow(10,3*document.prot.Dq2.selectedIndex)*M*1000;
+n=0;
+	while(n<5&&m2<1) {n++; m2 = m2*1000};
+	n2=n;
+	r=Math.round(m2*100)/100;
+	if(r>0){m2=r};
+	document.prot.q2.value=q2;
+	document.prot.m2.value=m2;
+	document.prot.q2sh.value=q2sh;
+	document.prot.Dm2.selectedIndex=n;
+	chk2=false;
+}
+function rclc2()
+{
+// ##06
+if(chk2){alert("Only after calculation."); return true};
+document.prot.m2.value = m2*Math.pow(10,3*document.prot.Dm2.selectedIndex)/Math.pow(10,3*n2);
+}
+function conv3()
+{
+Mi(); 
+if(chk){return true};
+m3=parseFloat(document.prot.m3.value); 
+// ##05
+if(isNaN(m3)||m3==0){alert("\"Weight\" should be number."); document.prot.m3.focus(); return true;};
+m3 =  Math.abs(m3)
+v3=parseFloat(document.prot.v3.value); 
+// ##08
+if(isNaN(v3)||v3==0){alert("\"Volume\" should be number."); document.prot.v3.focus(); return true;};
+v3 =  Math.abs(v3)
+c3=m3*Math.pow(10,3*document.prot.Dv3.selectedIndex)/v3/M/1000/Math.pow(10,3*document.prot.Dm3.selectedIndex)
+n=0;
+	while(n<6&&c3<1) {n++; c3 = c3*1000};
+	n3=n;
+	r=Math.round(c3*100)/100;
+	if(r>0){c3=r};
+	document.prot.m3.value=m3;
+	document.prot.v3.value=v3;
+	document.prot.c3.value=c3;
+	document.prot.Dc3.selectedIndex=n;
+	chk3=false;
+}
+function rclc3()
+{
+// ##06
+if(chk3){alert("Only after calculation."); return true};
+document.prot.c3.value = c3*Math.pow(10,3*document.prot.Dc3.selectedIndex)/Math.pow(10,3*n3);
+}
+function conv4()
+{
+Mi(); 
+if(chk){return true};
+c4=parseFloat(document.prot.c_4.value); 
+// ##09
+if(isNaN(c4)||c4==0){alert("\"Concentration\" should be number."); document.prot.c_4.focus(); return true;};
+c4 =  Math.abs(c4)
+v4=parseFloat(document.prot.v4.value); 
+// ##08
+if(isNaN(v4)||v4==0){alert("\"Volume\" should be number."); document.prot.v4.focus(); return true;};
+v4 =  Math.abs(v4)
+m4=c4/Math.pow(10,3*document.prot.Dc4.selectedIndex)*v4/Math.pow(10,3*document.prot.Dv4.selectedIndex)*M*1000
+n=0;
+	while(n<5&&m4<1) {n++; m4 = m4*1000};
+	n4=n;
+	r=Math.round(m4*100)/100;
+	if(r>0){m4=r};
+	document.prot.c_4.value=c4;
+	document.prot.v4.value=v4;
+	document.prot.m4.value=m4;
+	document.prot.Dm4.selectedIndex=n;
+	chk4=false;
+}
+function rclc4()
+{
+// ##06
+if(chk4){alert("Only after calculation."); return true};
+document.prot.m4.value = m4*Math.pow(10,3*document.prot.Dm4.selectedIndex)/Math.pow(10,3*n4);
+}
+// -->
+<form name="prot" id="prot">
+<p class=h2>
+<!-- ##18 -->Help for weight - moles (nucleic acids)</p><br>
+<!--begin of Rambler's Top100 code -->
+<a href="http://top100.rambler.ru/top100/">
+<img src="http://counter.rambler.ru/top100.cnt?445258" alt="" width=1 height=1 border=0></a>
+<!--end of Top100 code-->
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 >
+</noscript>
+<!-- SpyLOG -->
+<a href="#f">Calculation formulas</a></p><br>
+<p class=tx><!-- ##20 -->Suppose, that 35ng of 4.7kb RNA were diluted in 86&micro;l of H<SUB>2</SUB>O.</p>
+<p class=tx><!-- ##21 -->Insert these data in the form as it is shown below and push the upper "Calculate". You will obtain that it corresponds to 21.87fmol (or 13170342425 molecules). If you want the answer in "pmol", just select this unit and you will obtain: "0.02187pmol".</p>
+<p class=tx>&nbsp;&nbsp;&nbsp;<input type="Reset" value="Reset" onClick="res()"><br></font><br>
+<table width=500><tr><td align=right bgcolor="#eeeeee"><select name="NA" onChange='Lrec()'>
+	<option>&nbsp;&nbsp;dsDNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ssDNA&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;RNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;olig&nbsp;&nbsp;
+</select>&nbsp;&nbsp;&nbsp;<b><!-- ##12 -->Size of the nucl. acid [kb]:</b>&nbsp;&nbsp;<input type="text" size=7 name="L" onChange='Lrec()' value=4.7>&nbsp;&nbsp;<br>
+<!-- ##13 -->Mw for "olig" [kDa]:&nbsp;<input type="text" size=7 name="Mw" onChange='Lrec()'>&nbsp;&nbsp;</td></tr></table>
+<i><!-- ##14 -->"weight" --> "mole":</i><br><table width=500 border="0" cellspacing="0" cellpadding="5"><tr><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=35 name="m1" onChange='conv1()'>&nbsp;<select name="Dm1" onChange='conv1()'>
+	<option>&nbsp;&nbsp;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;g&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;ng&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fg&nbsp;&nbsp;
+</select>&nbsp;&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Calculate" onClick='conv1()'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size=10 name="q1" onFocus="this.blur()">&nbsp;<select name="Dq1" onChange='rclc1()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select></td></tr>
+<tr><td align=right bgcolor="#eeeeee"><input type="text" size=20 name="q1sh" onFocus="this.blur()">&nbsp;&nbsp;<!-- ##14a -->molecules&nbsp;&nbsp;&nbsp;</td></tr></table>
+<i><!-- ##15 -->"mole" --> "weight":</i><br><table width=500 border="0" cellspacing="0" cellpadding="5"><tr><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=1 name="q2" onChange='conv2()'>&nbsp;<select name="Dq2" onChange='conv2()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select>&nbsp;&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Calculate" onClick='conv2()'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size=10 name="m2" onFocus="this.blur()">&nbsp;<select name="Dm2" onChange='rclc2()'>
+	<option>&nbsp;&nbsp;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ng&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fg&nbsp;&nbsp;
+</select></td></tr><tr><td align=right bgcolor="#eeeeee"><input type="text" size=20 name="q2sh" onFocus="this.blur()">&nbsp;&nbsp;<!-- ##14a -->molecules&nbsp;&nbsp;&nbsp;</td></tr></table><br>
+<!-- ##22 -->Now, push "Calculate" in "Calculation of the molar concentration". You should obtain 254.3pM. Change volume for 100&micro;l and just click somewhere outside the field (or, again, push "Calculate"): program will give "218.7pM". In the same way the program will recalculate answer after changing of other parameters (weight, volume, size).</p>
+<p class=tx><!-- ##23 -->The calculations from the known molar quantity are absolutely analogous.
+<br><br><i><!-- ##16 -->Calculation of the molar concentration:</i>
+<table width=500><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=35 name="m3" onChange='conv3()'>&nbsp;<select name="Dm3" onChange='conv3()'>
+	<option>&nbsp;&nbsp;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;g&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;ng&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fg&nbsp;&nbsp;
+</select>&nbsp;&nbsp;in&nbsp;&nbsp;<input type="text" size=5 value=86 name="v3" onChange='conv3()'>&nbsp;<select name="Dv3" onChange='conv3()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select><br>
+<INPUT TYPE="button" VALUE="Calculate" onClick='conv3()'><br>
+<input type="text" size=10 name="c3" onFocus="this.blur()">&nbsp;<select name="Dc3" onChange='rclc3()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select></td></table><br>
+<i><!-- ##17 -->Calculation of the weight from the molar concentration:</i>
+<table width=500><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=1 name="c_4" onChange='conv4()'>&nbsp;<select name="Dc4" onChange='conv4()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select>&nbsp;&nbsp;in&nbsp;&nbsp;<input type="text" size=5 value=1 name="v4" onChange='conv4()'>&nbsp;<select name="Dv4" onChange='conv4()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select><br>
+<INPUT TYPE="button" VALUE="Calculate" onClick='conv4()'><br>
+<input type="text" size=10 name="m4" onFocus="this.blur()">&nbsp;<select name="Dm4" onChange='rclc4()'>
+	<option>&nbsp;&nbsp;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ng&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fg&nbsp;&nbsp;
+</select></td></table></form>
+</ul></div>
+<p class=h3><a name="f"></a>Calculation formulas.</p>
+<font size="-1">(it is very short descriptions, because we talk about well-known things)</font>
+<p class=tx>Denote (units of measurement are in brackets):
+<ul type="disc">
+	<li>m [g] - weight of nucleic acid (for example, quantity in microfuge tube) [gram];</li>
+	<li>Mw<sup>olig</sup> [kDa] - molecular weight of oligonucleotide [kilo Dalton]. 
+	<li>&lt;Mw&gt; [Da] - mean molecular weight of one/pair of nucleotides [Dalton]. 
+		<ul type="disc"><li>base= 324.5Da</li>
+		<li>base pair = 649Da</li>
+		<li>ribo base = 340.5Da</li></ul></li>
+	<li>Q [mol] - quantity of nucleic acid (in the same tube) [mole];</li>
+	<li>N [pieces] - quantity of nucleic acid [pieces];</li>
+	<li>c [M] - molar concentration of nucleic acid [Mole]=[mole/litre];</li>
+	<li>V [L] - dilution volume [litre];</li>
+	<li>L [kb] - length of nucleic acid [in thousands of bases];</li>
+	<li>N<sub>A</sub> - Avogadro constant = 6.022045x10<sup>23</sup>[1/mole];</li></ul>
+<p class=tx>the relation between these values will be:</p>
+<b><ul>
+	<li>m[g] = Q[mol] x Mw<sup>olig</sup>[kDa] x 10<sup>3</sup></li>
+	<li>m[g] = Q[mol] x &lt;Mw&gt;[Da] x L[kb] x 10<sup>3</sup></li>
+	<li>N[pieces] = Q[mol] x N<sub>A</sub></li>
+	<li>c[M] x V[L] = Q[mol]</li></ul></b>

@@ -1,0 +1,78 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var chk14=true;
+var D14=0;
+var n14=0;
+D14v=new Array(0.000001, 0.001, 1, 1000, 1000000, 2200000, 0.000037, 0.037, 37, 37000);
+D14n=new Array("Ci", "mCi", "microCi", "nCi", "pCi", "cpm", "GBq", "MBq", "kBq", "Bq");
+function res14()
+{D14=0;
+n14=0;
+chk14=true;}
+function insert14()
+{
+chk14=true;
+n14 = parseFloat(document.dim14.n.value); 
+// ##17
+if(isNaN(n14)){alert("Number should be in the bottom field."); document.dim14.n.focus(); return true;};
+D14 = document.dim14.D.selectedIndex
+n14 = Math.abs(n14);
+document.dim14.na.value=n14+D14n[D14];
+chk14=false;
+}
+function insertN14()
+{
+if(chk14){return true};
+insert14()
+}
+function calc14()
+{
+if(chk14){return true};
+Da = document.dim14.D.selectedIndex;
+n_new=n14/D14v[D14]*D14v[Da];
+document.dim14.n.value =n_new; 
+}
+// -->
+</script>
+<form name="dim14" id="dim14">
+<p class=h2>
+<!-- ##22 -->Help for units of measurement</p>
+<!--begin of Rambler's Top100 code -->
+<a href="http://top100.rambler.ru/top100/">
+<img src="http://counter.rambler.ru/top100.cnt?445258" alt="" width=1 height=1 border=0></a>
+<!--end of Top100 code-->
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 >
+</noscript>
+<!-- SpyLOG -->
+<p class=tx><!-- ##24 -->Suppose, you want to know how many of "&micro;Ci" are in 5MBq.</p>
+<p class=tx><!-- ##25 -->Insert "<b>5</b>" in the bottom field and select "<b>MBq</b>" from the list of units. Push "<b>assign original value</b>" button and "<b>5MBq</b>" will appear in the upper field. Now; select "<b>&micro;Ci</b>", ad you will see, that "5MBq"="135.14&micro;Ci". If to select "<b>cpm</b>": "5MBq"="297297297.3cpm".</p>
+<form name="dim14" id="dim14"><A name="a414"></A>
+<table width=450 border="0" cellspacing="0" cellpadding="5">
+<tr><td bgcolor="#eeeeee">&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="Olive"><!-- ##14 -->Radioactivity.</font></b></td></tr>
+<tr><td align=center bgcolor="#eeeeee">
+<input type="text" size=25 name="na" onFocus="this.blur()"><br>
+<!-- ##21 --><INPUT TYPE="button" VALUE="assign original value" onClick='insert14()'>&nbsp;&nbsp;<input type="Reset" value="reset" onClick='res14()'><br>
+<input type="text" size=25 value=1 name="n" onChange='insertN14()'>&nbsp;<select name="D" onChange='calc14()'>
+	<option>&nbsp;&nbsp;Ci&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mCi&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;Ci&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nCi&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pCi&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;cpm&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;GBq&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;MBq&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;kBq&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;Bq&nbsp;&nbsp;
+</select></td></tr></table></form>
+<p class=tx><!-- ##26 -->Let's change only the number in the lower field on <b>100</b> and just click somewhere outside the field (or, again, push "assign original value"). "100cpm" will appear in the upper field and program is ready to convert this unit now.</p>
+<br>

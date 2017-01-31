@@ -1,0 +1,219 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+nucleotides = new Array("a","g","c","t","n","s","w","r","y","m","k","h","b","d","v");
+
+complement = new Array("t","c","g","a","n","s","w","y","r","k","m","d","v","h","b");
+
+function ut()
+{
+// забираем значения, заданные в форме
+name_seq = document.sequt.s_name.value;
+str = document.sequt.str.value;
+var nl = parseFloat(document.sequt.nl.value); 
+if(isNaN(nl)){alert("\"Nucleotides in one line\" should be the number."); document.sequt.nl.focus(); return true;};
+nl = Math.floor(Math.abs(nl));
+document.sequt.nl.value = nl;
+
+
+// приводим "str" к стандартному виду который будет называться "nseq"
+nseq = ""
+nseq = str.toLowerCase();
+nseq = nseq.replace(/u/g,"t");
+nseq = nseq.replace(/[^agctswrymkhbdvn]/g,"");
+lnseq = nseq.length;
+if(lnseq<3){alert("The sequence should be at least three nucleotides long."); document.sequt.str.focus(); return true;};
+
+// проверяем, что какие-то преобразования выбраны
+if(!(document.sequt.meth0.checked || document.sequt.meth1.checked || document.sequt.meth2.checked || document.sequt.meth3.checked || document.sequt.meth4.checked)) {alert("No manipulations were selected."); document.sequt.meth0.focus(); return true;};
+
+// открываем окно 
+id = window.open('','sequtil', config='height=500,width=600,toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,location=no,status=no');
+id.document.write("<title>&nbsp;&nbsp;&nbsp;Sequence Utilities&nbsp;&nbsp;&nbsp;</title><BODY BGCOLOR='white'>");
+id.focus();
+nstrings = Math.floor(lnseq/nl);
+
+// выводим исходную последовательность
+if(document.sequt.meth0.checked) {
+i1 = 0;
+out0_seq = "";
+while(i1<nstrings+1) { i1++; out0_seq = out0_seq + nseq.substring(i1*nl-nl, i1*nl)+"<br>";}
+
+id.document.write("<h4>Initial sequence in 5' --&gt; 3' direction:</h4><TT>");
+id.document.write("&gt; ");
+id.document.write(name_seq);
+id.document.write("  -  ");
+id.document.write(lnseq);
+id.document.write(" nucleotides");
+id.document.write("<br><font color='Gray'>");
+id.document.write(out0_seq);
+id.document.write("</TT></font>");
+}
+
+if(document.sequt.meth1.checked || document.sequt.meth2.checked) {
+i2 = 0;
+r_seq = "";
+while(i2<lnseq+1) { i2++; r_seq = r_seq + nseq.charAt(lnseq - i2 + 1)}
+}
+
+// выводим последовательность в обратном направлении
+if(document.sequt.meth1.checked) {
+i3 = 0;
+out1_seq = "";
+while(i3<nstrings+1) { i3++; out1_seq = out1_seq + r_seq.substring(i3*nl-nl, i3*nl)+"<br>";}
+id.document.write("<h4>Initial sequence in the opposite direction (3' --&gt; 5'):</h4><TT>");
+id.document.write("&lt; (3' --&gt; 5') ");
+id.document.write(name_seq);
+id.document.write("  -  ");
+id.document.write(lnseq);
+id.document.write(" nucleotides");
+id.document.write("<br><font color='Gray'>");
+id.document.write(out1_seq);
+id.document.write("</TT></font>");
+}
+
+// выводим комплементарную последовательность в 5' -- 3' направлении
+if(document.sequt.meth2.checked) {
+i4 = 0;
+c_seq = "";
+while(i4<lnseq+1) { 
+	i4++; i5 = 0;
+	while(i5<15) {i5++; if(r_seq.substring(i4-1,i4)==nucleotides[i5-1]) {c_seq = c_seq + complement[i5-1]; break};}
+}
+i6 = 0;
+out2_seq = "";
+while(i6<nstrings+1) { i6++; out2_seq = out2_seq + c_seq.substring(i6*nl-nl, i6*nl)+"<br>";}
+
+id.document.write("<h4>Complementary sequence in 5' --&gt; 3' direction:</h4><TT>");
+id.document.write("&gt; (5' --&gt; 3' complementary sequence) ");
+id.document.write(name_seq);
+id.document.write("  -  ");
+id.document.write(lnseq);
+id.document.write(" nucleotides");
+id.document.write("<br><font color='Gray'>");
+id.document.write(out2_seq);
+id.document.write("</TT></font>");
+}
+
+
+if(document.sequt.meth3.checked || document.sequt.meth4.checked) {
+i7 = 0;
+cr_seq = "";
+while(i7<lnseq+1) { 
+	i7++; i8 = 0;
+	while(i8<15) {i8++; if(nseq.substring(i7-1,i7)==nucleotides[i8-1]) {cr_seq = cr_seq + complement[i8-1]; break};}
+}
+}
+
+// выводим комплементарную последовательность в 3' -- 5' направлении
+if(document.sequt.meth3.checked) {
+
+i9 = 0;
+out3_seq = "";
+while(i9<nstrings+1) { i9++; out3_seq = out3_seq + cr_seq.substring(i9*nl-nl, i9*nl)+"<br>";}
+
+id.document.write("<h4>Complementary sequence in the opposite direction (3' --&gt; 5'):</h4><TT>");
+id.document.write("&lt; (3' --&gt; 5' complementary sequence) ");
+id.document.write(name_seq);
+id.document.write("  -  ");
+id.document.write(lnseq);
+id.document.write(" nucleotides");
+id.document.write("<br><font color='Gray'>");
+id.document.write(out3_seq);
+id.document.write("</TT></font>");
+}
+
+// выводим двухцепочечную последовательность
+if(document.sequt.meth4.checked) {
+id.document.write("<h4>Double stranded sequence:</h4><TT>");
+id.document.write("&lt; ");
+id.document.write(name_seq);
+id.document.write("  -  ");
+id.document.write(lnseq);
+id.document.write(" nucleotides");
+id.document.write("<br><font color='Gray'>")
+i9 = 0;
+while(i9<nstrings+1) { i9++; 
+id.document.write(nseq.substring(i9*nl-nl, i9*nl)+"<br>");
+id.document.write(cr_seq.substring(i9*nl-nl, i9*nl)+"<br><br><br>");
+}
+id.document.write("</TT></font>");
+}
+
+// закрываем окно 
+id.document.write("</body></html>");
+id.document.close();
+
+}
+// -->
+</script>
+<table width="750" border="0" cellspacing="0" cellpadding="0">
+<tr><td colspan="2" width="610" valign="top">
+<p class="h1">
+Sequence Utilities
+</p></td></tr>
+<tr><td width=610 valign="top">
+<div class="prot">
+<!-- протокол начало-->
+<ul type="disc">
+<form name="sequt" id="sequt">
+<table width=550 border="0" cellspacing="0" cellpadding="5"><tr><td bgcolor="#eeeeee">
+&nbsp;&nbsp;&nbsp;Name <font size="-1">(not necessary)</font>:&nbsp;&nbsp;<input type="text" size=10 name="s_name"><br>
+&nbsp;&nbsp;&nbsp;Nucleotide sequence without name:<br>
+<center><font size="-1">(case insensitiv, disregarded all letters except: agctuswrymkhbdvn)</font><br>
+<textarea cols="50" rows="8" name="str"></textarea><br>
+<br><INPUT TYPE="button" VALUE="Convert" onClick='ut()'>&nbsp;&nbsp;&nbsp;<input type="Reset" value="Reset"></center><br>
+&nbsp;&nbsp;&nbsp;Output: <input type="text" size=3 name="nl" value="50"> nucleotides in one line;<br>
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" name="meth0" checked="checked">display the initial sequence;<br>
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" name="meth1">display the initial sequence in the opposite (3' --&gt; 5') direction;<br>
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" name="meth2">display complementary sequence in 5' --&gt; 3' direction;<br>
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" name="meth3">display complementary sequence in 3' --&gt; 5' direction;.<br>
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" name="meth4">display double stranded sequence.<br><br>
+</td>
+</tr></table><br>
+</form>
+<p class=tx>This program helps to manipulate with nucleic acid sequence (reverse, reverse/complement, double stranded). It is possible to perform several manipulations simultaneously.</p>
+<p class=tx>For translation of nucleic acids it is possible to use "<a href="01_13.html">6 Frame Translation</a>" program. Rare codons may be displayed with "<a href="01_11.html">Search of rare codons in nucleotide sequence</a>".</p><br>
+
+<p class=tx>Standard symbols for polymorphic nucleotides:
+<TABLE width="350" border="0" cellspacing="0" cellpadding="0">
+<TR bgcolor="000000">
+<TD><TABLE width="100%" border="0" cellspacing="1" cellpadding="2px" align=center>
+	<TR align=center><TD bgcolor="#eeeeee">S</TD><TD bgcolor="#ffffff">G,C</TD><TD bgcolor="#eeeeee">H</TD><TD bgcolor="#ffffff">A,C,T</TD></TR>
+	<TR align=center><TD bgcolor="#eeeeee">W</TD><TD bgcolor="#ffffff">A,T</TD><TD bgcolor="#eeeeee">B</TD><TD bgcolor="#ffffff">C,G,T</TD></TR>
+	<TR align=center><TD bgcolor="#eeeeee">R</TD><TD bgcolor="#ffffff">A,G</TD><TD bgcolor="#eeeeee">D</TD><TD bgcolor="#ffffff">A,G,T</TD></TR>
+	<TR align=center><TD bgcolor="#eeeeee">Y</TD><TD bgcolor="#ffffff">C,T</TD><TD bgcolor="#eeeeee">V</TD><TD bgcolor="#ffffff">A,C,G</TD></TR>
+	<TR align=center><TD bgcolor="#eeeeee">M</TD><TD bgcolor="#ffffff">A,C</TD><TD bgcolor="#eeeeee">N</TD><TD bgcolor="#ffffff">A,G,C,T</TD></TR>
+	<TR align=center><TD bgcolor="#eeeeee">K</TD><TD bgcolor="#ffffff">G,T</TD><TD bgcolor="#eeeeee">&nbsp;</TD><TD bgcolor="#ffffff">&nbsp;</TD></TR>
+</TABLE></TD></TR>
+</TABLE>
+
+</ul>
+<!-- протокол конец-->
+</div>
+<!--end of Top100 logo -->
+<!-- SpyLOG f:0211 --> 
+<script language="javascript"><!--
+Mrn=Math.random();Mz="";
+My="<a href='http://u4214.75.spylog.com/cnt?cid=421475&f=3&rn="+Mrn+"' target='_blank'><img src='http://u4214.75.spylog.com/cnt?cid=421475&";
+My+="p=1&f=4&rn="+Mrn+Mz+"' border=0 width=88 height=31 alt='SpyLOG'></a>";Md.write(My); 
+//--></script>
+<!-- SpyLOG -->
+<!-- HotLog -->
+<script language="javascript">
+hotlog_js="1.0";
+hotlog_r=""+Math.random()+"&s=65928&im=34&r="+escape(document.referrer)+"&pg="+
+escape(window.location.href);
+document.cookie="hotlog=1; path=/"; hotlog_r+="&c="+(document.cookie?"Y":"N");
+</script><script language="javascript1.1">
+hotlog_js="1.1";hotlog_r+="&j="+(navigator.javaEnabled()?"Y":"N")</script>
+<script language="javascript1.2">
+hotlog_js="1.2";
+hotlog_r+="&wh="+screen.width+'x'+screen.height+"&px="+
+(((navigator.appName.substring(0,3)=="Mic"))?
+screen.colorDepth:screen.pixelDepth)</script>
+<script language="javascript1.3">hotlog_js="1.3"</script>
+
+</p>
+</td></tr></TBODY></TABLE>
+

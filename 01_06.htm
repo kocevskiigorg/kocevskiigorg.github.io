@@ -1,0 +1,113 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+function convDNAp1()
+{
+lg=parseFloat(document.DNAp.lgDNA1.value); 
+// ##03
+if(isNaN(lg)){alert("\"DNA size\" should be number."); document.DNAp.lgDNA1.focus(); return true;};
+	document.DNAp.lgDNA1.value=Math.abs(lg);
+	document.DNAp.Mwpr1.value=37*lg;
+	document.DNAp.lgp.value=Math.round(333*lg);
+}
+function convDNAp2()
+{
+Mw=parseFloat(document.DNAp.Mwpr2.value); 
+// ##04
+if(isNaN(Mw)){alert("\"Protein molecular weight\" should be number."); document.DNAp.Mwpr2.focus(); return true;};
+	document.DNAp.Mwpr2.value=Math.abs(Mw);
+	document.DNAp.lgDNA2.value=Math.round(Mw/37*1000)/1000;
+}
+// -->
+</script>
+<div align="center">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Conversion: DNA - protein</font></b></p>
+			</td>
+		</tr>
+		<tr>
+			<div class="prot">
+			<ul>
+				<form name="DNAp" id="DNAp">
+
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center" style="margin-left: 8px; margin-right: 8px">
+			<font face="Tahoma">&nbsp;<br>
+			This program helps you to estimate the size of the gene by the protein 
+			size and vice versa: the size of the protein by the size of the gene.
+			<br>
+			<br>
+			<font color="#FF6600">Note: JavaScript must be enabled on your Web browser 
+			to use the program.&nbsp; <br>
+&nbsp;</font></font></p>
+			</td>
+			
+		</tr>
+		<tr>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bgcolor="#EAF0FF">
+			<div align="center">
+				<table border="0" cellspacing="0" cellpadding="0" style="border-width:0px; " height="272">
+					<tr>
+						<td colspan="4" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">
+						<p style="margin-left: 10px"><b><font face="Tahoma"><i>
+						<font color="#FF0000">DNA --&gt; protein:</font></i></font></b></p>
+						</td>
+					</tr>
+					<tr>
+						<td width="85" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="53" bordercolor="#808080">&nbsp;</td>
+						<td width="171" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="53" bordercolor="#808080">
+						<font face="Tahoma">
+						<input type="text" size="10" value="1" name="lgDNA1" onchange="convDNAp1()">
+						<b>[kb]</b></font></td>
+						<td width="160" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="53" bordercolor="#808080">
+						<p align="center"><font face="Tahoma">
+						<input type="image" src="buttons/1.png" onclick="convDNAp1();return false;" name="I3"></font></p>
+						</td>
+						<td width="313" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="53" bordercolor="#808080">
+						<font face="Tahoma">&nbsp;&nbsp; &nbsp;
+						<input type="text" size="10" name="Mwpr1" onfocus="this.blur()">
+						<b>[kDa]&nbsp; </b>
+						<input type="text" size="10" name="lgp" onfocus="this.blur()">
+						<b>AA</b></font></td>
+					</tr>
+					<tr>
+						<td width="740" colspan="4" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="40">
+						<p style="margin-left: 10px"><b>
+						<font face="Tahoma" color="#FF0000"><i>Protein --&gt; DNA:</i></font></b></p>
+						</td>
+					</tr>
+					<tr>
+						<td width="85" bgcolor="#C1D0EF" align="left" style="border-style:none; border-width:medium; " height="56">&nbsp;</td>
+						<td width="171" bgcolor="#C1D0EF" align="left" style="border-style:none; border-width:medium; " height="56">
+						<font face="Tahoma">
+						<input type="text" size="10" value="10" name="Mwpr2" onchange="convDNAp2()">
+						<b>[kDa]</b></font></td>
+						<td width="160" bgcolor="#C1D0EF" align="left" style="border-style:none; border-width:medium; " height="56">
+						<p align="center"><font face="Tahoma">
+						<input type="image" src="buttons/1.png" onclick="convDNAp2();return false;" name="I4"></font></p>
+						</td>
+						<td width="313" bgcolor="#C1D0EF" align="left" style="border-style:none; border-width:medium; " height="56">
+						<font face="Tahoma">&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="text" size="10" name="lgDNA2" onfocus="this.blur()">
+						<b>[kb]</b></font></td>
+					</tr>
+					<tr>
+						<td width="256" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="83" colspan="2">&nbsp;</td>
+						<td width="160" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="83" valign="bottom">
+						<p align="center"><font face="Tahoma">
+						<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></p>
+						</td>
+						<td width="313" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="83">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+							</form>
+		</div>
+			</td>
+		</tr>
+	</table>
+</div>

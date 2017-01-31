@@ -1,0 +1,354 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+	var chck=false
+	var t_int
+	var t21
+	var fd1;
+	var fd2;
+function helpod()
+{
+window.open('protocol_calculator/scripts/h01_02.html','help', config='height=500,width=500,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+function odtime()
+{
+if(document.ODtime.t1d.value==""){document.ODtime.t1d.value=0};
+ft1d = parseFloat(document.ODtime.t1d.value); 
+// ## 03
+if(isNaN(ft1d)){alert("The \"days before\" should be the number."); document.ODtime.t1d.focus(); return true;}; 
+ft1d =  Math.abs(ft1d)
+ft1h = parseFloat(document.ODtime.t1h.value); 
+// ## 04
+if(isNaN(ft1h)||ft1h>24){alert("What it the time of the first measurement (h)?"); document.ODtime.t1h.focus(); return true;}; 
+ft1h =  Math.abs(ft1h)
+ft1m = parseFloat(document.ODtime.t1m.value); 
+// ## 05
+if(isNaN(ft1m)||ft1m>60){alert("What it the time of the first measurement (min)?"); document.ODtime.t1m.focus(); return true;}; 
+ft1m =  Math.abs(ft1m)
+fd1 = parseFloat(document.ODtime.d1.value);
+// ## 06
+if(isNaN(fd1)||fd1==0){alert("What it the first density (OD1)?"); document.ODtime.d1.focus(); return true;}; 
+fd1 = Math.abs(fd1)
+fd1 =  Math.abs(fd1)
+ft2h = parseFloat(document.ODtime.t2h.value); 
+// ## 07
+if(isNaN(ft2h)||ft2h>24){alert("What it the time of the second measurement (h)?"); document.ODtime.t2h.focus(); return true;}; 
+ft2h =  Math.abs(ft2h)
+ft2m = parseFloat(document.ODtime.t2m.value); 
+// ## 08
+if(isNaN(ft2m)||ft2m>60){alert("What it the time of the second measurement (min)?"); document.ODtime.t2m.focus(); return true;}; 
+ft2m =  Math.abs(ft2m)
+fd2 = parseFloat(document.ODtime.d2.value); 
+// ## 09
+if(isNaN(fd2)||fd2==0){alert("What it the second density (OD2)?"); document.ODtime.d2.focus(); return true;}; 
+fd2 =  Math.abs(fd2)
+fdf = parseFloat(document.ODtime.df.value); 
+// ## 10
+if(isNaN(fdf)||fdf==0){alert("What it the necessary density (ODf)?"); document.ODtime.df.focus(); return true;};
+fdf =  Math.abs(fdf)
+	t1=(ft1h-ft1d*24)*60+ft1m;
+	t2=ft2h*60+ft2m;
+// ## 11
+if(t2<=t1){alert("The second measurement should be after the first."); return true;};
+// ## 12
+if(fd2<=fd1||fdf<=fd2){alert("The second density should be greater then the first."); return true;};
+	t21=(t2-t1)
+	t_int=t21*Math.log(fdf/fd2)/Math.log(fd2/fd1);
+	ftf2h=Math.floor(t_int/60);
+	ftf2m=Math.floor(t_int%60);
+		t=t_int+t2;
+		ftfd=Math.floor(t/1440);
+		ftfh=Math.floor((t-ftfd*1440)/60);
+		ftfm=Math.floor(t%60);
+document.ODtime.t1d.value=ft1d;
+document.ODtime.t1h.value=ft1h;
+document.ODtime.t1m.value=ft1m;
+document.ODtime.d1.value=fd1;
+document.ODtime.t2h.value=ft2h;
+document.ODtime.t2m.value=ft2m;
+document.ODtime.d2.value=fd2;
+document.ODtime.tfd.value=ftfd+"d";
+document.ODtime.tfh.value=ftfh+"h";
+document.ODtime.tfm.value=ftfm+"min";
+document.ODtime.df.value=fdf;
+document.ODtime.tf2h.value=ftf2h+"h";
+document.ODtime.tf2m.value=ftf2m+"min";
+chck=true
+}
+
+function mist()
+{
+// ## 13
+if(chck==false){alert("You should estimate the time first."); return true;};
+fdelOD = parseFloat(document.ODtime.delOD.value); 
+// ## 14
+if(isNaN(fdelOD)||fdelOD==0){alert("What is the precision of the spectrophotometer?"); document.ODtime.delOD.focus(); return true;};
+fdelOD =  Math.abs(fdelOD);
+fdel_t = parseFloat(document.ODtime.del_t.value); 
+// ## 15
+if(isNaN(fdel_t)||fdel_t==0){alert("What is the precision of the time measurement?"); document.ODtime.del_t.focus(); return true;};
+fdel_t =  Math.abs(fdel_t);
+q=1+t_int*Math.sqrt(Math.pow(fdel_t,2)/Math.pow(t21,2)+Math.pow(fdelOD,2)*(1/Math.pow(fd1,2)+2/Math.pow(fd2,2)));
+document.ODtime.delOD.value=fdelOD;
+document.ODtime.del_t.value=fdel_t+"min";
+document.ODtime.del_tf.value=ftf2h=Math.floor(q)+"min";
+}
+function calc(obj)
+{
+var v = parseFloat(obj.form.elements[1].value); 
+if(isNaN(v)){v=0}
+obj.form.elements[1].value=v+calc.arguments[1];
+for(var i=1; i<=(calc.arguments.length - 2)/3; i++){
+dig=Math.pow(10,calc.arguments[3*i]);
+obj.form.elements[i+1].value=Math.round(calc.arguments[i*3-1]*v)/dig+calc.arguments[i*3+1];
+}}
+// -->
+</script>
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 ></noscript>
+
+<div align="center">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Help for bacteria growth <br>
+&nbsp;</font></b></p>
+			</td>
+		</tr>
+		<tr>
+			<form name="ODtime" id="ODtime">
+<div class='prot'>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##30 -->Suppose, that it is necessary to obtain bacterial culture with the OD=0.500. If the first measurement was at 9:20 (OD<sub>1</sub>=0.050), the second - at 14:45 (OD<sub>2</sub>=0.270) then if you write these data in a form as shown below and push on "Calculate", you will obtain that bacteria reach 0.5 density at 16:43 (or, after 1h58min since the second measurement).</font></p>
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##31 -->Suppose, that the culture is slow growing, and the first (9:20) measurement was yesterday. In this case it is necessary to add "1" (or "-1", does not matter) in the upper field. Result will be: 1d = next day, at 1:29; or 10h44min since the second measurement.
+<br>
+&nbsp;</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<table border="1" width="733" cellspacing="0" cellpadding="0" height="513">
+				<tr>
+					<td width="732" valign="middle" align="left" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+					<p style="margin-left: 10px">&nbsp;</p>
+					<div align="center">
+						<table border="0" width="729" height="602" cellspacing="0" cellpadding="0" style="border-bottom-width: 0px">
+							<tr>
+								<td width="378" colspan="4" height="37" align="left" bgcolor="#C1D0EF">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">The first measurement was</font></td>
+								<td colspan="3" height="37" align="left" bgcolor="#C1D0EF">
+								<font face="Tahoma">
+								<input type="text" size=7 name="t1d"> days before at:</font></td>
+							</tr>
+							<tr>
+								<td width="76" height="37" bgcolor="#C1D0EF" align="left">&nbsp;</td>
+								<td width="99" height="37" bgcolor="#C1D0EF" align="left">
+								<font face="Tahoma">
+								<input type="text" size=7 name="t1h" value=9> h<font color="Red">*</font></font></td>
+								<td width="142" height="37" bgcolor="#C1D0EF" align="left">
+								<font face="Tahoma">
+								<input type="text" size=7 name="t1m" value=20> min<font color="Red">*</font></font></td>
+								<td width="54" height="37" bgcolor="#C1D0EF" align="left">
+								<font face="Tahoma">=&gt;</font></td>
+								<td width="129" height="37" bgcolor="#C1D0EF" align="left">
+								<font face="Tahoma">&nbsp;OD<sub>1</sub> =</font></td>
+								<td width="102" height="37" bgcolor="#C1D0EF" align="left">
+								<font face="Tahoma">
+								<input type="text" size=7 name="d1" value=0.050></font><font color="Red" face="Tahoma"> *</font></td>
+								<td width="120" height="37" bgcolor="#C1D0EF" align="left">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="378" colspan="4" height="37" align="left" bgcolor="#C1D0EF">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">The second measurement was today 
+								at:</font></td>
+								<td width="351" height="37" colspan="3" align="left" bgcolor="#C1D0EF">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="76" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">&nbsp;</td>
+								<td width="99" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">
+								<input type="text" size=7 name="t2h" value=14> h<font color="Red">*</font></font></td>
+								<td width="142" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">
+								<input type="text" size=7 name="t2m" value=45> min<font color="Red">*</font>
+								</font></td>
+								<td width="54" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">=&gt;</font></td>
+								<td width="129" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">OD<sub>2</sub> =</font></td>
+								<td width="102" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">
+								<input type="text" size=7 name="d2" value=0.27></font><font color="Red" face="Tahoma"> *</font></td>
+								<td width="120" height="37" bgcolor="#C1D0EF" align="left" style="border-bottom-style: solid; border-bottom-width: 1px">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="703" colspan="7" height="46">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Bacterial culture will reach 
+								the indicated density</font></td>
+							</tr>
+							<tr>
+								<td width="76" height="37" bgcolor="#C1D0EF" valign="middle">
+								<p style="margin-left: 10px"><font face="Tahoma">after</font></td>
+								<td width="99" height="37" bgcolor="#C1D0EF" valign="middle"> 
+								<font face="Tahoma"> <input type="text" size=7 name="tfd" onFocus="this.blur()"></font></td>
+								<td width="199" colspan="2" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">days at: </font></td>
+								<td width="351" height="37" colspan="3" bgcolor="#C1D0EF" valign="middle">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="76" height="37" bgcolor="#C1D0EF" valign="middle">&nbsp;</td>
+								<td width="99" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">
+								<input type="text" size=7 name="tfh" onFocus="this.blur()"></font></td>
+								<td width="142" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">
+								<input type="text" size=7 name="tfm" onFocus="this.blur()"></font></td>
+								<td width="54" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">=&gt;</font></td>
+								<td width="129" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">OD<sub>f</sub> =</font></td>
+								<td width="102" height="37" bgcolor="#C1D0EF" valign="middle">
+								<font face="Tahoma">
+								<input type="text" size=7 value=0.500 name="df"></font><font color="Red" face="Tahoma"> *</font></td>
+								<td width="120" height="37" valign="middle" bgcolor="#C1D0EF">
+								<font face="Tahoma">
+								<input type="image" src="buttons/4.png" onclick="odtime();return false;" align="left"></font></td>
+							</tr>
+							<tr>
+								<td width="76" height="38" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Or, after</font></td>
+								<td width="99" height="38" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">
+								<input type="text" size=7 name="tf2h" onFocus="this.blur()"></font></td>
+								<td width="199" colspan="2" height="38" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">
+								<input type="text" size=7 name="tf2m" onFocus="this.blur()">
+								</font></td>
+								<td width="351" height="38" colspan="3" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px">
+								<font face="Tahoma">since the second measurement.</font></td>
+							</tr>
+							<tr>
+								<td width="725" height="33" bgcolor="#EAF0FF" style="border-bottom-style: solid; border-bottom-width: 1px" colspan="7">
+								<p style="margin-left: 10px; margin-right: 10px">
+								<font face="Tahoma">&nbsp;<br>
+								Return to the "0" in the upper field and recalculate again. Let's estimate the precision. If the precision of optical density &plusmn;0.001 and time - &plusmn;7 min it will be &plusmn;4min.&nbsp;
+								<br>
+&nbsp;</font></td>
+							</tr>
+							<tr>
+								<td width="699" colspan="7" height="92" style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" bordercolor="#C0C0C0">
+								<p align="center"><b><font face="Tahoma">Evaluation 
+								the precision of the prognosis.</font></b></p>
+								<p align="center"><font face="Tahoma">only after 
+								evaluation of the growth time</font></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="324" colspan="3" height="39" bgcolor="#C1D0EF" style="border-top-style: solid; border-top-width: 1px" bordercolor="#808080">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Precision of the spectrophotometer: 
+								±OD</font></td>
+								<td width="183" colspan="2" height="39" bgcolor="#C1D0EF" align="center" style="border-top-style: solid; border-top-width: 1px" bordercolor="#808080">
+								<font face="Tahoma">±
+								<input type="text" size=7 name="delOD" value=0.001>
+								</font><font color="Red" face="Tahoma">*</font></td>
+								<td width="222" height="39" colspan="2" bgcolor="#C1D0EF" style="border-top-style: solid; border-top-width: 1px" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="324" colspan="3" height="39" bgcolor="#C1D0EF" bordercolor="#808080">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Precision of the time measurement: 
+								±t[min]</font></td>
+								<td width="183" colspan="2" height="39" bgcolor="#C1D0EF" align="center" bordercolor="#808080">
+								<font face="Tahoma">±
+								<input type="text" size=7 name="del_t" value=7min></font><font color="Red" face="Tahoma"> *</font></td>
+								<td width="222" height="39" colspan="2" bgcolor="#C1D0EF" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="324" colspan="3" height="39" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px" bordercolor="#808080">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Precision of the evaluation: 
+								±t[min]</font></td>
+								<td width="183" colspan="2" height="39" bgcolor="#C1D0EF" align="center" style="border-bottom-style: solid; border-bottom-width: 1px" bordercolor="#808080">
+								<font face="Tahoma">±
+								<input type="text" size=7 name="del_tf" onFocus="this.blur()">
+								<font color="#C1D0EF">*</font></font></td>
+								<td width="102" height="39" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px" bordercolor="#808080">&nbsp;</td>
+								<td width="120" height="39" bgcolor="#C1D0EF" style="border-bottom-style: solid; border-bottom-width: 1px" bordercolor="#808080">
+								<font face="Tahoma">
+								<input type="image" src="buttons/4.png" onclick="mist();return false;" name="I1"></font></td>
+							</tr>
+							<tr>
+								<td width="722" height="47" bgcolor="#EAF0FF" colspan="7">
+								<p align="center"><font face="Tahoma">
+								&nbsp;<br>
+								<input type="image" src="buttons/2.png" onclick="reset" name="I2">
+								<br>
+&nbsp;</font></p>
+								</p>
+								</td>
+							</tr>
+							<tr>
+								<td width="722" height="47" bgcolor="#EAF0FF" colspan="7">
+
+<ul>
+	<li>
+	<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##33 -->it is does not matter, what to insert in the "hour" field: "12", "12h", "12 h" or "-12 days", in any case it will be treated as "12h" (analogous for the other fields);</font></li>
+<li>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##34 -->in the upper field: "yesterday" will be "1" (or "-1"), "the day before yesterday" - "2";</font></li>
+<li>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##35 -->it is impossible to estimate precision before estimation of the growth time;</li>
+<a name="form"></a></font></p>
+<p class=h3 style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##36 -->Equations.</font></P></ul>
+								<p style="margin-left: 10px; margin-right: 10px">
+								<font face="Tahoma">
+<!-- ##37 -->For bacteria in the logarithmic stage of growth:</font></p>
+<center>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma">OD<sub>1</sub> = A * exp{k(t<sub>1</sub> - t<sub>0</sub>)}<br>
+OD<sub>2</sub> = A * exp{k(t<sub>2</sub> - t<sub>0</sub>)}<br>
+OD<font size="+1"><sub>f</sub></font> = A * exp{k(t<font size="+1"><sub>f</sub></font> - t<sub>0</sub>)}</font></p>
+								</center>
+								<p style="margin-left: 10px; margin-right: 10px">
+								<font face="Tahoma">
+<!-- ##38 -->Solution of these equations:</font></p>
+								<center>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma">t<font size="+1"><sub>f</sub></font> = t<sub>2</sub> + (t<sub>2</sub> - t<sub>1</sub>) *  ln(OD<font size="+1"><sub>f</sub></font>/OD<sub>2</sub>) / ln(OD<sub>2</sub>/OD<sub>1</sub>)
+</font></p>
+</center>
+								<p style="margin-left: 10px; margin-right: 10px">
+								<font face="Tahoma"><br>
+<!-- ##39 -->For the precision:</font></p>
+								<center>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma">&plusmn; t<font size="+1"><sub>f</sub></font> = (t<font size="+1"><sub>f</sub></font> - t<sub>2</sub>) * <font color="Red">{</font><font color="Blue">(d_t)<sup>2</sup>/(t<sub>2</sub> - t<sub>1</sub>)<sup>2</sup></font> + <font color="Green">(d_d)<sup>2</sup>(1 / OD<sub>1</sub><sup>2</sup> + 2 / OD<sub>2</sub><sup>2</sup>)</font><font color="Red">}<sup>1/2</sup></font>
+</font></p>
+</center>
+								<p>&nbsp;</td>
+							</tr>
+							</table>
+					</div>
+					</td>
+				</tr>
+					</td>
+		</tr>
+			</table>
+			</table>
+			</form>
+</div>
+		
+	
+</div>

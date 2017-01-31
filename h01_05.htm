@@ -1,0 +1,280 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var n_mol1;
+var n_mol2;
+var c_mol=0;
+var q_mol=0;
+var chk_mol1=true;
+var chk_mol2=true;
+function resmol()
+{
+n_mol1=0;
+n_mol2=0;
+c_mol=0;
+q_mol=0;
+chk_mol1=true;
+chk_mol2=true;
+}
+function helpmol()
+{
+window.open('protocol_calculator/scripts/h01_05.html','help', config='height=500,width=520,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+function conv_mol1()
+{
+q1=parseFloat(document.mol.q1.value); 
+// ##03
+if(isNaN(q1)){alert("\"molar quantity\" should be number."); document.mol.q1.focus(); return true;};
+q1 =  Math.abs(q1)
+v1=parseFloat(document.mol.v1.value); 
+// ##04
+if(isNaN(v1)){alert("\"Volume\" should be number."); document.mol.v1.focus(); return true;};
+v1 =  Math.abs(v1)
+c1_mol=q1/Math.pow(10,3*document.mol.Dq1.selectedIndex)/v1*Math.pow(10,3*document.mol.Dv1.selectedIndex)
+n=0;
+	while(n<6&&c1_mol<1) {n++; c1_mol = c1_mol*1000};
+	n_mol1=n;
+	r=Math.round(c1_mol*100)/100;
+	if(r>0){c1_mol=r};
+	document.mol.q1.value=q1;
+	document.mol.v1.value=v1;
+	document.mol.c1.value=c1_mol;
+	document.mol.Dc1.selectedIndex=n;
+	chk_mol1=false;
+}
+function rclc_mol1()
+{
+// ##05
+if(chk_mol1){alert("Only after calculation."); return true};
+document.mol.c1.value = c1_mol*Math.pow(10,3*document.mol.Dc1.selectedIndex)/Math.pow(10,3*n_mol1);
+}
+function conv_mol2()
+{
+c2=parseFloat(document.mol.c2.value); 
+// ##06
+if(isNaN(c2)){alert("\"Concentration\" should be number."); document.mol.c2.focus(); return true;};
+c2 =  Math.abs(c2)
+v2=parseFloat(document.mol.v2.value); 
+// ##04
+if(isNaN(v2)){alert("\"Volume\" should be number."); document.mol.v2.focus(); return true;};
+v2 =  Math.abs(v2)
+q2_mol=c2/Math.pow(10,3*document.mol.Dc2.selectedIndex)*v2/Math.pow(10,3*document.mol.Dv2.selectedIndex)
+n=0;
+	while(n<6&&q2_mol<1) {n++; q2_mol = q2_mol*1000};
+	n_mol2=n;
+	r=Math.round(q2_mol*100)/100;
+	if(r>0){q2_mol=r};
+	document.mol.c2.value=c2;
+	document.mol.v2.value=v2;
+	document.mol.q2.value=q2_mol;
+	document.mol.Dq2.selectedIndex=n;
+	chk_mol2=false;
+}
+function rclc_mol2()
+{
+// ##05
+if(chk_mol2){alert("Only after calculation."); return true};
+document.mol.q2.value = q2_mol*Math.pow(10,3*document.mol.Dq2.selectedIndex)/Math.pow(10,3*n_mol2);
+}
+// -->
+</script>
+	<div align="center">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Help for molar quantity - molar concentration</font></b></p>
+			<p align="center">&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<div class="prot"><ul><form name="mol" id="mol">
+						<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##13 -->Suppose, that 35nmol of some substance were diluted in 86&micro;l of H<SUB>2</SUB>O.</font></p>
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##14 -->Insert these data in the form as it is shown below and push the upper "Calculate". You will obtain that it is corresponds to 406.98&micro;M. If you want the answer in "mM", just select this unit and you obtain: "0.40698mM".</font></p>
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##15 -->Now, change the volume for 100&micro;l and just click somewhere outside the field (or, again, push "Calculate"): program will give "350&micro;M". By the same way the program will recalculate answer after changing of other parameters (weight, volume, quantity).</font></p>
+<p class=tx style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##16 -->The calculations from the known molar quantity are absolutely analogous.</font><font color="#FF6600" face="Tahoma">&nbsp;</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma">&nbsp;<br>
+			<input type="image" src="buttons/2.png" onclick="reset" name="I2">
+			<br>
+&nbsp;</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<table border="1" width="733" cellspacing="0" cellpadding="0">
+						</td>
+				</tr>
+			</table>
+					<div align="center">
+						<p align="center">&nbsp;</p>
+						<table border="0" width="90%" cellspacing="0" cellpadding="0" style="border-width:0px; ">
+							<tr>
+								<td width="741" colspan="7" style="border-left-style:double; border-left-width:3px; border-right-style:double; border-right-width:3px; border-top-style:double; border-top-width:3px; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="62" bordercolor="#000000">
+								<p style="margin-left: 10px"><i><b>
+								<font face="Tahoma">Molar concentration (M) --&gt; molar quantity 
+								(mol).</font></b></i></td>
+							</tr>
+							<tr>
+								<td width="122" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="105" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<input type="text" size=10 value=35 name="q1" onChange='conv_mol1()'></td>
+								<td width="77" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<select name="Dq1" onChange='conv_mol1()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select></td>
+											<td width="104" height="45" bgcolor="#C1D0EF" valign="middle" style="border-style: none; border-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000">
+											<p align="center"><b>
+											<font face="Tahoma">in</font></b></td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<input type="text" size=10 value=86 name="v1" onChange='conv_mol1()'></td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<select name="Dv1" onChange='conv_mol1()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select></td>
+								<td width="105" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="307" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="3" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" valign="middle" bordercolor="#000000">
+								<p align="center">
+								<font face="Tahoma">
+								<input type="image" src="buttons/4.png" onclick="conv_mol1();return false;" name="I3"></font></td>
+								<td width="315" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="3" bordercolor="#000000">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="229" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="2" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="77" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+<font face="Tahoma">
+<input type="text" size=10 name="c1" onFocus="this.blur()"></font></td>
+								<td width="104" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="104" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<font face="Tahoma">
+											<select name="Dc1" onChange='rclc_mol1()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select></font></td>
+								<td width="211" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="2" bordercolor="#000000">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="229" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="45" colspan="2">
+								&nbsp;</td>
+								<td width="77" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="45">
+&nbsp;</td>
+								<td width="104" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="45">
+								&nbsp;</td>
+								<td width="104" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="45">
+											&nbsp;</td>
+								<td width="211" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="45" colspan="2">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="731" style="border-left-style:double; border-left-width:3px; border-right-style:double; border-right-width:3px; border-top-style:double; border-top-width:3px; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="62" colspan="7" bordercolor="#000000">
+								<p style="margin-left: 10px"><b><i>
+								<font face="Tahoma">Molar quantity (mol) --&gt; Molar concentration 
+								(M).</font></i></b></td>
+							</tr>
+							<tr>
+								<td width="122" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="105" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+<input type="text" size=10 value=1 name="c2" onChange='conv_mol2()'></td>
+								<td width="77" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<select name="Dc2" onChange='conv_mol2()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select></td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" valign="middle" bordercolor="#000000">
+								<p align="center"><b><font face="Tahoma">in</font></b></td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<input type="text" size=10 value=1 name="v2" onChange='conv_mol2()'></td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								<select name="Dv2" onChange='conv_mol2()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select></td>
+								<td width="105" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="307" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="3" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="104" style="border-style: none; border-width: medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" valign="middle" bordercolor="#000000">
+<p align="center">
+<font face="Tahoma">
+<input type="image" src="buttons/4.png" onclick="conv_mol2();return false;" name="I4"></font></td>
+								<td width="315" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="3" bordercolor="#000000">
+											&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="229" style="border-left-style:double; border-left-width:3px; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="2" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="77" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<font face="Tahoma">
+											<input type="text" size=10 name="q2" onFocus="this.blur()"></font></td>
+								<td width="104" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+								&nbsp;</td>
+								<td width="104" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" bordercolor="#000000">
+											<font face="Tahoma">
+											<select name="Dq2" onChange='rclc_mol2()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select></font></td>
+								<td width="211" style="border-left-style:none; border-left-width:medium; border-right-style:double; border-right-width:3px; border-top-style:none; border-top-width:medium; border-bottom-style:double; border-bottom-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#C1D0EF" height="45" colspan="2" bordercolor="#000000">
+								&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="734" height="30" bgcolor="#EAF0FF" colspan="7">
+								<p align="center">&nbsp;</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+							</form>
+		</div>
+			</td>
+		</tr>
+	</table></div>

@@ -1,0 +1,135 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var chk=true;
+var n2=0;
+var fc=0;
+NAarr=new Array(50, 37, 40, 37);
+Darr=new Array(1, 1000, 1000000);
+
+function spctr()
+{
+fNA = NAarr[document.spectr.NA.selectedIndex];
+fV = parseFloat(document.spectr.V.value); 
+// ##03 
+if(isNaN(fV)||fV==0){alert("\"Dilution volume\" should be the number."); document.spectr.V.focus(); return true;};
+fV =  Math.abs(fV);
+fv = parseFloat(document.spectr.v.value); 
+// ##04 
+if(isNaN(fv)||fv==0){alert("\"Sample volume\" should be the number."); document.spectr.v.focus(); return true;};
+fv =  Math.abs(fv);
+// ##05 
+if(fv>fV){alert("The sample volume should be less then the dilution volume."); document.spectr.v.focus(); return true} 
+	if(!document.spectr.batch.checked)
+	{
+// ##06 
+	if(document.spectr.NA.selectedIndex==3){fK = parseFloat(document.spectr.K.value); if(isNaN(fK)||fK<=0){alert("Insert the extinction coefficient for olig."); document.spectr.K.focus(); return true;}; fNA = fK; document.spectr.K.value=fK}
+// ##07 
+	fA = parseFloat(document.spectr.A.value); if(isNaN(fA)||fA==0){alert("\"Absorbance OD260\" should be the number."); document.spectr.A.focus(); return true;}; fA =  Math.abs(fA);
+	fc = fV/fv*fNA*fA/1000;
+	n=0
+	while(n<2&&fc<1) {n++; fc = fc*1000};
+	fc = Math.round(fc*100)/100;
+	document.spectr.A.value=fA;
+	document.spectr.C.value=fc;
+	document.spectr.D.selectedIndex=n;
+	chk=false;
+	n2=n
+}
+else
+{
+var k=0;
+var str=""
+cffc=new Array(" microg/microl", " ng/microl", " pg/microl");
+b=document.spectr.A.value.split(" ")
+for(i=0; i<b.length; i++)
+{
+if(b[i]==""){continue};
+fi = parseFloat(b[i]); 
+// ##08 
+if(isNaN(fi)||fi==0){alert("\"Absorbance OD260\" should be the numbers separated by the space."); document.spectr.A.focus(); return true;};
+fi = Math.abs(fi);
+	k++;
+	kc = fV/fv*fNA*fi/1000;
+	n=0
+	while(n<2&&kc<1) {n++; kc = kc*1000};
+	kc = Math.round(kc*100)/100;
+	str=str+k+" -- "+fi+" -- "+kc+cffc[n]+"\n";
+}
+document.spectr.A.value=b.join(" ");
+document.spectr.btx.value=str;
+}
+	document.spectr.V.value=fV;
+	document.spectr.v.value=fv;
+}
+function rclc()
+{
+// ##09 
+if(chk){alert("Only after calculation of concentration."); return true};
+n1 = Darr[document.spectr.D.selectedIndex];
+document.spectr.C.value = fc*n1/Math.pow(10,3*n2);
+}
+function rclc1()
+{
+document.spectr.K.value = NAarr[document.spectr.NA.selectedIndex];
+if(chk){return true};
+spctr();
+}
+// -->
+</script>
+<form name="spectr" id="spectr">
+<p class=h2>
+<!-- ##01 -->Help for "spectrophotometric measurement"</p>
+<!--begin of Rambler's Top100 code -->
+<a href="http://top100.rambler.ru/top100/">
+<img src="http://counter.rambler.ru/top100.cnt?445258" alt="" width=1 height=1 border=0></a>
+<!--end of Top100 code-->
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 >
+</noscript>
+<!-- SpyLOG -->
+<p class=tx><!-- ##11 -->Let's suppose, that 1.5&micro;l of RNA was diluted in 2ml of water and the optical densities: OD<sub>260</sub>=0.253, OD<sub>320</sub>=0.005 (so, OD<sub>260</sub>-OD<sub>320</sub>=0.248).</p>
+<p class=tx><!-- ##12 -->Fill these data to the form as it is shown below and push "Calculate". You will obtain: "13.23&micro;g/&micro;l". If you want the answer in "ng/&micro;l", just select this unit and you will have: "13230ng/&micro;l".</p>
+<p class=tx><!-- ##13 -->Now, change optical density to 0.015 and just click somewhere outside the field (or, again, push "Calculate"): program will give "800ng/&micro;l". In the same way the program will recalculate answer after changing other parameters (volume, nicl. acid type).</p>
+<br>
+<table width=580 border="0" cellspacing="0" cellpadding="5"><tr>
+<td width=200 valign=top align=center  bgcolor="dddddd">
+<!-- ##14 -->Sample:&nbsp;&nbsp;
+<select name="NA" onChange='rclc1()'>
+	<option>&nbsp;&nbsp;dsDNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ssDNA&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;RNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;olig&nbsp;&nbsp;
+</select><br>&nbsp;<br>&nbsp;<br>
+<input type="checkbox" name="batch">&nbsp;<font size="-1">- <!-- ##15 -->choose for the "batch mode".<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<input type="Reset" value="Reset"></font>
+</td><td width=380 align=right valign=top bgcolor="#eeeeee">
+	<input type="text" size=3 value=40 name="K" onChange='spctr()'>&nbsp;[&micro;g/ml] <font size="-1">- <!-- ##16 -->extinction coefficient&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<!-- ##16a -->it would be better to use special for oligonucleotide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br><br>
+	<!-- ##17 -->Dilution volume:&nbsp;&nbsp;<input type="text" size=5 value=2000 name="V">&nbsp;&micro;l<br>
+	<!-- ##18 -->Sample volume:&nbsp;&nbsp;<input type="text" size=5 value=1.5 name="v">&nbsp;&micro;l<br>
+	<!-- ##19 -->Absorbance OD<sub>260</sub>:&nbsp;&nbsp;<input type="text" size=25 name="A"  onChange='spctr()' value=0.248>&nbsp;&nbsp;<br>
+	<INPUT TYPE="button" VALUE="Calculate" onClick='spctr()'>&nbsp;&nbsp;<br>
+<!-- ##20 -->Concentration:&nbsp;&nbsp;<input type="text" size=8 onFocus="this.blur()" name="C">&nbsp;&nbsp;
+<select name="D" onChange='rclc()'>
+	<option>&nbsp;&nbsp;&micro;g/&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ng/&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg/&micro;l&nbsp;&nbsp;
+</select>&nbsp;&nbsp;<br><hr>
+<!-- ##21 -->Results for the "batch mode":&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><textarea cols="40" rows="5" name="btx" onFocus="this.blur()"></textarea></td>
+</tr></table><br>
+</form><br>
+<p class=tx><!-- ##22 -->Finally, let's suppose, that in the same conditions you have obtained for a seria of samples the following densities: (i) 0.248; (ii) 3.46; (iii) 0.487; (iv) 0.007 and (v) 0.122. Choose the "batch mode" and insert in the field "Absorbance OD<sub>260</sub>" the string: <font color="Red">0.248 3.46 0.487 0.007 0.122</font>. Result of Calculators should be:</p>
+<center>1 -- 0.248 -- 13.23&micro;g/&micro;l<br>
+2 -- 3.46 -- 184.53&micro;g/&micro;l<br>
+3 -- 0.487 -- 25.97&micro;g/&micro;l<br>
+4 -- 0.007 -- 373.33ng/&micro;l<br>
+5 -- 0.122 -- 6.51&micro;g/&micro;l<br></center>

@@ -1,0 +1,171 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+	var chck=false
+	var t_int
+	var t21
+	var fd1;
+	var fd2;
+
+function odtime()
+{
+if(document.ODtime.t1d.value==""){document.ODtime.t1d.value=0};
+ft1d = parseFloat(document.ODtime.t1d.value); 
+// ##03
+if(isNaN(ft1d)){alert("The \"days before\" should be the number."); document.ODtime.t1d.focus(); return true;};
+ft1d =  Math.abs(ft1d)
+ft1h = parseFloat(document.ODtime.t1h.value); 
+// ##04
+if(isNaN(ft1h)||ft1h>24){alert("What is the time of the first measurement (h)?"); document.ODtime.t1h.focus(); return true;};
+ft1h =  Math.abs(ft1h)
+ft1m = parseFloat(document.ODtime.t1m.value); 
+// ##05
+if(isNaN(ft1m)||ft1m>60){alert("What is the time of the first measurement (min)?"); document.ODtime.t1m.focus(); return true;};
+ft1m =  Math.abs(ft1m)
+fd1 = parseFloat(document.ODtime.d1.value);
+// ##06
+if(isNaN(fd1)||fd1==0){alert("What is the first density (OD1)?"); document.ODtime.d1.focus(); return true;};
+fd1 = Math.abs(fd1)
+fd1 =  Math.abs(fd1)
+ft2h = parseFloat(document.ODtime.t2h.value); 
+// ##07
+if(isNaN(ft2h)||ft2h>24){alert("What is the time of the second measurement (h)?"); document.ODtime.t2h.focus(); return true;};
+ft2h =  Math.abs(ft2h)
+ft2m = parseFloat(document.ODtime.t2m.value); 
+// ##08
+if(isNaN(ft2m)||ft2m>60){alert("What is the time of the second measurement (min)?"); document.ODtime.t2m.focus(); return true;};
+ft2m =  Math.abs(ft2m)
+fd2 = parseFloat(document.ODtime.d2.value); 
+// ##09
+if(isNaN(fd2)||fd2==0){alert("What is the second density (OD2)?"); document.ODtime.d2.focus(); return true;};
+fd2 =  Math.abs(fd2)
+fdf = parseFloat(document.ODtime.df.value); 
+// ##10
+if(isNaN(fdf)||fdf==0){alert("What is the necessary density (ODf)?"); document.ODtime.df.focus(); return true;};
+fdf =  Math.abs(fdf)
+	t1=(ft1h-ft1d*24)*60+ft1m;
+	t2=ft2h*60+ft2m;
+// ##11
+if(t2<=t1){alert("The second measurement should be after the first."); return true;};
+// ##12
+if(fd2<=fd1||fdf<=fd2){alert("The second density should be greater then the first."); return true;};
+	t21=(t2-t1)
+	t_int=t21*Math.log(fdf/fd2)/Math.log(fd2/fd1);
+	ftf2h=Math.floor(t_int/60);
+	ftf2m=Math.floor(t_int%60);
+		t=t_int+t2;
+		ftfd=Math.floor(t/1440);
+		ftfh=Math.floor((t-ftfd*1440)/60);
+		ftfm=Math.floor(t%60);
+document.ODtime.t1d.value=ft1d;
+document.ODtime.t1h.value=ft1h;
+document.ODtime.t1m.value=ft1m;
+document.ODtime.d1.value=fd1;
+document.ODtime.t2h.value=ft2h;
+document.ODtime.t2m.value=ft2m;
+document.ODtime.d2.value=fd2;
+document.ODtime.tfd.value=ftfd+"d";
+document.ODtime.tfh.value=ftfh+"h";
+document.ODtime.tfm.value=ftfm+"min";
+document.ODtime.df.value=fdf;
+document.ODtime.tf2h.value=ftf2h+"h";
+document.ODtime.tf2m.value=ftf2m+"min";
+chck=true
+}
+
+function mist()
+{
+// ##13
+if(chck==false){alert("You should estimate the time first."); return true;};
+fdelOD = parseFloat(document.ODtime.delOD.value); 
+// ##14
+if(isNaN(fdelOD)||fdelOD==0){alert("What is the precision of the spectrophotometr?"); document.ODtime.delOD.focus(); return true;};
+fdelOD =  Math.abs(fdelOD);
+fdel_t = parseFloat(document.ODtime.del_t.value); 
+// ##15
+if(isNaN(fdel_t)||fdel_t==0){alert("What is the precision of the time measurement?"); document.ODtime.del_t.focus(); return true;};
+fdel_t =  Math.abs(fdel_t);
+q=1+t_int*Math.sqrt(Math.pow(fdel_t,2)/Math.pow(t21,2)+Math.pow(fdelOD,2)*(1/Math.pow(fd1,2)+2/Math.pow(fd2,2)));
+document.ODtime.delOD.value=fdelOD;
+document.ODtime.del_t.value=fdel_t+"min";
+document.ODtime.del_tf.value=ftf2h=Math.floor(q)+"min";
+}
+function calc(obj)
+{
+var v = parseFloat(obj.form.elements[1].value); 
+if(isNaN(v)){v=0}
+obj.form.elements[1].value=v+calc.arguments[1];
+for(var i=1; i<=(calc.arguments.length - 2)/3; i++){
+dig=Math.pow(10,calc.arguments[3*i]);
+obj.form.elements[i+1].value=Math.round(calc.arguments[i*3-1]*v)/dig+calc.arguments[i*3+1];
+}}
+// -->
+</script>
+<form name="ODtime" id="ODtime"><p class=h2>
+<!-- ##29b -->Help for bacteria growth</P><br>
+<!--begin of Rambler's Top100 code -->
+<a href="http://top100.rambler.ru/top100/">
+<img src="http://counter.rambler.ru/top100.cnt?445258" alt="" width=1 height=1 border=0></a>
+<!--end of Top100 code-->
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 >
+</noscript>
+<!-- SpyLOG -->
+<p class=tx><!-- ##30 -->Suppose, that it is necessary to obtain bacterial culture with the OD=0.500. If the first measurement was at 9:20 (OD<sub>1</sub>=0.050), the second - at 14:45 (OD<sub>2</sub>=0.270) then if you write these data in a form as shown below and push on "Calculate", you will obtain that bacteria reach 0.5 density at 16:43 (or, after 1h58min since the second measurement).</p>
+<p class=tx><!-- ##31 -->Suppose, that the culture is slow growing, and the first (9:20) measurement was yesterday. In this case it is necessary to add "1" (or "-1", does not matter) in the upper field. Result will be: 1d = next day, at 1:29; or 10h44min since the second measurement.</p><br>
+<center>
+<table><tr><td><!-- ##19 -->The first measurement was <input type="text" size=2 name="t1d"> days before at:
+<table width=400 bgcolor="#eeeeee" border="0" cellspacing="0" cellpadding="0">
+<tr><td width=200>&nbsp;&nbsp;&nbsp;<input type="text" size=3 name="t1h" value=9>h<font color="Red">*</font> <input type="text" size=3 name="t1m" value=20>min<font color="Red">*</font>  =>  </td><td width=200>OD<sub>1</sub>&nbsp;=&nbsp;<input type="text" size=5 name="d1" value=0.050><font color="Red">*</font></td></tr></table>
+<!-- ##20 -->The second measurement was today at:
+<table width=400 bgcolor="#eeeeee" border="0" cellspacing="0" cellpadding="0">
+<tr><td width=200>&nbsp;&nbsp;&nbsp;<input type="text" size=3 name="t2h" value=14>h<font color="Red">*</font> <input type="text" size=3 name="t2m" value=45>min<font color="Red">*</font>  =>  </td><td width=200>OD<sub>2</sub>&nbsp;=&nbsp;<input type="text" size=5 name="d2" value=0.27><font color="Red">*</font></td></tr>
+</table>
+<p class=h3><!-- ##21 -->Bacterial culture reach the indicated density</p> 
+<!-- ##22 -->after <input type="text" size=2 name="tfd" onFocus="this.blur()"> days at:
+<table width=400 bgcolor="#eeeeee" border="0" cellspacing="0" cellpadding="0">
+<tr><td width=200>&nbsp;&nbsp;&nbsp;<input type="text" size=3 name="tfh" onFocus="this.blur()">&nbsp;<input type="text" size=3 name="tfm" onFocus="this.blur()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=></td><td width=200 valign=top>OD<sub>f</sub>&nbsp;=&nbsp;<input type="text" size=5 value=0.500 name="df"><font color="Red">*</font>&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Calculate" onClick='odtime()'></td></tr>
+<tr><td colspan=2><br>&nbsp;&nbsp;&nbsp;<!-- ##23 -->Or, after <input type="text" size=4 name="tf2h" onFocus="this.blur()">&nbsp;<input type="text" size=3 name="tf2m" onFocus="this.blur()"> since the second measurement.</td></tr></table></td><td></td></tr></table><br>&nbsp;<br>
+<p class=tx><!-- ##32 -->Return to the "0" in the upper field and recalculate again. Let's estimate the precision. If the precision of optical density &plusmn;0.001 and time - &plusmn;7 min it will be &plusmn;4min. </p>
+<br>
+<p class=h3><!-- ##24 -->Evaluation the precision of the prognosis.</p> 
+<font size="-1"><!-- ##25 -->only after evaluation of the growth time</font><br>
+
+<table width=450 bgcolor="#eeeeee" border="0" cellspacing="0" cellpadding="0">
+<tr><td width=350>
+<!-- ##26 -->&nbsp;&nbsp;Precision of the spectrophotometer: &plusmn;OD<br>
+<!-- ##27 -->&nbsp;&nbsp;Precision of the time measurement: &plusmn;t[min]<br>
+<!-- ##28 -->&nbsp;&nbsp;Precision of the evaluation: &plusmn;t[min]<br>
+&nbsp;</td>
+<td width=100>&plusmn;&nbsp;<input type="text" size=6 name="delOD" value=0.001><font color="Red">*</font><br>
+&plusmn;&nbsp;<input type="text" size=6 name="del_t" value=7min><font color="Red">*</font><br>
+&plusmn;&nbsp;<input type="text" size=6 name="del_tf" onFocus="this.blur()"><br>
+<INPUT TYPE="button" VALUE="Calculate" onClick='mist()'>
+</td></tr></table><br>&nbsp;<br></center>
+<input type="Reset" value="Reset">
+</form></center>
+
+<ul><li><!-- ##33 -->it is does not matter, what to insert in the "hour" field: "12", "12h", "12 h" or "-12 days", in any case it will be treated as "12h" (analogous for the other fields);</li>
+<li><!-- ##34 -->in the upper field: "yesterday" will be "1" (or "-1"), "the day before yesterday" - "2";</li>
+<li><!-- ##35 -->it is impossible to estimate precision before estimation of the growth time;</li>
+<a name="form"></a><p class=h3><!-- ##36 -->Equations.</P></ul>
+<!-- ##37 -->For bacteria in the logarithmic stage of growth:<br>
+<center>OD<sub>1</sub> = A * exp{k(t<sub>1</sub> - t<sub>0</sub>)}<br>
+OD<sub>2</sub> = A * exp{k(t<sub>2</sub> - t<sub>0</sub>)}<br>
+OD<font size="+1"><sub>f</sub></font> = A * exp{k(t<font size="+1"><sub>f</sub></font> - t<sub>0</sub>)}</center>
+<!-- ##38 -->Solution of these equations:<br><br>
+<center>
+t<font size="+1"><sub>f</sub></font> = t<sub>2</sub> + (t<sub>2</sub> - t<sub>1</sub>) *  ln(OD<font size="+1"><sub>f</sub></font>/OD<sub>2</sub>) / ln(OD<sub>2</sub>/OD<sub>1</sub>)
+</center><br>
+<!-- ##39 -->For the precision:<br>
+<br><center>
+&plusmn; t<font size="+1"><sub>f</sub></font> = (t<font size="+1"><sub>f</sub></font> - t<sub>2</sub>) * <font color="Red">{</font><font color="Blue">(d_t)<sup>2</sup>/(t<sub>2</sub> - t<sub>1</sub>)<sup>2</sup></font> + <font color="Green">(d_d)<sup>2</sup>(1 / OD<sub>1</sub><sup>2</sup> + 2 / OD<sub>2</sub><sup>2</sup>)</font><font color="Red">}<sup>1/2</sup></font>
+</center>

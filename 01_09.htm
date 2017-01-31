@@ -1,0 +1,168 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+var chkA;
+var nA=0; 
+var q=0; 
+var m=0; 
+An=new Array("mol", "mmol", "micromol", "nmol", "pmol", "fmol", "amol");
+function resA()
+{
+nA=0; 
+chkA=true;
+q=0; 
+m=0; 
+}
+function conv()
+{
+A = parseFloat(document.bio.A.value); 
+// ##03
+if(isNaN(A)||A==0){alert("\"Specific activity [kCi/mmol]\" should be number."); document.bio.A.focus(); return true;};
+A = Math.abs(A);
+document.bio.A.value=A+"kCi/mmol"
+act=parseFloat(document.bio.act.value); 
+// ##04
+if(isNaN(act)){alert("\"Activity\" should be number."); document.bio.act.focus(); return true;};
+act = Math.abs(act);
+q=act/A/Math.pow(10,12);
+m=324.5*q;
+n1=0;
+	while(n1<6&&q<1) {n1++; q = q*1000};
+	r1=Math.round(q*100)/100;
+	if(r1>0){q=r1};
+	document.bio.q.value=q+An[n1];
+n2=0;
+	while(n2<6&&m<1) {n2++; m = m*1000};
+	nA=n2
+	r2=Math.round(m*100)/100;
+	if(r2>0){m=r2};
+	document.bio.m.value=m;
+	document.bio.DA.selectedIndex=nA;
+	document.bio.act.value=act;
+	chkA=false;
+}
+function rclc()
+{
+// ##05
+if(chkA){alert("Only after calculation."); return true};
+document.bio.m.value = m*Math.pow(10,3*document.bio.DA.selectedIndex)/Math.pow(10,3*nA);
+}
+// -->
+</script>
+<a name="start"></a>
+<div align="center">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Conversion: radioactivity - biological amount of dNTP&#39;s</font></b></p>
+			</td>
+		</tr>
+		<tr>
+				<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center" style="margin-left: 8px; margin-right: 8px">
+			<font face="Tahoma">&nbsp;<br>
+			The calculation of weight of particular amount of radioactive dNTPs. 
+			It may be helpful for estimation of how much template should be taken 
+			for DNA or RNA labeling. The specific activity [kCi/mmol] should be 
+			taken from the vendor catalog. <br>
+			<br>
+			<font color="#FF6600">Note: JavaScript must be enabled on your Web browser 
+			to use the program. </font></font></p>
+			</td>
+	
+		</tr>
+		<tr>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma">&nbsp;<br>
+&nbsp;</font></p>
+			</td>
+		</tr>
+		<div class="prot">
+		<ul type="disc">
+			<form name="bio" id="bio">
+			</ul>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<table border="1" width="733" cellspacing="0" cellpadding="0" height="261">
+				<tr>
+					<td width="732" valign="middle" align="left" height="259" style="border-bottom-style: none; border-bottom-width: medium">
+					<div align="center">
+						<p align="center">&nbsp;</p>
+						<table border="0" width="90%" height="238" cellspacing="0" cellpadding="0" style="border-style:double; border-width:3px; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bordercolor="#000000">
+							<tr>
+								<td width="430" colspan="3" align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">
+								<p style="margin-left: 10px"><b>
+								<font face="Tahoma">Specific activity [kCi/mmol]:</font></b></p>
+								</td>
+								<td colspan="3" align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">
+								<font face="Tahoma">&nbsp;
+								<input type="text" size="10" name="A" onchange="conv()" value="6"></font></td>
+							</tr>
+							<tr>
+								<td width="45" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="160" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">
+								<font face="Tahoma">
+								<input type="text" size="10" value="100" name="act" onchange="conv()">&nbsp; 
+								<b>[µCi]</b></font></td>
+								<td width="216" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="63" bordercolor="#808080" valign="middle">
+								<p align="center"><font face="Tahoma">
+								<input type="image" src="buttons/4.png" onclick="conv();return false;"></font></p>
+								</td>
+								<td width="101" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">
+								<font face="Tahoma">&nbsp;
+								<input type="text" size="10" name="m" onfocus="this.blur()"></font></td>
+								<td width="66" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">
+								<font face="Tahoma">&nbsp;
+								<select name="DA" onchange="rclc()">
+								<option>&nbsp; g </option>
+								<option>&nbsp; mg </option>
+								<option>&nbsp; µg </option>
+								<option>&nbsp; ng </option>
+								<option>&nbsp; pg </option>
+								<option>&nbsp; fg </option>
+								<option>&nbsp; ag </option>
+								</select></font></td>
+								<td width="23" bgcolor="#C1D0EF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="45" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="160" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="216" height="40" bgcolor="#C1D0EF" bordercolor="#808080">
+								<p align="center">
+								<font face="Tahoma">
+								<input type="text" size="20" name="q" onfocus="this.blur()"></font></p>
+								</td>
+								<td width="101" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="66" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="23" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="45" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="74" bordercolor="#808080">&nbsp;</td>
+								<td width="160" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="74" bordercolor="#808080">&nbsp;</td>
+								<td width="216" height="74" bgcolor="#C1D0EF" bordercolor="#808080" valign="middle">
+								<p align="center"><font face="Tahoma">
+								<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></p>
+								</td>
+								<td width="101" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="74" bordercolor="#808080">&nbsp;</td>
+								<td width="66" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="74" bordercolor="#808080">&nbsp;</td>
+								<td width="23" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="74" bordercolor="#808080">&nbsp;</td>
+							</tr>
+						</table>
+						<p>&nbsp;</div>
+					</td>
+				</tr>
+				</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		</form>
+		<ul>
+		</ul>
+		</div>
+		</td>
+		</tr>
+	</table>
+</div>

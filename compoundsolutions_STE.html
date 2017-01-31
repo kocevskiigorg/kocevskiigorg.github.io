@@ -1,0 +1,82 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css" /><!-- ##01 -->
+<title>&nbsp;&nbsp;&nbsp;Salt solutions (part one) | Practical Molecular Biology&nbsp;&nbsp;&nbsp;</title>
+<meta http-equiv="keywords" name="keywords" content="institute, laboratory, student, PhD, DNA, RNA, protein, gene, vector, genome, bacteria, virus, cell, cloning, experiment, methods, tip, trick, reference book, labor exchange, work, vacancy, advertisement, technician, expression, method, review, anatomy, biochemistry, bioinformatics, biophysics, biotechnology, botany, cell biology, developmental biology, ecology, evolution, genetics, immunology, microbiology, molecular biology, molecular medicine, neurobiology, oncology, parasitology, pharmacology, physiology, virology, zoology" /><!-- ##02 -->
+<meta http-equiv="description" name="description" content="Composition of molecular biology solutions. Salt solutions. Practical Molecular Biology." />
+<meta name="Document-State" content="Static" />
+<meta name="Robots" content="ALL" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script language="JavaScript">
+<!--
+function helpod()
+{
+window.open('h01_01.html','help', config='height=450,width=500,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="main window"
+}
+function calc(obj)
+{
+var v = parseFloat(obj.form.elements[1].value);
+if(isNaN(v)){v=0}
+v=Math.abs(v);
+obj.form.elements[1].value=v+calc.arguments[1];
+for(var i=1; i<=(calc.arguments.length - 2)/3; i++){
+dig=Math.pow(10,calc.arguments[3*i]);
+obj.form.elements[i+1].value=Math.round(calc.arguments[i*3-1]*v)/dig+calc.arguments[i*3+1];
+}}
+// -->
+</script>
+<div align="center">
+<table bordercolorlight="#0000FF" bordercolordark="#000080" bgcolor="#c1d0ef" border="5" bordercolor="#000000" cellpadding="0" cellspacing="0" height="435" width="60%"><!-- MSTableType="nolayout" -->
+<tbody>
+<tr>
+<td style="border-bottom-style: none; border-bottom-width: medium" height="65">
+<p align="center"><strong><font size="5" face="Tahoma">&nbsp;<br />
+STE</font></strong></p>
+<p class="h3">   </p></td></tr>
+<tr>
+<td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" height="26">
+<p align="center"><font face="Tahoma">&nbsp;<br />
+<input src="buttons/3.png" onclick="helpod();return false;" type="image" /><br />
+&nbsp;</font></p></td></tr>
+<tr>
+<td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" bgcolor="#eaf0ff" height="51">
+<table border="1" cellpadding="0" cellspacing="0" height="513" width="733">
+<tbody>
+<tr>
+<td style="border-bottom-style: none; border-bottom-width: medium" align="left" height="70" valign="middle" width="732">
+<div align="center">
+<!-- start --> 
+<form><p class="h3"><a name="a2"></a>STE</p>
+<p>1x; (store at 4<sup>o</sup>C).</p>
+<table width="550" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr  >
+<td><table width="100%" cellspacing="1" cellpadding="2px" border="0">
+	<tbody><tr bgcolor="#eeeeee"><td align="center"><input type="button" onclick="calc(this,&quot;ml&quot;,2,2,&quot;ml&quot;,1,2,&quot;ml&quot;,200,2,&quot;µl&quot;,96.8,2,&quot;ml&quot;)"   style="cursor: pointer; background: url('buttons/4.png') no-repeat scroll center top  ; width: 112px; height: 39px; border: 0px none" value="" ></td><td>Conc.</td><td>Stock</td><td>1ml</td><td>5ml</td><td>10ml</td><td>50ml</td><td><input type="text" onchange="calc(this,&quot;ml&quot;,2,2,&quot;ml&quot;,1,2,&quot;ml&quot;,200,2,&quot;µl&quot;,96.8,2,&quot;ml&quot;)" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>NaCl</td><td>0.1M</td><td>5M</td><td>20µl</td><td>100µl</td><td>200µl</td><td>1.0ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>Tris Cl, pH8.0</td><td>10mM</td><td>1M</td><td>10µl</td><td>50µl</td><td>100µl</td><td>0.5ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>EDTA, pH8.0</td><td>1mM</td><td>0.5M</td><td>2µl</td><td>10µl</td><td>20µl</td><td>100µl</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>H<sub>2</sub>O</td><td>&nbsp;</td><td>mQ</td><td>0.968ml</td><td>4.84ml</td><td>9.68ml</td><td>48.4ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+
+	<tr><td colspan="8"><input name="I2" style="cursor: pointer; width: 112px; height: 39px; border: 0px none" onclick="javascript:
+this.form.reset();return false;" src="buttons/2.png" type="image" /></td></tr>
+</tbody></table></td></tr>
+</tbody></table></form>
+
+<form>
+<p>10x:</p>
+<table width="350" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr >
+<td><table width="100%" cellspacing="1" cellpadding="2px" border="0">
+	<tbody><tr bgcolor="#eeeeee"><td align="center"><input type="button" onclick="calc(this,&quot;ml&quot;,20,2,&quot;ml&quot;,10,2,&quot;ml&quot;,2,2,&quot;ml&quot;,68,2,&quot;ml&quot;)"   style="cursor: pointer; background: url('buttons/4.png') no-repeat scroll center top  ; width: 112px; height: 39px; border: 0px none" value="" ></td><td>Conc.</td><td>Stock</td><td>1ml</td><td>5ml</td><td><input type="text" onchange="calc(this,&quot;ml&quot;,20,2,&quot;ml&quot;,10,2,&quot;ml&quot;,2,2,&quot;ml&quot;,68,2,&quot;ml&quot;)" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>NaCl</td><td>1.0M</td><td>5M</td><td>0.2ml</td><td>1.0ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>Tris Cl</td><td>0.1M</td><td>1M</td><td>0.1ml</td><td>0.5ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>EDTA</td><td>10mM</td><td>0.5mM</td><td>20µl</td><td>0.1ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr bgcolor="#ffffff"><td>H<sub>2</sub>O</td><td>mQ</td><td>&nbsp;</td><td>680µl</td><td>3.4ml</td><td><input type="text" onfocus="this.blur()" size="7"></td></tr>
+	<tr><td colspan="8"><input name="I2" style="cursor: pointer; width: 112px; height: 39px; border: 0px none" onclick="javascript:
+this.form.reset();return false;" src="buttons/2.png" type="image" /></td></tr>
+</tbody></table></td></tr>
+</tbody></table>
+<li><!-- ##19 -->autoclave sterilization.</li>
+</form>
+
+<!-- end -->
+</div></td></tr></tbody></table></td></tr></tbody></table></div>

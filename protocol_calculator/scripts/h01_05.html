@@ -1,0 +1,158 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var n_mol1;
+var n_mol2;
+var c_mol=0;
+var q_mol=0;
+var chk_mol1=true;
+var chk_mol2=true;
+function resmol()
+{
+n_mol1=0;
+n_mol2=0;
+c_mol=0;
+q_mol=0;
+chk_mol1=true;
+chk_mol2=true;
+}
+
+function conv_mol1()
+{
+q1=parseFloat(document.mol.q1.value); 
+// ##03
+if(isNaN(q1)){alert("\"molar quantity\" should be number."); document.mol.q1.focus(); return true;};
+q1 =  Math.abs(q1)
+v1=parseFloat(document.mol.v1.value); 
+// ##04
+if(isNaN(v1)){alert("\"Volume\" should be number."); document.mol.v1.focus(); return true;};
+v1 =  Math.abs(v1)
+c1_mol=q1/Math.pow(10,3*document.mol.Dq1.selectedIndex)/v1*Math.pow(10,3*document.mol.Dv1.selectedIndex)
+n=0;
+	while(n<6&&c1_mol<1) {n++; c1_mol = c1_mol*1000};
+	n_mol1=n;
+	r=Math.round(c1_mol*100)/100;
+	if(r>0){c1_mol=r};
+	document.mol.q1.value=q1;
+	document.mol.v1.value=v1;
+	document.mol.c1.value=c1_mol;
+	document.mol.Dc1.selectedIndex=n;
+	chk_mol1=false;
+}
+function rclc_mol1()
+{
+// ##05
+if(chk_mol1){alert("Only after calculation."); return true};
+document.mol.c1.value = c1_mol*Math.pow(10,3*document.mol.Dc1.selectedIndex)/Math.pow(10,3*n_mol1);
+}
+function conv_mol2()
+{
+c2=parseFloat(document.mol.c2.value); 
+// ##06
+if(isNaN(c2)){alert("\"Concentration\" should be number."); document.mol.c2.focus(); return true;};
+c2 =  Math.abs(c2)
+v2=parseFloat(document.mol.v2.value); 
+// ##04
+if(isNaN(v2)){alert("\"Volume\" should be number."); document.mol.v2.focus(); return true;};
+v2 =  Math.abs(v2)
+q2_mol=c2/Math.pow(10,3*document.mol.Dc2.selectedIndex)*v2/Math.pow(10,3*document.mol.Dv2.selectedIndex)
+n=0;
+	while(n<6&&q2_mol<1) {n++; q2_mol = q2_mol*1000};
+	n_mol2=n;
+	r=Math.round(q2_mol*100)/100;
+	if(r>0){q2_mol=r};
+	document.mol.c2.value=c2;
+	document.mol.v2.value=v2;
+	document.mol.q2.value=q2_mol;
+	document.mol.Dq2.selectedIndex=n;
+	chk_mol2=false;
+}
+function rclc_mol2()
+{
+// ##05
+if(chk_mol2){alert("Only after calculation."); return true};
+document.mol.q2.value = q2_mol*Math.pow(10,3*document.mol.Dq2.selectedIndex)/Math.pow(10,3*n_mol2);
+}
+// -->
+</script>
+<form name="mol" id="mol">
+<p class=h2>
+<!-- ##11 -->Help for molar quantity - molar concentration</p>
+<!--begin of Rambler's Top100 code -->
+<a href="http://top100.rambler.ru/top100/">
+<img src="http://counter.rambler.ru/top100.cnt?445258" alt="" width=1 height=1 border=0></a>
+<!--end of Top100 code-->
+<!-- SpyLOG f:0210 -->
+<script language="javascript"><!--
+Mu="u4214.75.spylog.com";Md=document;Mnv=navigator;Mp=1;
+Mn=(Mnv.appName.substring(0,2)=="Mi")?0:1;Mrn=Math.random();
+Mt=(new Date()).getTimezoneOffset();
+Mz="p="+Mp+"&rn="+Mrn+"&tl=0&ls=0&ln=0&t="+Mt;
+My="";
+My+="<img src='http://"+Mu+"/cnt?cid=421475&"+Mz+"&r="+escape(Md.referrer)+"&pg="+escape(window.location.href)+"' border=0 width=1 height=1 alt='SpyLOG'>";
+Md.write(My);//--></script><noscript>
+<img src="http://u4214.75.spylog.com/cnt?cid=421475&p=1" alt='SpyLOG' border='0' width=1 height=1 >
+</noscript>
+<!-- SpyLOG -->
+<p class=tx><!-- ##13 -->Suppose, that 35nmol of some substance were diluted in 86&micro;l of H<SUB>2</SUB>O.</p>
+<p class=tx><!-- ##14 -->Insert these data in the form as it is shown below and push the upper "Calculate". You will obtain that it is corresponds to 406.98&micro;M. If you want the answer in "mM", just select this unit and you obtain: "0.40698mM".</p>
+<p class=tx><!-- ##15 -->Now, change the volume for 100&micro;l and just click somewhere outside the field (or, again, push "Calculate"): program will give "350&micro;M". By the same way the program will recalculate answer after changing of other parameters (weight, volume, quantity).</p>
+<p class=tx><!-- ##16 -->The calculations from the known molar quantity are absolutely analogous.</p>
+<p class=tx>&nbsp;&nbsp;&nbsp;<input type="Reset" value="Reset" onClick="resmol()"><br></font><br>&nbsp;<br>
+<i><!-- ##09 -->Molar concentration (M)  -->  molar quantity (mol).</i><br>
+<table width=500><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=35 name="q1" onChange='conv_mol1()'>&nbsp;<select name="Dq1" onChange='conv_mol1()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select>&nbsp;&nbsp;in&nbsp;&nbsp;<input type="text" size=5 value=86 name="v1" onChange='conv_mol1()'>&nbsp;<select name="Dv1" onChange='conv_mol1()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select><br>
+<INPUT TYPE="button" VALUE="Calculate" onClick='conv_mol1()'><br>
+<input type="text" size=10 name="c1" onFocus="this.blur()">&nbsp;<select name="Dc1" onChange='rclc_mol1()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select></td></table>
+<i><!-- ##10 -->molar quantity (mol)  -->  Molar concentration (M).</i><br>
+<table width=500><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=1 name="c2" onChange='conv_mol2()'>&nbsp;<select name="Dc2" onChange='conv_mol2()'>
+	<option>&nbsp;&nbsp;M&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;mM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;M&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fM&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;aM&nbsp;&nbsp;
+</select>&nbsp;&nbsp;in&nbsp;&nbsp;<input type="text" size=5 value=1 name="v2" onChange='conv_mol2()'>&nbsp;<select name="Dv2" onChange='conv_mol2()'>
+	<option>&nbsp;&nbsp;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ml&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pl&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fl&nbsp;&nbsp;
+</select><br>
+<INPUT TYPE="button" VALUE="Calculate" onClick='conv_mol2()'><br>
+<input type="text" size=10 name="q2" onFocus="this.blur()">&nbsp;<select name="Dq2" onChange='rclc_mol2()'>
+	<option>&nbsp;&nbsp;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;mol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;nmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fmol&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;amol&nbsp;&nbsp;
+</select></td></table></form>
+</ul></div>

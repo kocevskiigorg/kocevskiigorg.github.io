@@ -1,0 +1,233 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+var chk=true;
+var n2=0;
+var fc=0;
+NAarr=new Array(50, 37, 40, 37);
+Darr=new Array(1, 1000, 1000000);
+
+function helpsp()
+{
+window.open('h01_03.htm','help', config='height=500,width=900,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+function spctr()
+{
+fNA = NAarr[document.spectr.NA.selectedIndex];
+fV = parseFloat(document.spectr.V.value); 
+// ##03
+if(isNaN(fV)||fV==0){alert("\"Dilution volume\" should be the number."); document.spectr.V.focus(); return true;};
+fV =  Math.abs(fV);
+fv = parseFloat(document.spectr.v.value); 
+// ##04
+if(isNaN(fv)||fv==0){alert("\"Sample volume\" should be the number."); document.spectr.v.focus(); return true;};
+fv =  Math.abs(fv);
+// ##05
+if(fv>fV){alert("The sample volume should be less then the dilution volume."); document.spectr.v.focus(); return true} 
+	if(!document.spectr.batch.checked)
+	{
+	// ##06
+	if(document.spectr.NA.selectedIndex==3){fK = parseFloat(document.spectr.K.value); if(isNaN(fK)||fK<=0){alert("Insert the extinction coefficient for olig."); document.spectr.K.focus(); return true;}; fNA = fK; document.spectr.K.value=fK}
+	// ##07
+	fA = parseFloat(document.spectr.A.value); if(isNaN(fA)||fA==0){alert("\"Absorbance OD260\" should be the number."); document.spectr.A.focus(); return true;}; fA =  Math.abs(fA);
+	fc = fV/fv*fNA*fA/1000;
+	n=0
+	while(n<2&&fc<1) {n++; fc = fc*1000};
+	fc = Math.round(fc*100)/100;
+	document.spectr.A.value=fA;
+	document.spectr.C.value=fc;
+	document.spectr.D.selectedIndex=n;
+	chk=false;
+	n2=n
+}
+else
+{
+var k=0;
+var str=""
+cffc=new Array(" microg/microl", " ng/microl", " pg/microl");
+b=document.spectr.A.value.split(" ")
+for(i=0; i<b.length; i++)
+{
+if(b[i]==""){continue};
+fi = parseFloat(b[i]); 
+// ##08
+if(isNaN(fi)||fi==0){alert("\"Absorbance OD260\" should be the numbers separated by the space."); document.spectr.A.focus(); return true;};
+fi = Math.abs(fi);
+	k++;
+	kc = fV/fv*fNA*fi/1000;
+	n=0
+	while(n<2&&kc<1) {n++; kc = kc*1000};
+	kc = Math.round(kc*100)/100;
+	str=str+k+" -- "+fi+" -- "+kc+cffc[n]+"\n";
+}
+document.spectr.A.value=b.join(" ");
+document.spectr.btx.value=str;
+}
+	document.spectr.V.value=fV;
+	document.spectr.v.value=fv;
+}
+function rclc()
+{
+// ##09
+if(chk){alert("Only after calculation of concentration."); return true};
+n1 = Darr[document.spectr.D.selectedIndex];
+document.spectr.C.value = fc*n1/Math.pow(10,3*n2);
+}
+function rclc1()
+{
+document.spectr.K.value = NAarr[document.spectr.NA.selectedIndex];
+if(chk){return true};
+spctr();
+}
+// -->
+</script>
+
+
+<a name="start"></a>
+<div align="center">
+<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+	<!-- MSTableType="nolayout" -->
+	<tr>
+		<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+		<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+		Spectrophotometric measurement of nucleic acids concentration</font></b></p>
+		</td>
+	</tr>
+	<tr>
+	<div class="prot">
+			<ul type="disc">
+				<form name="spectr" id="spectr">
+		<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+							<p align="center" style="margin-left: 8px; margin-right: 8px">
+					<font face="Tahoma">&nbsp;<br>
+					This program helps you to calculate the concentration of 
+					nucleic acids according to their optical density. (DNA, RNA, 
+					oligonucleotides). It is better to use {OD<sub>260</sub>-OD<sub>320</sub>} 
+					instead of OD<sub>260</sub>. For a series of measurements 
+					(batch mode) you should insert in the &quot;Absorbance OD<sub>260</sub>&quot; 
+					field the optical densities separated by the space. <br>
+					<br>
+					<font color="#FF6600">Note: JavaScript must be enabled on 
+					your Web browser to use the program. </font></font></p>
+
+		</td>
+	</tr>
+	<tr>
+		<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+		<p align="center"><font face="Tahoma">&nbsp;<br>
+		<input type="image" src="buttons/3.png" onclick="helpsp();return false;">
+		<br>
+&nbsp;</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+		<table border="1" width="100%" cellspacing="0" cellpadding="0" height="513">
+			<tr>
+				<td width="241" valign="middle" align="left" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><br>
+				Sample:&nbsp;&nbsp; <select name="NA" onchange="rclc1()">
+				<option>&nbsp; dsDNA </option>
+				<option>&nbsp; ssDNA </option>
+				<option>&nbsp; RNA </option>
+				<option>&nbsp; olig </option>
+				</select>&nbsp; <br>
+				<br>
+				<input type="checkbox" name="batch"> <font size="-1">-
+				<!-- ##15 -->choose for the &quot;batch mode&quot;. <br>
+&nbsp;</font></font></p>
+				</td>
+				<td width="469" align="left" valign="middle" colspan="3" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><br>
+				<input type="text" size="3" value="50" name="K" onchange="spctr()"> 
+				[µg/ml] <font size="-1">-
+				<!-- ##16 -->extinction coefficient&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</font></font></p>
+				<p style="margin-left: 10px"><font size="-1" face="Tahoma">it would 
+				be better to use special for oligonucleotide <br>
+&nbsp;</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="89" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" rowspan="3">&nbsp;</td>
+				<td width="172" align="left" valign="middle" height="24" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Dilution volume:&nbsp;&nbsp;
+				</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="24" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<input type="text" size="5" value="1000" name="V"> µl</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="172" align="left" valign="middle" height="32" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Sample volume:</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="32" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<input type="text" size="5" value="1" name="v"> µl</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="172" align="left" valign="middle" height="33" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Absorbance OD<sub>260</sub>:
+				</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="33" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<input type="text" size="25" name="A" onchange="spctr()"></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="middle" align="left" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p align="center"><font face="Tahoma" size="-1">
+				<input type="image" src="buttons/2.png" onclick="reset"></font></p>
+				</td>
+				<td width="469" align="left" valign="middle" colspan="3" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p align="center" style="margin-left: 10px"><font face="Tahoma">&nbsp;<input type="image" src="buttons/4.png" onclick="spctr();return false;"></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="30" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+				<td width="172" align="left" valign="top" height="30" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Concentration:</font></p>
+				</td>
+				<td width="137" align="left" valign="top" height="30" style="border-style:none; border-width:medium; ">
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<input type="text" size="17" onfocus="this.blur()" name="C"></font></p>
+				</td>
+				<td width="155" align="left" valign="top" height="30" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<select name="D" onchange="rclc()">
+				<option>&nbsp; µg/µl </option>
+				<option>&nbsp; ng/µl </option>
+				<option>&nbsp; pg/µl </option>
+				</select></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="206" style="border-top-style: none; border-top-width: medium">
+				<p align="center"><font face="Tahoma">
+				<!-- ##14 -->&nbsp;</font></p>
+				</td>
+				<td width="469" align="left" valign="top" colspan="3" height="206" style="border-top-style: none; border-top-width: medium">
+				<hr>
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<!-- ##21 -->Results for the &quot;batch mode&quot;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>
+				<br>
+				<textarea cols="53" rows="7" name="btx" onfocus="this.blur()"></textarea>
+				<br>
+&nbsp;</font></p>
+				</td>
+			</tr>
+		</table>
+				</form>
+		</div>
+		
+		</td>
+	</tr>
+</table>
+</div>
+

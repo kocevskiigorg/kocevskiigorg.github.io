@@ -1,0 +1,230 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+function transl()
+{
+translation = new Array("cga","cgc","cgg","cgu","aga","agg","cua","cuc","cug","cuu","uua","uug","uca","ucc","ucg","ucu","agc","agu","aca","acc","acg","acu","cca","ccc","ccg","ccu","gca","gcc","gcg","gcu","gga","ggc","ggg","ggu","gua","guc","gug","guu","aaa","aag","aac","aau","caa","cag","cac","cau","gaa","gag","gac","gau","uac","uau","ugc","ugu","uuc","uuu","aua","auc","auu","aug","ugg","uaa","uag","uga");
+treelett = new Array("Arg","Arg","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Leu","Leu","Ser","Ser","Ser","Ser","Ser","Ser","Thr","Thr","Thr","Thr","Pro","Pro","Pro","Pro","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","Lys","Lys","Asn","Asn","Gln","Gln","His","His","Glu","Glu","Asp","Asp","Tyr","Tyr","Cys","Cys","Phe","Phe","Ile","Ile","Ile","Met","Trp","Stop_ochre","Stop_amber","Stop_opal");
+onelett = new Array("r","r","r","r","r","r","l","l","l","l","l","l","s","s","s","s","s","s","t","t","t","t","p","p","p","p","a","a","a","a","g","g","g","g","v","v","v","v","k","k","n","n","q","q","h","h","e","e","d","d","y","y","c","c","f","f","i","i","i","m","w","*","*","*");
+freq = new Array("6.3","10.8","11.6","4.6","11.5","11.3","7.0","19.3","39.7","12.8","7.3","12.5","11.9","17.5","4.5","14.8","19.3","12.0","14.9","19.3","6.3","12.9","16.7","20.0","7.0","17.3","15.9","28.3","7.5","18.5","16.4","22.7","16.4","10.8","7.0","14.6","28.8","10.9","24.0","32.6","19.8","17.0","12.0","34.5","14.9","10.5","29.1","40.2","26.1","22.4","15.8","12.1","12.3","10.0","20.5","17.0","7.2","21.6","15.8","22.3","12.9","0.7","0.5","1.3",
+
+"6.7","10.1","10.5","4.7","11.4","11.6","7.5","19.6","39.3","12.3","6.0","12.5","11.2","18.1","4.5","15.4","20.0","12.2","15.6","19.6","6.1","13.2","17.3","19.1","6.8","18.7","15.5","26.7","7.1","19.7","17.3","22.9","15.9","11.7","6.9","15.6","29.0","10.1","21.3","34.6","21.5","15.5","11.6","34.5","15.3","9.9","26.9","40.3","27.5","21.4","16.8","11.8","12.6","10.9","21.6","16.0","6.6","22.9","14.6","22.2","12.9","0.6","0.5","1.1",
+
+"8.5","17.9","8.3","8.7","5.1","6.4","8.3","13.9","38.7","9.1","4.3","16.2","7.6","19.6","16.6","6.8","20.4","11.5","10.7","21.4","14.4","9.5","13.5","17.9","16.0","6.9","12.8","33.6","14.0","14.5","17.8","26.6","4.7","13.3","6.3","13.9","28.1","10.9","16.5","39.5","26.1","20.8","15.6","36.8","16.2","10.6","20.9","43.0","24.7","27.6","18.4","10.7","13.3","5.3","21.8","13.1","9.3","23.0","16.5","23.5","9.9","0.8","0.6","0.5",
+
+"6.3","3.7","4.8","8.8","19.0","10.9","10.1","15.7","10.0","24.2","13.2","21.3","18.3","10.9","9.0","25.0","11.2","14.3","15.9","10.1","7.6","17.6","16.1","5.2","8.2","18.3","17.4","10.0","8.6","27.5","23.5","8.9","10.1","21.7","10.2","12.5","17.3","27.2","31.3","32.5","20.7","23.1","19.7","15.0","8.6","14.1","35.0","32.1","17.1","37.2","13.5","15.2","7.2","10.9","20.3","22.7","13.1","18.3","22.1","24.4","12.6","0.9","0.5","1.0",
+
+"3.0","2.6","1.7","6.5","21.3","9.3","13.4","5.4","10.4","12.2","26.4","27.1","18.8","14.2","8.6","23.6","9.7","14.2","17.7","12.6","8.0","20.2","18.2","6.8","5.3","13.6","16.2","12.6","6.1","21.1","10.9","9.7","6.0","23.9","11.8","11.6","10.7","22.0","42.1","30.8","24.9","36.0","27.5","12.2","7.8","13.7","45.9","19.1","20.3","37.8","14.7","18.8","4.7","8.0","18.2","26.0","17.8","17.1","30.2","20.9","10.3","1.0","0.5","0.6",
+
+"3.5","20.6","5.4","20.6","2.8","1.7","4.0","10.3","50.4","11.2","13.9","13.1","8.1","9.1","8.6","9.9","15.3","9.2","8.2","22.8","13.8","10.0","8.6","5.1","22.0","7.2","21.0","24.5","31.8","16.8","8.7","28.4","11.0","25.9","11.4","14.6","25.2","19.6","34.8","11.5","21.8","19.2","14.7","28.6","9.6","12.6","39.7","18.2","19.5","32.6","12.3","16.9","6.2","5.1","16.4","21.9","5.6","24.4","30.1","26.8","13.9","2.0","0.2","0.9");
+
+organism = new Array("Homo sapiens","Mus musculus","Drosophila melanogaster","Arabidopsis thaliana","Saccharomyces cerevisiae","Escherichia coli");
+
+// забираем значения, заданные в форме
+org = document.ftransl.org.selectedIndex;
+str = document.ftransl.str.value;
+r = parseFloat(document.ftransl.r.value);
+if(isNaN(r)||r==0){alert("\"Critical frequency (per 1000)\" should be number."); document.ftransl.r.focus(); return true;};
+r = Math.abs(r);
+document.ftransl.r.value = r;
+name_seq = document.ftransl.s_name.value;
+
+// приводим "str" к стандартному виду который будет называться "nseq"
+nseq = ""
+nseq = str.toLowerCase();
+nseq = nseq.replace(/t/g,"u");
+nseq = nseq.replace(/[^agcu]/g,"");
+lnseq = nseq.length;
+if(lnseq<3){alert("The sequence should be at least three nucleotides long."); document.ftransl.str.focus(); return true;};
+
+// транслируем нуклеотидную последовательность в номера, соответствующие индивидуальным кодонам
+aa = new Array()
+prot = "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;";
+aalett = "";
+codseq = "";
+
+i3 = 0;
+aalength = Math.floor(nseq.length/3);
+while(i3<aalength) { 
+	i3++; i4 = 0;
+	while(i4<64) {i4++; if(nseq.substring(i3*3-3,i3*3)==translation[i4-1]) {aa[i3-1] = i4-1; break};}
+}
+
+i10 = 0;
+while(i10<aalength) {i10++;
+	codseq =codseq + i10 + "  --  "+ nseq.substring(i10*3-3,i10*3) + "  --  " + treelett[aa[i10-1]] + "  --  " + freq[64*org+aa[i10-1]] + "\n";
+	t_letter = onelett[aa[i10-1]]
+	if(freq[64*org+aa[i10-1]]<r) {
+	t_letter = t_letter.toUpperCase();
+	t_letter = t_letter.bold();
+	t_letter = t_letter.fontcolor("red");
+	}
+	prot = prot + t_letter; 
+	if(Math.floor(i10/10)*10==i10) {prot = prot +" "}
+	if(Math.floor(i10/50)*50==i10) {
+	p_str = i10+1
+	pp = Math.log(p_str)/Math.log(10);
+	prot = prot +"<br>"
+	for(i8=0;i8<5-pp;i8++) {prot = prot +"&nbsp;" };
+	prot = prot + p_str + "&nbsp;&nbsp;"}
+}
+
+
+document.ftransl.codseq.value = codseq;
+
+
+id = window.open('','result', config='height=500,width=600,toolbar=no,menubar=yes,scrollbars=yes,resizable=yes,location=no,status=no');
+id.document.write("<title>&nbsp;&nbsp;&nbsp;Search of rear codons&nbsp;&nbsp;&nbsp;</title><BODY BGCOLOR='white'>");
+id.focus();
+id.document.write("<h3>Brief results</h3><h4>Nucleotide sequence</h4><br><TT>");
+id.document.write("&gt; ");
+id.document.write(name_seq);
+id.document.write("<br><font color='Gray'>");
+nstrings = Math.floor(nseq.length/50);
+i_out = 0;
+while(i_out<nstrings+1) {i_out++
+id.document.write("<br>");
+n_str = i_out*50-49
+qq = Math.log(n_str)/Math.log(10);
+for(i7=0;i7<5-qq;i7++) {id.document.write("&nbsp;")}
+id.document.write(n_str);
+id.document.write("&nbsp;&nbsp;");
+for(i6=0;i6<5;i6++){
+id.document.write(nseq.substring(50*i_out-50+10*i6,50*i_out-40+10*i6));
+id.document.write("&nbsp;");
+}
+}
+id.document.write("</TT></font><br>&nbsp;<br><h4>Amino acids sequence</h4><br>");
+id.document.write("&gt; ");
+id.document.write(name_seq);
+id.document.write(" ### translated in organism: ");
+id.document.write(organism[org]);
+id.document.write("<br><TT><font color='Gray'>");
+id.document.write(prot);
+id.document.write("</font></TT>");
+id.document.write("<br><br><br><br><br><br><br><br><br>");
+// закрываем окно 
+id.document.write("</body></html>");
+id.document.close();
+}
+// -->
+</script>
+<div align="center">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="1157" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Search of rare codons in nucleotide sequence</font></b></p>
+			<p align="center">&nbsp;</p>
+			</td>
+		</tr>
+		<div class="prot">
+<!-- протокол начало-->
+<ul type="disc">
+<form name="ftransl" id="ftransl">
+
+		<tr>
+			<td bgcolor="#EAF0FF" height="1051" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<table border="1" width="733" cellspacing="0" cellpadding="0" height="513">
+				<tr>
+					<td width="732" valign="middle" align="left" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+					<table border="0" cellspacing="0" cellpadding="0" style="border-width:0px; " width="729" height="1055">
+						<tr>
+							<td align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="59" valign="middle" bordercolor="#808080" colspan="2">
+							<p align="center"><font face="Tahoma">&nbsp;<br>
+							Name (not necessary): </b>&nbsp;
+							<input type="text" size="10" name="s_name"> <br>
+&nbsp;</font></p>
+							</td>
+						</tr>
+						<tr>
+							<td align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="40" bordercolor="#808080" valign="middle" colspan="2">
+							<p align="center"><font face="Tahoma">&nbsp;<br>
+							Nucleotide sequence in the proper reading frame<br>
+							(case insensitive, disregarded all letters except: aAgGcCtTuU):&nbsp;
+							<br>
+&nbsp;</font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="132" bordercolor="#808080" colspan="2">
+							<p align="center"><font face="Tahoma">&nbsp;<br>
+							<textarea cols="50" rows="8" name="str"></textarea>
+							<br>
+&nbsp;</font></p>
+							</td>
+						</tr>
+						<tr>
+							<td width="759" align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="49" colspan="2">
+							<p align="center"><font face="Tahoma">Critical frequency 
+							(per 1000): </b>&nbsp;<input type="text" size="5" value="2.5" name="r">
+							</font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-style:none; border-width:medium; " height="49" colspan="2">
+							<p align="center"><font face="Tahoma">Organism: </b>&nbsp;<select name="org">
+							<option>&nbsp; Homo sapiens</option>
+							<option>&nbsp; Mus musculus</option>
+							<option>&nbsp; Drosophila melanogaster</option>
+							<option>&nbsp; Arabidopsis thaliana</option>
+							<option>&nbsp; Saccharomyces cerevisiae</option>
+							<option selected>&nbsp; Escherichia coli</option>
+							</select></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td width="364" bgcolor="#EAF0FF" style="border-style:none; border-width:medium; " height="68">
+							<input type="image" src="buttons/6.png" onclick="transl();return false;" align="right"></font>
+							</font></td>
+							<td width="365" bgcolor="#EAF0FF" style="border-style:none; border-width:medium; " height="68">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></td>
+						</tr>
+						<tr>
+							<td width="759" style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="31" bordercolor="#808080" colspan="2">
+							<p align="center"><font face="Tahoma">Detailed results:</font></p>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" height="358" bordercolor="#808080" colspan="2">
+							<p align="center"><font face="Tahoma">
+							<textarea cols="50" rows="18" name="codseq" onfocus="this.blur()"></textarea></font></p>
+							<p></p>
+							</td>
+						</tr>
+						<tr>
+							<td width="759" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="195" colspan="2">
+							<p class="tx" style="margin-left: 15px; margin-right: 15px">
+							<font face="Tahoma">&nbsp;<br>
+							This program helps to find rare codons in the coding 
+							region. Rare codons may induce problems when protein 
+							should be expressed in heterologous organism. Codon 
+							frequencies were taken from &quot;<a href="http://www.kazusa.or.jp/codon/" target="_blank">Codon-Usage 
+							Database</a>&quot; that contains 392,382 CDS&#39;s from 11,713 
+							organisms. </font></p>
+							<p class="tx" style="margin-left: 15px; margin-right: 15px">
+							<font face="Tahoma">It is also possible to use the form 
+							for translation of nucleic acids. But more convenient 
+							is &quot;<a href="01_13.htm">6 Frame Translation</a>&quot;. For 
+							manipulations with nucleic acid sequence (reverse, reverse/complement, 
+							double stranded) it is possible to use &quot;<a href="01_12.htm">Sequence 
+							Utilities</a>&quot; program.&nbsp; <br>
+							<br>
+&nbsp;</font></p>
+							</td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				</td>
+				</tr>
+			</table>
+			</form>
+			</ul>
+<!-- протокол конец-->
+</div>
+			</td>
+		</tr>
+	</table>
+</div>

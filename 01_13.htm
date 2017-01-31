@@ -1,0 +1,462 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+translation = new Array("cga","cgc","cgg","cgt","aga","agg","cta","ctc","ctg","ctt","tta","ttg","tca","tcc","tcg","tct","agc","agt","aca","acc","acg","act","cca","ccc","ccg","cct","gca","gcc","gcg","gct","gga","ggc","ggg","ggt","gta","gtc","gtg","gtt","aaa","aag","aac","aat","caa","cag","cac","cat","gaa","gag","gac","gat","tac","tat","tgc","tgt","ttc","ttt","ata","atc","att","atg","tgg","taa","tag","tga","acs","ggs","gcs","gts","cgs","ccs","tcs","acw","atw","ggw","gcw","gtw","cgw","ccw","tcw","tra","aar","agr","acr","gar","ggr","gcr","gtr","car","cgr","ccr","ttr","tar","tcr","yta","ytg","aay","agy","acy","aty","gay","ggy","gcy","gty","cay","cgy","ccy","tty","tay","tgy","tcy","mga","mgg","acm","atm","ggm","gcm","gtm","cgm","ccm","tcm","ack","ggk","gck","gtk","cgk","cck","tck","ach","ath","ggh","gch","gth","cgh","cch","tch","acb","ggb","gcb","gtb","cgb","ccb","tcb","acd","ggd","gcd","gtd","cgd","ccd","tcd","acv","ggv","gcv","gtv","cgv","ccv","tcv","acn","ggn","gcn","gtn","cgn","ccn","tcn","cts","ctw","ctr","cty","ctk","ctd","ctv","cth","ctb","ctn","ctm","ytr","mgr");
+
+treelett = new Array("Arg","Arg","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Leu","Leu","Ser","Ser","Ser","Ser","Ser","Ser","Thr","Thr","Thr","Thr","Pro","Pro","Pro","Pro","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","Lys","Lys","Asn","Asn","Gln","Gln","His","His","Glu","Glu","Asp","Asp","Tyr","Tyr","Cys","Cys","Phe","Phe","Ile","Ile","Ile","Met","Trp","Oc*","Am*","Op*","Thr","Gly","Ala","Val","Arg","Pro","Ser","Thr","Ile","Gly","Ala","Val","Arg","Pro","Ser","_*_","Lys","Arg","Thr","Glu","Gly","Ala","Val","Gln","Arg","Pro","Leu","_*_","Ser","Leu","Leu","Asn","Ser","Thr","Ile","Asp","Gly","Ala","Val","His","Arg","Pro","Phe","Tyr","Cys","Ser","Arg","Arg","Thr","Ile","Gly","Ala","Val","Arg","Pro","Ser","Thr","Gly","Ala","Val","Arg","Pro","Ser","Thr","Ile","Gly","Ala","Val","Arg","Pro","Ser","Thr","Gly","Ala","Val","Arg","Pro","Ser","Thr","Gly","Ala","Val","Arg","Pro","Ser","Thr","Gly","Ala","Val","Arg","Pro","Ser","Thr","Gly","Ala","Val","Arg","Pro","Ser","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Leu","Arg");
+
+onelett = new Array(".R.",".R.",".R.",".R.",".R.",".R.",".L.",".L.",".L.",".L.",".L.",".L.",".S.",".S.",".S.",".S.",".S.",".S.",".T.",".T.",".T.",".T.",".P.",".P.",".P.",".P.",".A.",".A.",".A.",".A.",".G.",".G.",".G.",".G.",".V.",".V.",".V.",".V.",".K.",".K.",".N.",".N.",".Q.",".Q.",".H.",".H.",".E.",".E.",".D.",".D.",".Y.",".Y.",".C.",".C.",".F.",".F.",".I.",".I.",".I.",".M.",".W.",".*.",".*.",".*.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".I.",".G.",".A.",".V.",".R.",".P.",".S.",".*.",".K.",".R.",".T.",".E.",".G.",".A.",".V.",".Q.",".R.",".P.",".L.",".*.",".S.",".L.",".L.",".N.",".S.",".T.",".I.",".D.",".G.",".A.",".V.",".H.",".R.",".P.",".F.",".Y.",".C.",".S.",".R.",".R.",".T.",".I.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".I.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".T.",".G.",".A.",".V.",".R.",".P.",".S.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".L.",".R.");
+
+nucleotides = new Array("a","g","c","t","n","s","w","r","y","m","k","h","b","d","v");
+
+complement = new Array("t","c","g","a","n","s","w","y","r","k","m","d","v","h","b");
+
+
+var x;
+var al;
+var name_seq;
+aa = new Array()
+
+function aa_tr(sequence,frame)
+{
+aaseq = "";
+i1 = 0;
+sequence = sequence.substring(frame-1);
+aalength = Math.floor(sequence.length/3);
+while(i1<aalength) { 
+	i1++; i2 = 0; let = x;
+	while(i2<176) {i2++; if(sequence.substring(i1*3-3,i1*3)==translation[i2-1]) {let = aa[i2-1]; break}} aaseq = aaseq + let;
+}
+aastrings = Math.floor(aalength/al);
+i1 = 0;
+aaout = "";
+while(i1<aastrings+1) {i1++; aaout = aaout + aaseq.substring((i1-1)*al*3, i1*al*3)+"<br>";}
+aaout = aaout.replace(/\./g,"");
+id.document.write(name_seq + "  -  " + aalength + " codons" + "<br><font color='Gray'>" + aaout + "</font>");
+return aaseq;
+}
+
+function translat()
+{
+// забираем значения, заданные в форме
+name_seq = document.transl.s_name.value;
+str = document.transl.str.value;
+
+
+if (document.transl.code.selectedIndex == 0) {aa = onelett; x= ".X.";} else {aa = treelett; x= "Xxx";};
+
+var nl = parseFloat(document.transl.nl.value); 
+if(isNaN(nl)){alert("\"Nucleotides per line\" should be the number."); document.transl.nl.focus(); return true;};
+nl = Math.floor(Math.abs(nl));
+document.transl.nl.value = nl;
+
+al = parseFloat(document.transl.al.value); 
+if(isNaN(nl)){alert("\"Aminoacids per line\" should be the number."); document.transl.al.focus(); return true;};
+al = Math.floor(Math.abs(al));
+document.transl.al.value = al;
+
+// приводим "str" к стандартному виду который будет называться "nseq"
+nseq = ""
+nseq = str.toLowerCase();
+nseq = nseq.replace(/u/g,"t");
+nseq = nseq.replace(/[^agctswrymkhbdvn]/g,"");
+lnseq = nseq.length;
+if(lnseq<3){alert("The sequence should be at least three nucleotides long."); document.transl.str.focus(); return true;};
+
+// проверяем, что какие-то преобразования выбраны
+if(!(document.transl.meth0.checked || document.transl.meth1.checked || document.transl.meth2.checked || document.transl.meth2_1.checked || document.transl.meth2_2.checked || document.transl.meth2_3.checked || document.transl.meth2_4.checked || document.transl.meth2_5.checked || document.transl.meth2_6.checked)) {alert("No manipulations were selected."); document.transl.meth0.focus(); return true;}
+
+// открываем окно 
+id = window.open('','result', config='height=500,width=600,toolbar=yes,menubar=yes,scrollbars=yes,resizable=yes,location=no,status=no');
+id.document.write("<title>&nbsp;&nbsp;&nbsp;6 Frame Translation&nbsp;&nbsp;&nbsp;</title><BODY BGCOLOR='white'>");
+id.focus();
+nstrings = Math.floor(lnseq/nl);
+
+// выводим исходную последовательность
+if(document.transl.meth0.checked) {
+i1 = 0;
+out0_seq = "";
+while(i1<nstrings+1) { i1++; out0_seq = out0_seq + nseq.substring(i1*nl-nl, i1*nl)+"<br>";}
+
+id.document.write("<h4>Original sequence:</h4><TT>");
+id.document.write("&gt; " + name_seq + "  -  " + lnseq + " nucleotides" + "<br><font color='Gray'>" + out0_seq + "</TT></font>");
+}
+
+
+if(document.transl.meth1.checked || document.transl.meth2.checked|| document.transl.meth2_4.checked|| document.transl.meth2_5.checked|| document.transl.meth2_6.checked) {
+i2 = 0;
+c_seq = "";
+while(i2<lnseq+1) {
+i2++; i3 = 0;
+	while(i3<15) {i3++; if(nseq.charAt(lnseq - i2 + 1)==nucleotides[i3-1]) {c_seq = c_seq + complement[i3-1]; break};
+	}
+}
+}
+
+// выводим комплементарную последовательность
+if(document.transl.meth1.checked) {
+
+i6 = 0;
+out2_seq = "";
+while(i6<nstrings+1) { i6++; out2_seq = out2_seq + c_seq.substring(i6*nl-nl, i6*nl)+"<br>";}
+id.document.write("<h4>Complementary sequence:</h4><TT>" + "&gt; (5' --&gt; 3' complementary sequence) " + name_seq + "  -  " + lnseq + " nucleotides" + "<br><font color='Gray'>" + out2_seq + "</font></TT>");
+}
+
+
+if(document.transl.meth2.checked || document.transl.meth2_1.checked || document.transl.meth2_2.checked || document.transl.meth2_3.checked) {
+id.document.write("<h4><font color=Red>Translation in forward direction:</font></h4>");
+}
+
+// выводим aa последовательность в +1 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_1.checked) {
+id.document.write("<TT>" + "<font color=Red>frame +1</font><br>&gt; ");
+aa1 = aa_tr(nseq,1);
+id.document.write("</TT><br>");
+}
+
+// выводим aa последовательность в +2 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_2.checked) {
+id.document.write("<TT>" + "<font color=Red>frame +2</font><br>&gt; ");
+aa2 = aa_tr(nseq,2);
+id.document.write("</TT><br>");
+}
+
+// выводим aa последовательность в +3 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_3.checked) {
+id.document.write("<TT>" + "<font color=Red>frame +3</font><br>&gt; ");
+aa3 = aa_tr(nseq,3);
+id.document.write("</TT><br>");
+}
+
+
+if(document.transl.meth2.checked || document.transl.meth2_4.checked || document.transl.meth2_5.checked || document.transl.meth2_6.checked) {
+id.document.write("<h4><font color=Blue>Translation in reverse direction:</font></h4>");
+}
+
+// выводим aa последовательность в -1 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_4.checked) {
+id.document.write("<TT>" + "<font color=Blue>frame -1</font><br>&gt; ");
+aa4 = aa_tr(c_seq,1);
+id.document.write("</TT><br>");
+}
+
+// выводим aa последовательность в -2 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_5.checked) {
+id.document.write("<TT>" + "<font color=Blue>frame -2</font><br>&gt; ");
+aa5 = aa_tr(c_seq,2);
+id.document.write("</TT><br>");
+}
+
+// выводим aa последовательность в -3 рамке считывания
+if(document.transl.meth2.checked || document.transl.meth2_6.checked) {
+id.document.write("<TT>" + "<font color=Blue>frame -3</font><br>&gt; ");
+aa6 = aa_tr(c_seq,3);
+id.document.write("</TT><br>");
+}
+
+// выводим всё вместе
+if(document.transl.meth3.checked) 
+{
+
+alignstrings = Math.floor(lnseq/3/al);
+if(document.transl.meth2.checked || document.transl.meth2_1.checked || document.transl.meth2_2.checked || document.transl.meth2_3.checked) 
+{
+	id.document.write("<h4>Sequences alignment:</h4><TT>");
+	id.document.write("&gt; " + name_seq + "  -  " + lnseq + " nucleotides" + "<br><font color=Red>Translation in forward direction:</font><br><tt><font color='Gray'>");
+	k1 = 0;
+	while(k1<alignstrings+1) {
+	k1++; 
+	id.document.write("<br><font color=Red>DNA:</font>&nbsp;&nbsp;" + nseq.substring(k1*al*3-al*3, k1*al*3));
+	if(document.transl.meth2.checked || document.transl.meth2_1.checked) {id.document.write("<br><font color=Red>+1fr:</font>&nbsp;" + aa1.substring((k1-1)*al*3, k1*al*3))};
+	if(document.transl.meth2.checked || document.transl.meth2_2.checked) {id.document.write("<br><font color=Red>+2fr:</font>&nbsp;&nbsp;" + aa2.substring((k1-1)*al*3, k1*al*3))};
+	if(document.transl.meth2.checked || document.transl.meth2_3.checked) {id.document.write("<br><font color=Red>+3fr:</font>&nbsp;&nbsp;&nbsp;" + aa3.substring((k1-1)*al*3, k1*al*3))};
+id.document.write("<br><br>");
+	}
+}
+
+if(document.transl.meth2.checked || document.transl.meth2_4.checked || document.transl.meth2_5.checked || document.transl.meth2_6.checked) {
+	id.document.write("</font></tt>&gt; " + name_seq + "  -  " + lnseq + " nucleotides" + "<br><font color=Blue>Translation in reverse direction:</font><br><tt><font color='Gray'>");
+	k1 = 0;
+	while(k1<alignstrings+1) {
+	k1++; 
+	id.document.write("<br><font color=Blue>DNA:</font>&nbsp;&nbsp;" + c_seq.substring((k1-1)*al*3, k1*al*3));
+	if(document.transl.meth2.checked || document.transl.meth2_4.checked) {id.document.write("<br><font color=Blue>-1fr:</font>&nbsp;" + aa4.substring((k1-1)*al*3, k1*al*3))};
+	if(document.transl.meth2.checked || document.transl.meth2_5.checked) {id.document.write("<br><font color=Blue>-2fr:</font>&nbsp;&nbsp;" + aa5.substring((k1-1)*al*3, k1*al*3))};
+	if(document.transl.meth2.checked || document.transl.meth2_6.checked) {id.document.write("<br><font color=Blue>-3fr:</font>&nbsp;&nbsp;&nbsp;" + aa6.substring((k1-1)*al*3, k1*al*3))};
+id.document.write("<br><br>");
+	}
+}
+}
+
+// закрываем окно 
+id.document.write("</font></tt></body></html>");
+id.document.close();
+}
+// -->
+</script>
+<div align="center">
+<div class="prot">
+<!-- протокол начало-->
+<ul type="disc">
+<form name="transl" id="transl">
+	<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			6 Frame Translation</font></b></p>
+			<p align="center">&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<table border="1" width="733" cellspacing="0" cellpadding="0" height="513">
+				<tr>
+					<td width="732" valign="middle" align="left" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+					<div align="center">
+						<table border="0" width="729" height="602" cellspacing="0" cellpadding="0" style="border-width:0px; ">
+							<tr>
+								<td width="372" colspan="4" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">
+								<p style="margin-left: 10px"><b>
+								<font face="Tahoma">Name (not necessary):</font></b></p>
+								</td>
+								<td colspan="3" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">
+								<font face="Tahoma">&nbsp;
+								<input type="text" size="10" name="s_name"></font></td>
+							</tr>
+							<tr>
+								<td width="372" colspan="4" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">
+								<p style="margin-left: 10px"><b>
+								<font face="Tahoma">Nucleotide sequence without 
+								name:</font></b></p>
+								</td>
+								<td colspan="3" align="left" bgcolor="#EAF0FF" style="border-style: none; border-width: medium" height="44" valign="middle" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="7" align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">
+								<p align="center"><b><font face="Tahoma">(case insensitive, 
+								disregarded all letters except: agctuswrymkhbdvn)</font></b></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">&nbsp;</td>
+								<td width="577" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080" colspan="5">
+								<p align="center"><font face="Tahoma">&nbsp;<br>
+								<textarea cols="50" rows="8" name="str"></textarea>
+								<br>
+&nbsp;</font></p>
+								</td>
+								<td width="105" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" height="40" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" bordercolor="#808080">&nbsp;</td>
+								<td width="577" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" bordercolor="#808080" colspan="5">
+								<p align="center"><font face="Tahoma">&nbsp;<input type="image" src="buttons/6.png" onclick="translat();return false;" name="I4">&nbsp;
+								<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></p>
+								</td>
+								<td width="105" bgcolor="#EAF0FF" align="left" style="border-style: none; border-width: medium" bordercolor="#808080">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="768" colspan="7" align="left" bgcolor="#C1D0EF" style="border-style: none; border-width: medium" height="40">
+								<p style="margin-left: 10px">
+								<font face="Tahoma"><b>&nbsp;<br>
+								Nucleotide sequence: <br>
+								</b><br>
+&nbsp;&nbsp; Output: <input type="text" size="3" name="nl" value="60"> nucleotides 
+								in one line;<br>
+&nbsp;&nbsp; <input type="checkbox" name="meth0" checked="checked">display the initial 
+								sequence;<br>
+&nbsp;&nbsp; <input type="checkbox" name="meth1">display complementary sequence 
+								in 5&#39; --&gt; 3&#39; direction; <br>
+&nbsp;</font></p>
+								</td>
+							</tr>
+							<tr>
+								<td width="372" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="4">
+								<p style="margin-left: 10px">
+								<font face="Tahoma"><b>Translation:</b></font></p>
+								</td>
+								<td width="357" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="3">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="372" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="4">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Output:&nbsp;
+								<input type="text" size="5" name="al" value="20">&nbsp;&nbsp; 
+								aminoacids in one line, code: </font></p>
+								</td>
+								<td width="357" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="3">
+								<font face="Tahoma"><select name="code">
+								<option>&nbsp; one letter&nbsp; </option>
+								<option selected>&nbsp; three letter&nbsp;
+								</option>
+								</select></font></td>
+							</tr>
+							<tr>
+								<td width="372" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="4">
+								<p style="margin-left: 10px">
+								<font face="Tahoma">Frame number:</font></p>
+								</td>
+								<td width="357" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="3">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_1" checked="checked"></font></tt><font face="Tahoma"><tt> 
+								+1;</tt></font></td>
+								<td width="95" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_2"></font></tt><font face="Tahoma"><tt> 
+								+2;</tt></font></td>
+								<td width="89" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_3"></font></tt><font face="Tahoma"><tt> 
+								+3;</tt></font></td>
+								<td width="148" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2"></font></tt><font face="Tahoma"><tt> 
+								all</tt></font></td>
+								<td width="104" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+								<td width="105" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+								<td width="94" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_4"></font></tt><font face="Tahoma"><tt> 
+								-1;</tt></font></td>
+								<td width="95" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_5"></font></tt><font face="Tahoma"><tt> 
+								-2;</tt></font></td>
+								<td width="89" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">
+								<tt><font face="Tahoma">
+								<input type="checkbox" name="meth2_6"></font></tt><font face="Tahoma"><tt> 
+								-3;</tt></font></td>
+								<td width="148" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+								<td width="104" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+								<td width="105" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="35">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="653" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40" colspan="6">
+								<p style="margin-left: 10px">
+								<font face="Tahoma"><b>&nbsp;<br>
+								Alignment: <br>
+								</b><br>
+&nbsp;&nbsp; <input type="checkbox" name="meth3" checked="checked">align amino acids 
+								sequences relative to nucleic acid.</font></p>
+								</td>
+								<td width="105" bgcolor="#EAF0FF" align="left" style="border-style:none; border-width:medium; " height="40">&nbsp;</td>
+							</tr>
+							<tr>
+								<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" bordercolor="#808080" colspan="7">&nbsp;</td>
+							</tr>
+							<tr>
+								<td width="768" colspan="7" style="border-style: none; border-width: medium" bgcolor="#C1D0EF" height="40">
+								<p class="tx" style="margin-left: 10px">
+								<font face="Tahoma">&nbsp;<br>
+								This program translate nucleic acid sequence. Rare 
+								codons may be displayed with &quot;<a href="01_11.htm">Search 
+								of rare codons in nucleotide sequence</a>&quot;.</font></p>
+								<p class="tx" style="margin-left: 10px">
+								<font face="Tahoma">For manipulations with nucleic 
+								acid sequence (reverse, reverse/complement, double 
+								stranded) it is possible to use
+								<a href="01_12.htm">Sequence Utilities</a> program.</font></p>
+&nbsp;</td>
+							</tr>
+							<tr>
+								<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" align="center">&nbsp;</td>
+								<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" colspan="5" align="center">
+								<p class="tx"><font face="Tahoma">&nbsp;<br>
+								Standard symbols for polymorph nucleotides: <br>
+&nbsp;</font></p>
+								<table width="350" border="0" cellspacing="0" cellpadding="0">
+									<tr bgcolor="000000">
+										<td>
+										<table width="350" border="0" cellspacing="1" cellpadding="2px" align="center" height="144">
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">S</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">g,C</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">H</font></td>
+												<td bgcolor="#ffffff" width="88" height="25">
+												<font face="Tahoma">A,C,T</font></td>
+											</tr>
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">W</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">A,T</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">B</font></td>
+												<td bgcolor="#ffffff" width="88" height="25">
+												<font face="Tahoma">C,g,T</font></td>
+											</tr>
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">R</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">A,g</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">D</font></td>
+												<td bgcolor="#ffffff" width="88" height="25">
+												<font face="Tahoma">A,g,T</font></td>
+											</tr>
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">Y</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">C,T</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">V</font></td>
+												<td bgcolor="#ffffff" width="88" height="25">
+												<font face="Tahoma">A,C,g</font></td>
+											</tr>
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">M</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">A,C</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">N</font></td>
+												<td bgcolor="#ffffff" width="88" height="25">
+												<font face="Tahoma">A,g,C,T</font></td>
+											</tr>
+											<tr align="center">
+												<td bgcolor="#eeeeee" width="87" height="25">
+												<font face="Tahoma">K</font></td>
+												<td bgcolor="#ffffff" width="87" height="25">
+												<font face="Tahoma">g,T</font></td>
+												<td bgcolor="#eeeeee" width="87" height="25">&nbsp;</td>
+												<td bgcolor="#ffffff" width="88" height="25">&nbsp;</td>
+											</tr>
+										</table>
+										</td>
+									</tr>
+								</table>
+								</td>
+								<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" align="center">&nbsp;</td>
+							</tr>
+							<tr>
+								<td style="border-style: none; border-width: medium" bgcolor="#EAF0FF" colspan="7">&nbsp;</td>
+							</tr>
+						</table>
+					</div>
+					</td>
+				</tr>
+				</td>
+				</tr>
+			</table>
+			</div>
+			</td>
+		</tr>
+	</table>
+			</form>
+			</ul>
+<!-- протокол конец-->
+</div>
+</div>

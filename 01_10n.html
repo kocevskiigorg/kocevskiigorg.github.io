@@ -1,0 +1,145 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+var chkR=true;
+var chk1=true;
+var chk2=true;
+var r=0;
+function R()
+{
+chkR=true;
+r = parseFloat(document.cf.r.value); 
+// ##03
+if(isNaN(r)||r==0){alert("\"Radius [mm]\" should be number."); document.cf.r.focus(); return true;};
+r = Math.abs(r);
+document.cf.r.value=r+"mm"
+chkR=false;
+}
+function conv()
+{
+if(chk1==0){conv1()};
+if(chk2==0){conv2()};
+}
+function conv1()
+{
+R(); 
+if(chkR){return true};
+w1=parseFloat(document.cf.w1.value); 
+// ##04
+if(isNaN(w1)){alert("\"Speed\" should be number."); document.cf.w1.focus(); return true;};
+	w1=Math.abs(w1);
+	a1=0.0011946*r*Math.pow(w1,2);
+	r=Math.round(a1*1000)/1000;
+	if(r>0){a1=r};
+	document.cf.w1.value=w1;
+	document.cf.a1.value=a1;
+	chk1=false;
+}
+function conv2()
+{
+R(); 
+if(chkR){return true};
+a2=parseFloat(document.cf.a2.value); 
+// ##05
+if(isNaN(a2)){alert("\"RCF\" should be number."); document.cf.a2.focus(); return true;};
+	a2=Math.abs(a2);
+	w2=Math.pow(837.1*a2/r,0.5);
+	r=Math.round(w2*1000)/1000;
+	if(r>0){w2=r};
+	document.cf.w2.value=w2;
+	document.cf.a2.value=a2;
+	chk2=false;
+}
+// -->
+</script>
+<div align="center">
+	<table border="5" width="70%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><b><font face="Tahoma" size="5">Conversion: speed 
+			of rotation [krpm] - Relative Centrifuge Force [kg]</font></b></p>
+			</td>
+		</tr>
+		<tr>
+			<td height="60" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<div class="prot">
+				<form name="cf" id="cf">
+					<p class="tx" align="center" style="margin-left: 10px; margin-right: 10px">
+					<font face="Tahoma">This program helps to convert the speed 
+					of centrifugation [krpm] in relative centrifuge force (RCF)[kg]. 
+					The radius of rotor [mm] should be known for the calculation.</font></p>
+		
+			</td>
+		</tr>
+		<tr>
+			<td height="38" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma">
+			<input type="image" src="buttons/2.png" onclick="reset">
+			</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="45" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma"><b>Radius of rotor [mm]: </b>
+			<input type="text" size="8" value="50" name="r" onchange="conv()"></font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#C1D0EF" height="40" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma" color="#FF0000"><i><b>[krpm] 
+			</b>--&gt; 
+			<b>[kg]:</b></i></font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<div align="center">
+				<table border="0" width="687">
+					<tr>
+						<td width="22"><font face="Tahoma">
+						<input size="13" value="1" name="w1" onchange="conv1()" style="float: right"></font></td>
+						<td width="9%"><b><font face="Tahoma">[krpm]</font></b></td>
+						<td valign="middle">
+						<p align="center"><font face="Tahoma">
+						<input type="image" src="buttons/1.png" onclick="conv1();return false;">
+						</font></p>
+						</td>
+						<td width="22"><font face="Tahoma">
+						<input type="text" size="13" name="a1" onfocus="this.blur()"></font></td>
+						<td width="9%"><b><font face="Tahoma">[kg]</font></b></td>
+					</tr>
+				</table>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#C1D0EF" height="35" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<p align="center"><font face="Tahoma" color="#FF0000"><i><b>[kg] </b>--&gt; 
+			<b>[krpm]:</b></i></font></p>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+			<div align="center">
+				<table border="0" width="687">
+					<tr>
+						<td width="22"><font face="Tahoma">
+						<input size="13" value="10" name="a2" onchange="conv2()" style="float: right"></font></td>
+						<td width="9%"><b><font face="Tahoma">[kg]</font></b></td>
+						<td valign="middle">
+						<p align="center"><font face="Tahoma">
+						<input type="image" src="buttons/1.png" onclick="conv2();return false;"></font></p>
+						</td>
+						<td width="22"><font face="Tahoma">
+						<input type="text" size="13" name="w2" onfocus="this.blur()"></font></td>
+						<td width="9%"><b><font face="Tahoma">[krpm]</font></b></td>
+					</tr>
+				</table>
+			</div>
+			</td>
+		</tr>
+				</form>
+			</div>
+			</table>
+

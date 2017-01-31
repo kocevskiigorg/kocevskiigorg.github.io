@@ -1,0 +1,79 @@
+	<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var chkA;
+var nA=0; 
+var q=0; 
+var m=0; 
+An=new Array("mol", "mmol", "micromol", "nmol", "pmol", "fmol", "amol");
+function resA()
+{
+nA=0; 
+chkA=true;
+q=0; 
+m=0; 
+}
+function conv()
+{
+A = parseFloat(document.bio.A.value); 
+// ##03
+if(isNaN(A)||A==0){alert("\"Specific activity [kCi/mmol]\" should be number."); document.bio.A.focus(); return true;};
+A = Math.abs(A);
+document.bio.A.value=A+"kCi/mmol"
+act=parseFloat(document.bio.act.value); 
+// ##04
+if(isNaN(act)){alert("\"Activity\" should be number."); document.bio.act.focus(); return true;};
+act = Math.abs(act);
+q=act/A/Math.pow(10,12);
+m=324.5*q;
+n1=0;
+	while(n1<6&&q<1) {n1++; q = q*1000};
+	r1=Math.round(q*100)/100;
+	if(r1>0){q=r1};
+	document.bio.q.value=q+An[n1];
+n2=0;
+	while(n2<6&&m<1) {n2++; m = m*1000};
+	nA=n2
+	r2=Math.round(m*100)/100;
+	if(r2>0){m=r2};
+	document.bio.m.value=m;
+	document.bio.DA.selectedIndex=nA;
+	document.bio.act.value=act;
+	chkA=false;
+}
+function rclc()
+{
+// ##05
+if(chkA){alert("Only after calculation."); return true};
+document.bio.m.value = m*Math.pow(10,3*document.bio.DA.selectedIndex)/Math.pow(10,3*nA);
+}
+// -->
+</script>
+
+<a name="start"></a>
+<table width="750" border="0" cellspacing="0" cellpadding="0">
+<tr><td colspan="2" width="610" valign="top">
+<p class="h1">
+<!-- ##01 -->Conversion: radioactivity - biological amount of dNTP's
+</p></td></tr>
+<tr><td width=610 valign="top">
+<div class="prot"><ul type="disc"><form name="bio" id="bio">
+<!-- протокол начало-->
+<p class=tx><!-- ##06 -->The calculation of weight of particular amount of radioactive dNTPs. It may be helpful for estimation of how much template should be taken for DNA or RNA labeling. The specific activity [kCi/mmol] should be taken from the vendor catalog.</p>
+<font color="Olive"><!-- ##07 -->Note: JavaScript must be enabled on your Web browser to use the program.</font></p><br>
+<table width=500 border="0" cellspacing="0" cellpadding="5"><tr><td align=right bgcolor="#eeeeee"><b><!-- ##08 -->Specific activity [kCi/mmol]:</b>&nbsp;&nbsp;<input type="text" size=7 name="A" onChange='conv()' value=6><hr></td></tr>
+<tr><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=100 name="act" onChange='conv()'>&nbsp;[&micro;Ci]&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Calculate" onClick='conv()'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size=10 name="m" onFocus="this.blur()">&nbsp;<select name="DA" onChange='rclc()'>
+	<option>&nbsp;&nbsp;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;mg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;&micro;g&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ng&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;fg&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ag&nbsp;&nbsp;
+</select><br>
+<input type="Reset" value="Reset" onClick='resA()'>&nbsp;&nbsp;<input type="text" size=20 name="q" onFocus="this.blur()"></td></tr></table>
+</form>
+</ul></div>
+</td></TR>
+</TABLE>

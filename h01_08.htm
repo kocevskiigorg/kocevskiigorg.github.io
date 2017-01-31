@@ -1,0 +1,581 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+function helpdim()
+{
+window.open('protocol_calculator/scripts/h01_08.html','help', config='height=500,width=500,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+var chk14=true;
+var D14=0;
+var n14=0;
+D14v=new Array(0.000001, 0.001, 1, 1000, 1000000, 2200000, 0.000037, 0.037, 37, 37000);
+D14n=new Array("Ci", "mCi", "microCi", "nCi", "pCi", "cpm", "GBq", "MBq", "kBq", "Bq");
+function res14()
+{D14=0;
+n14=0;
+chk14=true;}
+function insert14()
+{
+chk14=true;
+n14 = parseFloat(document.dim14.n.value); 
+// ##17
+if(isNaN(n14)){alert("Number should be in the bottom field."); document.dim14.n.focus(); return true;};
+D14 = document.dim14.D.selectedIndex
+n14 = Math.abs(n14);
+document.dim14.na.value=n14+D14n[D14];
+chk14=false;
+}
+function insertN14()
+{
+if(chk14){return true};
+insert14()
+}
+function calc14()
+{
+if(chk14){return true};
+Da = document.dim14.D.selectedIndex;
+n_new=n14/D14v[D14]*D14v[Da];
+document.dim14.n.value =n_new; 
+}
+var chk1=true;
+var D1=0;
+var n1=0;
+D1v=new Array(1000, 1, 0.01, 0.001, 0.000001, 0.0000000001, 0.0254, 219.5, 183, 5560, 4830, 0.0021, 0.2, 0.3, 1609.34, 1852.00, 201.168, 1.82880, 0.304800, 20.1168, 30.48, 0.9144);
+// ##01
+D1n=new Array("km", "m", "cm", "mm", "microm", "A", "inch", "cable's (US)", "cable's (GB)", "league (sea.)", "league (stat.)", "line", "link (surv.)", "link (eng.)", "mile (stat.)", "mile (sea.)", "fur", "fath", "ft", "ch (surv.)", "ch (eng.)", "yd");
+function res1()
+{D1=0;
+n1=0;
+chk1=true;}
+function insert1()
+{
+chk1=true;
+n1 = parseFloat(document.dim1.n.value); 
+// ##17
+if(isNaN(n1)){alert("Number should be in the bottom field."); document.dim1.n.focus(); return true;};
+D1 = document.dim1.D.selectedIndex
+n1 = Math.abs(n1);
+document.dim1.na.value=n1+D1n[D1];
+chk1=false;
+}
+function insertN1()
+{
+if(chk1){return true};
+insert1()
+}
+function calc1()
+{
+if(chk1){return true};
+Da = document.dim1.D.selectedIndex;
+n_new=n1*D1v[D1]/D1v[Da];
+document.dim1.n.value =n_new; 
+}
+
+var chk2=true;
+var D2=0;
+var n2=0;
+D2v=new Array(1000000, 1, 0.0001, 0.000001, 10000, 100, 4046.86, 0.00064516, 2589988, 2590000, 0.09290304, 0.8361274);
+// ##02
+D2n=new Array("km2", "m2", "cm2", "mm2", "hectare [ha]", "are [are] (US)", "acre [a]", "sq. inch [in2]", "sq. mile", "sq. mile (stat.)", "sq. foot [ft2]", "sq. yard [yd2]");
+function res2()
+{D2=0;
+n2=0;
+chk2=true;}
+function insert2()
+{
+chk2=true;
+n2 = parseFloat(document.dim2.n.value); 
+// ##17
+if(isNaN(n2)){alert("Number should be in the bottom field."); document.dim2.n.focus(); return true;};
+D2 = document.dim2.D.selectedIndex
+n2 = Math.abs(n2);
+document.dim2.na.value=n2+D2n[D2];
+chk2=false;
+}
+function insertN2()
+{
+if(chk2){return true};
+insert2()
+}
+function calc2()
+{
+if(chk2){return true};
+Da = document.dim2.D.selectedIndex;
+n_new=n2*D2v[D2]/D2v[Da];
+document.dim2.n.value =n_new; 
+}
+
+var chk3=true;
+var D3=0;
+var n3=0;
+D3v=new Array(1000, 0.001, 28.3168, 0.0163871, 764.555, 1, 0.001, 0.000001, 0.000000001, 140.6, 119.240, 163.659, 158.987, 115.627, 35.2391, 36.3687, 3.78541, 4.54609, 0.946353, 1.13652, 1.10122, 0.473177, 0.568261, 0.550611, 0.0295735, 0.0284131, 0.0568, 0.0142, 0.0044, 0.0000648524);
+// ##03
+D3n=new Array("m3", "cm3", "cub. foot [fti]", "cub. inch [ini]", "cub. yard [ydi]", "L", "ml", "microl", "nl", "barrel [bbl]", "barrel (US) [liq]", "barrel (GB) [liq]", "barrel (US) [oil]", "barrel (US) [dry]", "bushel (US) [bu dry]", "bushel (GB) [bu dry]", "gallon (US) [gal liq]", "gallon (GB) [gal liq]", "guart (US) [qt liq]", "guart (GB) [qt liq]", "guart (US) [qt dry]", "pint (US) [pt liq]", "pint (GB) [pt liq]", "pint (US) [pt dry]", "ounce (US) [oz liq]", "ounce (GB.) [oz liq]", "wine-glass", "table-spoon", "tea-spoon", "drop");
+
+function res3()
+{D3=0;
+n3=0;
+chk3=true;}
+function insert3()
+{
+chk3=true;
+n3 = parseFloat(document.dim3.n.value); 
+// ##17
+if(isNaN(n3)){alert("Number should be in the bottom field."); document.dim3.n.focus(); return true;};
+D3 = document.dim3.D.selectedIndex
+n3 = Math.abs(n3);
+document.dim3.na.value=n3+D3n[D3];
+chk3=false;
+}
+function insertN3()
+{
+if(chk3){return true};
+insert3()
+}
+function calc3()
+{
+if(chk3){return true};
+Da = document.dim3.D.selectedIndex;
+n_new=n3*D3v[D3]/D3v[Da];
+document.dim3.n.value =n_new; 
+}
+
+var chk4=true;
+var D4=0;
+var n4=0;
+D4v=new Array(1, 0.9000009, 360, 57.2958, 0.01666667, 0.0002777778);
+// ##04
+D4n=new Array("degree", "grad", "rev.", "rad", "min", "sec");
+
+function res4()
+{D4=0;
+n4=0;
+chk4=true;}
+function insert4()
+{
+chk4=true;
+n4 = parseFloat(document.dim4.n.value); 
+// ##17
+if(isNaN(n4)){alert("Number should be in the bottom field."); document.dim4.n.focus(); return true;};
+D4 = document.dim4.D.selectedIndex
+n4 = Math.abs(n4);
+document.dim4.na.value=n4+D4n[D4];
+chk4=false;
+}
+function insertN4()
+{
+if(chk4){return true};
+insert4()
+}
+function calc4()
+{
+if(chk4){return true};
+Da = document.dim4.D.selectedIndex;
+n_new=n4*D4v[D4]/D4v[Da];
+document.dim4.n.value =n_new; 
+}
+
+var chk5=true;
+var D5=0;
+var n5=0;
+D5v=new Array(3153600000, 31536000, 2592000, 604800, 86400, 3600, 60, 1);
+// ##05
+D5n=new Array("cent.", "year", "month", "week", "day", "hour", "minute", "second");
+
+function res5()
+{D5=0;
+n5=0;
+chk5=true;}
+function insert5()
+{
+chk5=true;
+n5 = parseFloat(document.dim5.n.value); 
+// ##17
+if(isNaN(n5)){alert("Number should be in the bottom field."); document.dim5.n.focus(); return true;};
+D5 = document.dim5.D.selectedIndex
+n5 = Math.abs(n5);
+document.dim5.na.value=n5+D5n[D5];
+chk5=false;
+}
+function insertN5()
+{
+if(chk5){return true};
+insert5()
+}
+function calc5()
+{
+if(chk5){return true};
+Da = document.dim5.D.selectedIndex;
+n_new=n5*D5v[D5]/D5v[Da];
+document.dim5.n.value =n_new; 
+}
+var chk6=true;
+var D6=0;
+var n6=0;
+D6v=new Array(1, 0.277778, 0.447040, 0.304800, 0.0254000, 331.680, 343.610, 1404.00, 1483.00, 1449.20, 1563.50);
+// ##06
+D6n=new Array("m/s", "km/h", "mile/h", "ft/s", "in/s", "Mach [0C, 1atm]", "Mach [20C, 1atm]", "sound [H2O, 0C]", "sound [H2O, 20C]", "sound [Sea, 0C]", "sound [Sea, 20C]");
+function res6()
+{D6=0;
+n6=0;
+chk6=true;}
+function insert6()
+{
+chk6=true;
+n6 = parseFloat(document.dim6.n.value); 
+// ##17
+if(isNaN(n6)){alert("Number should be in the bottom field."); document.dim6.n.focus(); return true;};
+D6 = document.dim6.D.selectedIndex
+n6 = Math.abs(n6);
+document.dim6.na.value=n6+D6n[D6];
+chk6=false;
+}
+function insertN6()
+{
+if(chk6){return true};
+insert6()
+}
+function calc6()
+{
+if(chk6){return true};
+Da = document.dim6.D.selectedIndex;
+n_new=n6*D6v[D6]/D6v[Da];
+document.dim6.n.value =n_new; 
+}
+
+var chk7=true;
+var D7=0;
+var n7=0;
+D7v=new Array(1, 9.80665, 0.3047987, 0.0254000);
+// ##07
+D7n=new Array("m/c2", "g", "ft/c2", "in/c2");
+function res7()
+{D7=0;
+n7=0;
+chk7=true;}
+function insert7()
+{
+chk7=true;
+n7 = parseFloat(document.dim7.n.value); 
+// ##17
+if(isNaN(n7)){alert("Number should be in the bottom field."); document.dim7.n.focus(); return true;};
+D7 = document.dim7.D.selectedIndex
+n7 = Math.abs(n7);
+document.dim7.na.value=n7+D7n[D7];
+chk7=false;
+}
+function insertN7()
+{
+if(chk7){return true};
+insert7()
+}
+function calc7()
+{
+if(chk7){return true};
+Da = document.dim7.D.selectedIndex;
+n_new=n7*D7v[D7]/D7v[Da];
+document.dim7.n.value =n_new; 
+}
+
+var chk8=true;
+var D8=0;
+var n8=0;
+D8v=new Array(9.80665, 1, 4.44822, 0.00001, 0.278013851);
+// ##08
+D8n=new Array("kgf", "N", "lbf", "dyn", "ozf");
+function res8()
+{D8=0;
+n8=0;
+chk8=true;}
+function insert8()
+{
+chk8=true;
+n8 = parseFloat(document.dim8.n.value); 
+// ##17
+if(isNaN(n8)){alert("Number should be in the bottom field."); document.dim8.n.focus(); return true;};
+D8 = document.dim8.D.selectedIndex
+n8 = Math.abs(n8);
+document.dim8.na.value=n8+D8n[D8];
+chk8=false;
+}
+function insertN8()
+{
+if(chk8){return true};
+insert8()
+}
+function calc8()
+{
+if(chk8){return true};
+Da = document.dim8.D.selectedIndex;
+n_new=n8*D8v[D8]/D8v[Da];
+document.dim8.n.value =n_new; 
+}
+
+var chk9=true;
+var D9=0;
+var n9=0;
+D9v=new Array(10000, 1, 10332.27, 10197.16, 10.19716, 101971.6, 101.9716, 0.1019716, 345.3155, 135.951, 13.5951, 1.00000, 0.01019716, 4.882428, 703.0696);
+// ##09
+D9n=new Array("kg/cm2", "kg/m2", "atm", "bar", "mbar", "MP", "kP", "P", "inch Hg", "cm Hg", "mm Hg [Torr]", "mm H2O", "dyne/cm2", "pound/foot2", "pound/inch2 [psi]");
+function res9()
+{D9=0;
+n9=0;
+chk9=true;}
+function insert9()
+{
+chk9=true;
+n9 = parseFloat(document.dim9.n.value); 
+// ##17
+if(isNaN(n9)){alert("Number should be in the bottom field."); document.dim9.n.focus(); return true;};
+D9 = document.dim9.D.selectedIndex
+n9 = Math.abs(n9);
+document.dim9.na.value=n9+D9n[D9];
+chk9=false;
+}
+function insertN9()
+{
+if(chk9){return true};
+insert9()
+}
+function calc9()
+{
+if(chk9){return true};
+Da = document.dim9.D.selectedIndex;
+n_new=n9*D9v[D9]/D9v[Da];
+document.dim9.n.value =n_new; 
+}
+
+var chk10=true;
+var D10=0;
+var n10=0;
+D10v=new Array(1, 4.18605, 0.0000001, 9.80665, 1.35582, 0.112985, 3600000, 2684519.538);
+// ##10
+D10n=new Array("J", "cal", "erg", "kgf-m", "ft-lbf", "lbf-in", "kW-h", "horsepow-h");
+function res10()
+{D10=0;
+n10=0;
+chk10=true;}
+function insert10()
+{
+chk10=true;
+n10 = parseFloat(document.dim10.n.value); 
+// ##17
+if(isNaN(n10)){alert("Number should be in the bottom field."); document.dim10.n.focus(); return true;};
+D10 = document.dim10.D.selectedIndex
+n10 = Math.abs(n10);
+document.dim10.na.value=n10+D10n[D10];
+chk10=false;
+}
+function insertN10()
+{
+if(chk10){return true};
+insert10()
+}
+function calc10()
+{
+if(chk10){return true};
+Da = document.dim10.D.selectedIndex;
+n_new=n10*D10v[D10]/D10v[Da];
+document.dim10.n.value =n_new; 
+}
+
+var chk11=true;
+var D11=0;
+var n11=0;
+D11v=new Array(1, 1.16300, 9.80665, 1.35582, 745.6998716);
+// ##11
+D11n=new Array("W", "kcal/h", "kgf-m/s", "ft-lbf/s", "horsepow.");
+function res11()
+{D11=0;
+n11=0;
+chk11=true;}
+function insert11()
+{
+chk11=true;
+n11 = parseFloat(document.dim11.n.value); 
+// ##17
+if(isNaN(n11)){alert("Number should be in the bottom field."); document.dim11.n.focus(); return true;};
+D11 = document.dim11.D.selectedIndex
+n11 = Math.abs(n11);
+document.dim11.na.value=n11+D11n[D11];
+chk11=false;
+}
+function insertN11()
+{
+if(chk11){return true};
+insert11()
+}
+function calc11()
+{
+if(chk11){return true};
+Da = document.dim11.D.selectedIndex;
+n_new=n11*D11v[D11]/D11v[Da];
+document.dim11.n.value =n_new; 
+}
+
+var chk12=true;
+var D12=0;
+var n12=0;
+D12v=new Array(1, 0.001, 0.000001, 0.000000001, 0.0000647989, 0.001772, 0.0002, 1000, 907.185, 1016.05, 0.0283495, 0.0311035, 0.453592, 0.373242);
+// ##12
+D12n=new Array("kg", "g", "mg", "microg", "gr", "drachm", "car", "ton", "ton (US)", "ton (GB)", "ounce/avdp [oz]", "ounce/troy", "pound/avdp", "pound/troy");
+function res12()
+{D12=0;
+n12=0;
+chk12=true;}
+function insert12()
+{
+chk12=true;
+n12 = parseFloat(document.dim12.n.value); 
+// ##17
+if(isNaN(n12)){alert("Number should be in the bottom field."); document.dim12.n.focus(); return true;};
+D12 = document.dim12.D.selectedIndex
+n12 = Math.abs(n12);
+document.dim12.na.value=n12+D12n[D12];
+chk12=false;
+}
+function insertN12()
+{
+if(chk12){return true};
+insert12()
+}
+function calc12()
+{
+if(chk12){return true};
+Da = document.dim12.D.selectedIndex;
+n_new=n12*D12v[D12]/D12v[Da];
+document.dim12.n.value =n_new; 
+}
+var chk13=true;
+var D13=0;
+var n13=0;
+D13v=new Array(273.15, 0, 32, 0, 491.67);
+D13k=new Array(1, 1, 1.8, 0.8, 1.8);
+// ##13
+D13n=new Array("K", "C", "F", "R", "Ran");
+function res13()
+{D13=0;
+n13=0;
+chk13=true;}
+function insert13()
+{
+chk13=true;
+n13 = parseFloat(document.dim13.n.value); 
+// ##17
+if(isNaN(n13)){alert("Number should be in the bottom field."); document.dim13.n.focus(); return true;};
+D13 = document.dim13.D.selectedIndex
+document.dim13.na.value=n13+D13n[D13];
+chk13=false;
+}
+function insertN13()
+{
+if(chk13){return true};
+insert13()
+}
+function calc13()
+{
+if(chk13){return true};
+Da = document.dim13.D.selectedIndex;
+n_new=D13v[Da]+(n13-D13v[D13])*D13k[Da]/D13k[D13];
+document.dim13.n.value =n_new; 
+}
+// -->
+</script>
+<a name="start"></a>
+<div align="center">
+	<table border="5" width="745" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+		<!-- MSTableType="nolayout" -->
+		<tr>
+			<td height="65" style="border-bottom-style: none; border-bottom-width: medium" width="813">
+			<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+			Help for units of measurement</font></b></p>
+			<p align="center">&nbsp;</p>
+			</td>
+		</tr>
+		<tr>
+			<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; border-right-style:none; border-right-width:medium" width="730" align="center">
+<p class=tx align="left" style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##24 -->Suppose, you want to know how many of "&micro;Ci" are in 5MBq.</font></p>
+<p class=tx align="left" style="margin-left: 10px; margin-right: 10px"><font face="Tahoma"><!-- ##25 -->Insert "<b>5</b>" in the bottom field and select "<b>MBq</b>" from the list of units. Push "<b>assign original value</b>" button and "<b>5MBq</b>" will appear in the upper field. Now; select "<b>&micro;Ci</b>", ad you will see, that "5MBq"="135.14&micro;Ci". If to select "<b>cpm</b>": "5MBq"="297297297.3cpm".</font></p>
+			<p>&nbsp;</td>
+		</tr>
+		<tr>
+			<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" width="813">
+			<a name="a41"></a>
+			</form>
+			<form name="dim14" id="dim14">
+				<div align="center">
+					&nbsp;<table border="0" width="90%" cellspacing="0" cellpadding="0" height="174">
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">
+							<p style="margin-left: 15px"><b>
+							<font color="#FF0000" face="Tahoma">Radioactivity</font></b></p>
+							</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: double; border-top-width: 3px; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="34">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="top">
+							<p align="center"><font face="Tahoma">
+							<input type="text" size="25" name="na" onfocus="this.blur()"></font></p>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" width="55%" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/5.png" onclick="insert14();return false;" align="right"></font></td>
+							<td bgcolor="#C1D0EF" width="3%" rowspan="4" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="118">&nbsp;</td>
+							<td bgcolor="#C1D0EF" width="42%" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">
+							<font face="Tahoma">
+							<input type="image" src="buttons/2.png" onclick="reset" name="I2"></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<input size="25" value="1" name="n" onchange="insertN14()" style="float: right"></font></td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35" valign="bottom">
+							<font face="Tahoma">
+							<select name="D" onchange="calc14()">
+							<option>&nbsp; Ci</option>
+							<option>&nbsp; mCi</option>
+							<option selected>&nbsp; µCi</option>
+							<option>&nbsp; nCi</option>
+							<option>&nbsp; pCi</option>
+							<option>&nbsp; cpm</option>
+							<option>&nbsp; GBq</option>
+							<option>&nbsp; MBq</option>
+							<option>&nbsp; kBq</option>
+							<option>&nbsp; Bq</option>
+							</select></font></td>
+						</tr>
+						<tr>
+							<td bgcolor="#C1D0EF" style="border-left-style: double; border-left-width: 3px; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+							<td bgcolor="#C1D0EF" style="border-left-style: none; border-left-width: medium; border-right-style: double; border-right-width: 3px; border-top-style: none; border-top-width: medium; border-bottom-style: double; border-bottom-width: 3px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px" bordercolor="#000000" height="35">&nbsp;</td>
+						</tr>
+					</table>
+					<div align="center">
+						<table border="0" width="100%" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td bgcolor="#C1D0EF">
+								<p style="margin-left: 10px; margin-right: 10px">
+								<font face="Tahoma">&nbsp;<br>
+								Let's change only the number in the lower field on <b>100</b> and just click somewhere outside the field (or, again, push "assign original value"). "100cpm" will appear in the upper field and program is ready to convert this unit now.
+								<br>
+&nbsp;</font></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			
+			</form>
+			</td>
+			</form>
+			<ul>
+			</ul>
+			<!-- протокол конец--></div>
+		</tr>
+	</table>
+</div>

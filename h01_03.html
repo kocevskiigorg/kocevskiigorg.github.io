@@ -1,0 +1,243 @@
+<link rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+<script language="JavaScript">
+<!-- 
+var chk=true;
+var n2=0;
+var fc=0;
+NAarr=new Array(50, 37, 40, 37);
+Darr=new Array(1, 1000, 1000000);
+
+function helpsp()
+{
+window.open('h01_03.html','help', config='height=500,width=620,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no');
+self.name="Main window"
+}
+function spctr()
+{
+fNA = NAarr[document.spectr.NA.selectedIndex];
+fV = parseFloat(document.spectr.V.value); 
+// ##03
+if(isNaN(fV)||fV==0){alert("\"Dilution volume\" should be the number."); document.spectr.V.focus(); return true;};
+fV =  Math.abs(fV);
+fv = parseFloat(document.spectr.v.value); 
+// ##04
+if(isNaN(fv)||fv==0){alert("\"Sample volume\" should be the number."); document.spectr.v.focus(); return true;};
+fv =  Math.abs(fv);
+// ##05
+if(fv>fV){alert("The sample volume should be less then the dilution volume."); document.spectr.v.focus(); return true} 
+	if(!document.spectr.batch.checked)
+	{
+	// ##06
+	if(document.spectr.NA.selectedIndex==3){fK = parseFloat(document.spectr.K.value); if(isNaN(fK)||fK<=0){alert("Insert the extinction coefficient for olig."); document.spectr.K.focus(); return true;}; fNA = fK; document.spectr.K.value=fK}
+	// ##07
+	fA = parseFloat(document.spectr.A.value); if(isNaN(fA)||fA==0){alert("\"Absorbance OD260\" should be the number."); document.spectr.A.focus(); return true;}; fA =  Math.abs(fA);
+	fc = fV/fv*fNA*fA/1000;
+	n=0
+	while(n<2&&fc<1) {n++; fc = fc*1000};
+	fc = Math.round(fc*100)/100;
+	document.spectr.A.value=fA;
+	document.spectr.C.value=fc;
+	document.spectr.D.selectedIndex=n;
+	chk=false;
+	n2=n
+}
+else
+{
+var k=0;
+var str=""
+cffc=new Array(" microg/microl", " ng/microl", " pg/microl");
+b=document.spectr.A.value.split(" ")
+for(i=0; i<b.length; i++)
+{
+if(b[i]==""){continue};
+fi = parseFloat(b[i]); 
+// ##08
+if(isNaN(fi)||fi==0){alert("\"Absorbance OD260\" should be the numbers separated by the space."); document.spectr.A.focus(); return true;};
+fi = Math.abs(fi);
+	k++;
+	kc = fV/fv*fNA*fi/1000;
+	n=0
+	while(n<2&&kc<1) {n++; kc = kc*1000};
+	kc = Math.round(kc*100)/100;
+	str=str+k+" -- "+fi+" -- "+kc+cffc[n]+"\n";
+}
+document.spectr.A.value=b.join(" ");
+document.spectr.btx.value=str;
+}
+	document.spectr.V.value=fV;
+	document.spectr.v.value=fv;
+}
+function rclc()
+{
+// ##09
+if(chk){alert("Only after calculation of concentration."); return true};
+n1 = Darr[document.spectr.D.selectedIndex];
+document.spectr.C.value = fc*n1/Math.pow(10,3*n2);
+}
+function rclc1()
+{
+document.spectr.K.value = NAarr[document.spectr.NA.selectedIndex];
+if(chk){return true};
+spctr();
+}
+// -->
+</script>
+
+
+<a name="start"></a>
+<div align="center">
+<table border="5" width="60%" bgcolor="#C1D0EF" bordercolor="#000000" cellspacing="0" cellpadding="0" height="435" bordercolorlight="#0000FF" bordercolordark="#000080">
+	<!-- MSTableType="nolayout" -->
+	<tr>
+		<td height="65" style="border-bottom-style: none; border-bottom-width: medium">
+		<p align="center"><b><font face="Tahoma" size="5">&nbsp;<br>
+		Help for &quot;spectrophotometric measurement&quot; <br>
+&nbsp;</font></b></p>
+		</td>
+	</tr>
+	<tr>
+	<div class="prot">
+			<ul type="disc">
+				<form name="spectr" id="spectr">
+		<td height="26" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+							<p align="left" style="margin-left: 10px; margin-right: 10px">
+					<font face="Tahoma">&nbsp;<br>
+					<!-- ##11 -->Let's suppose, that 1.5&micro;l of RNA was diluted in 2ml of water and the optical densities: OD<sub>260</sub>=0.253, OD<sub>320</sub>=0.005 (so, OD<sub>260</sub>-OD<sub>320</sub>=0.248).</font></p>
+<p class=tx align="left" style="margin-left: 10px; margin-right: 10px">
+<font face="Tahoma"><!-- ##12 -->Fill these data to the form as it is shown below and push "Calculate". You will obtain: "13.23&micro;g/&micro;l". If you want the answer in "ng/&micro;l", just select this unit and you will have: "13230ng/&micro;l".</font></p>
+<p class=tx align="left" style="margin-left: 10px; margin-right: 10px">
+<font face="Tahoma"><!-- ##13 -->Now, change optical density to 0.015 and just click somewhere outside the field (or, again, push "Calculate"): program will give "800ng/&micro;l". In the same way the program will recalculate answer after changing other parameters (volume, nicl. acid type).</font></p>
+							<p align="center" style="margin-left: 10px; margin-right: 10px">
+					<font color="#FF6600" face="Tahoma">&nbsp;</font></p>
+
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#EAF0FF" height="51" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+		<table border="1" width="100%" cellspacing="0" cellpadding="0" height="513">
+			<tr>
+				<td width="241" valign="middle" align="left" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><br>
+				Sample:&nbsp;&nbsp; 
+<select name="NA" onChange='rclc1()'>
+	<option>&nbsp;&nbsp;dsDNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ssDNA&nbsp;&nbsp;
+	<option selected>&nbsp;&nbsp;RNA&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;olig&nbsp;&nbsp;
+</select>&nbsp; <br>
+				<br>
+				<input type="checkbox" name="batch"> <font size="-1">-
+				<!-- ##15 -->choose for the &quot;batch mode&quot;. <br>
+&nbsp;</font></font></p>
+				</td>
+				<td width="469" align="left" valign="middle" colspan="3" height="70" style="border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><br>
+	<input type="text" size=3 value=40 name="K" onChange='spctr()'> 
+				[µg/ml] <font size="-1">-
+				<!-- ##16 -->extinction coefficient&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</font>
+				</font>
+				</p>
+				<p style="margin-left: 10px"><font size="-1" face="Tahoma">it would 
+				be better to use special for oligonucleotide <br>
+&nbsp;</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="89" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" rowspan="3">&nbsp;</td>
+				<td width="172" align="left" valign="middle" height="24" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Dilution volume:&nbsp;&nbsp;
+				</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="24" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px">
+				<font face="Tahoma">
+				<input type="text" size=5 value=2000 name="V">
+				µl</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="172" align="left" valign="middle" height="32" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Sample volume:</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="32" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><input type="text" size=5 value=1.5 name="v">
+				µl</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="172" align="left" valign="middle" height="33" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Absorbance OD<sub>260</sub>:
+				</font></p>
+				</td>
+				<td width="292" align="left" valign="middle" colspan="2" height="33" style="border-left-style: none; border-left-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma"><input type="text" size=25 name="A"  onChange='spctr()' value=0.248></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="middle" align="left" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p align="center"><font face="Tahoma" size="-1">
+				<input type="image" src="buttons/2.png" onclick="reset"></font></p>
+				</td>
+				<td width="469" align="left" valign="middle" colspan="3" height="67" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p align="center" style="margin-left: 10px"><font face="Tahoma">&nbsp;<input type="image" src="buttons/4.png" onclick="spctr();return false;"></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="30" style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</td>
+				<td width="172" align="left" valign="top" height="30" style="border-right-style: none; border-right-width: medium; border-top-style:none; border-top-width:medium; border-bottom-style:none; border-bottom-width:medium">
+				<p style="margin-left: 10px"><font face="Tahoma">Concentration:</font></p>
+				</td>
+				<td width="137" align="left" valign="top" height="30" style="border-style:none; border-width:medium; ">
+				<p style="margin-left: 10px"><font face="Tahoma"><input type="text" size=17 onFocus="this.blur()" name="C"></font></p>
+				</td>
+				<td width="155" align="left" valign="top" height="30" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+				<p style="margin-left: 10px">
+<font face="Tahoma">
+<select name="D" onChange='rclc()'>
+	<option>&nbsp;&nbsp;&micro;g/&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;ng/&micro;l&nbsp;&nbsp;
+	<option>&nbsp;&nbsp;pg/&micro;l&nbsp;&nbsp;
+</select></font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="241" valign="top" align="left" height="206" style="border-top-style: none; border-top-width: medium; border-bottom-style:solid; border-bottom-width:1px">
+				<p align="center"><font face="Tahoma">
+				<!-- ##14 -->&nbsp;</font></p>
+				</td>
+				<td width="469" align="left" valign="top" colspan="3" height="206" style="border-top-style: none; border-top-width: medium; border-bottom-style:solid; border-bottom-width:1px">
+				<hr>
+				<p style="margin-left: 10px"><font face="Tahoma">
+				<!-- ##21 -->Results for the &quot;batch mode&quot;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<br>
+				<br>
+				<textarea cols="53" rows="7" name="btx" onfocus="this.blur()"></textarea>&nbsp;
+				<br>
+				<br>
+</font></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="710" valign="top" align="left" height="206" style="border-top-style: solid; border-top-width: 1px; border-right-style:none; border-right-width:medium" colspan="4">
+<font face="Tahoma">
+<p style="margin-left: 10px; margin-right: 10px">&nbsp;<br>
+<!-- ##22 -->Finally, let's suppose, that in the same conditions you have obtained for a seria of samples the following densities: (i) 0.248; (ii) 3.46; (iii) 0.487; (iv) 0.007 and (v) 0.122. Choose the "batch mode" and insert in the field "Absorbance OD<sub>260</sub>" the string: <font color="Red">0.248 3.46 0.487 0.007 0.122</font>. Result of Calculators should be:</font></p>
+</p>
+<center>
+<p style="margin-left: 10px; margin-right: 10px"><font face="Tahoma">1 -- 0.248 -- 13.23&micro;g/&micro;l<br>
+2 -- 3.46 -- 184.53&micro;g/&micro;l<br>
+3 -- 0.487 -- 25.97&micro;g/&micro;l<br>
+4 -- 0.007 -- 373.33ng/&micro;l<br>
+5 -- 0.122 -- 6.51&micro;g/&micro;l<br></font></p>
+</center>
+				<p style="margin-left: 10px; margin-right: 10px">&nbsp;</td>
+			</tr>
+		</table>
+				</form>
+		</div>
+		
+		</td>
+	</tr>
+</table>
+</div>

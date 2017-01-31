@@ -1,0 +1,78 @@
+<LINK rel="stylesheet" type="text/css" href="protocol_calculator/style.css">
+	<script language="JavaScript">
+<!-- 
+var chkR=true;
+var chk1=true;
+var chk2=true;
+var r=0;
+function R()
+{
+chkR=true;
+r = parseFloat(document.cf.r.value); 
+// ##03
+if(isNaN(r)||r==0){alert("\"Radius [mm]\" should be number."); document.cf.r.focus(); return true;};
+r = Math.abs(r);
+document.cf.r.value=r+"mm"
+chkR=false;
+}
+function conv()
+{
+if(chk1==0){conv1()};
+if(chk2==0){conv2()};
+}
+function conv1()
+{
+R(); 
+if(chkR){return true};
+w1=parseFloat(document.cf.w1.value); 
+// ##04
+if(isNaN(w1)){alert("\"Speed\" should be number."); document.cf.w1.focus(); return true;};
+	w1=Math.abs(w1);
+	a1=0.0011946*r*Math.pow(w1,2);
+	r=Math.round(a1*1000)/1000;
+	if(r>0){a1=r};
+	document.cf.w1.value=w1;
+	document.cf.a1.value=a1;
+	chk1=false;
+}
+function conv2()
+{
+R(); 
+if(chkR){return true};
+a2=parseFloat(document.cf.a2.value); 
+// ##05
+if(isNaN(a2)){alert("\"RCF\" should be number."); document.cf.a2.focus(); return true;};
+	a2=Math.abs(a2);
+	w2=Math.pow(837.1*a2/r,0.5);
+	r=Math.round(w2*1000)/1000;
+	if(r>0){w2=r};
+	document.cf.w2.value=w2;
+	document.cf.a2.value=a2;
+	chk2=false;
+}
+// -->
+</script>
+<table width="750" border="0" cellspacing="0" cellpadding="0">
+<tr><td colspan="2" width="610" valign="top">
+<p class="h1">
+<!-- ##01 -->Conversion: speed of rotation [krpm] - Relative Centrifuge Force [kg]
+</p></td></tr>
+<tr><td width=610 valign="top">
+<div class="prot"><form name="cf" id="cf"><br>
+<ul>
+
+<p class=tx><!-- ##06 -->This program helps to convert the speed of centrifugation [krpm] in relative centrifuge force (RCF)[kg]. The radius of rotor [mm] should be known for the calculation.</p>
+<br>
+<!-- ##07 -->&nbsp;&nbsp;&nbsp;<input type="Reset" value="Reset"><br></font><br>
+<table width=500 ><tr><td align=center bgcolor="#eeeeee"><b><!-- ##08 -->Radius of rotor [mm]:</b>&nbsp;<input type="text" size=5 value=50 name="r"  onChange='conv()'></td></tr></table>
+<i>[krpm]  -->  [kg]:</i><br>
+<table width=500 border="0" cellspacing="0" cellpadding="5"><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=1 name="w1"  onChange='conv1()'>&nbsp;[krpm]&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Convert" onClick='conv1()'>&nbsp;&nbsp;&nbsp;<input type="text" size=5 name="a1" onFocus="this.blur()">&nbsp;[kg]</td></tr></table>
+<i>[kg]  -->  [krpm]:</i><br>
+<table width=500><td align=center bgcolor="#eeeeee">
+<input type="text" size=5 value=10 name="a2"  onChange='conv2()'>&nbsp;[kg]&nbsp;&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Convert" onClick='conv2()'>&nbsp;&nbsp;&nbsp;<input type="text" size=5 name="w2" onFocus="this.blur()">&nbsp;[krpm]</td></table><br></form>
+
+</ul>
+</div>
+</td></TR>
+</TABLE>
